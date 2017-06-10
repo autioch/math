@@ -15,15 +15,17 @@ export default function setSteps($container) {
   const $items = $container.find('.js-item');
   const $steps = $container.find('.task-step');
 
-  $steps.each(function(index, step) {
+  $steps.each((index, step) => {
     const ileft = step.getAttribute('ileft');
     const iright = step.getAttribute('iright');
-    const leftRect = $container.find('.js-item[iid="' + ileft + '"]')[0].getBoundingClientRect();
-    const rightRect = $container.find('.js-item[iid="' + iright + '"]')[0].getBoundingClientRect();
+    const leftRect = $container.find(`.js-item[iid="${ileft}"]`)[0].getBoundingClientRect();
+    const rightRect = $container.find(`.js-item[iid="${iright}"]`)[0].getBoundingClientRect();
     const fromX = (leftRect.left + rightRect.right) / 2;
+
     step.setAttribute('x', fromX - mainRect.left);
     step.setAttribute('y', index * 30 + 40);
     const stepRect = step.getBoundingClientRect();
+
     $container.append(getLine(stepRect, leftRect, mainRect)).append(getLine(stepRect, rightRect, mainRect));
   });
   $container.attr({

@@ -5,11 +5,13 @@ import solve from './solve';
 import $ from 'jquery';
 
 const ui = {};
+
 ['expression', 'solve', 'generate', 'minimum', 'maximum', 'complexity', 'solution', 'history']
-  .forEach(key => ui[key] = $(`.js-${key}`));
+  .forEach((key) => ui[key] = $(`.js-${key}`));
 
 function updateMaximum(ev) {
   const value = ev.target.value;
+
   if (value <= config.minimum) {
     return alert('Maximum must be greater than minimum.');
   }
@@ -18,6 +20,7 @@ function updateMaximum(ev) {
 
 function updateMinimum(ev) {
   const value = ev.target.value;
+
   if (value >= config.maximum) {
     return alert('Minimum must be smaller than maximum.');
   }
@@ -26,6 +29,7 @@ function updateMinimum(ev) {
 
 function updateComplexity(ev) {
   const value = ev.target.value;
+
   if (value < 1 || value > 50) {
     return alert('Complexity must be between 1 and 50.');
   }
@@ -35,6 +39,7 @@ function updateComplexity(ev) {
 function setGenerated() {
   let total = config.maximum + 1;
   let expression = '';
+
   while (total > config.maximum || total < config.minimum) {
     expression = generate(config.complexity);
     total = solve(expression).value;
@@ -46,6 +51,7 @@ function setGenerated() {
 function solveAndRender() {
   const expression = ui.expression.val();
   const solved = solve(expression);
+
   render(solved, ui.solution);
   ui.history.append(`<div class="history-list__item">${expression}</div>`);
 }

@@ -8,4 +8,3 @@ export default function fixBrackets(expression) {
     .replace(/\)\(/gi, ')+(')
     .replace(/\)m/gi, ')+m');
 }
-

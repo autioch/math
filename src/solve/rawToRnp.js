@@ -17,18 +17,21 @@ export default function rawToRnp(sanitized) {
   const result = [];
   const stack = [];
 
-  sanitized.forEach(function(token) {
+  sanitized.forEach((token) => {
     if (isNumeric(token.value)) {
       token.value = parseFloat(token.value, 10);
+
       return result.push(token);
     }
     if ('^*/+-'.indexOf(token.value) !== -1) {
-      let o1 = token;
+      const o1 = token;
       let o2 = stack[stack.length - 1];
+
       while (o2 && '^*/+-'.indexOf(o2.value) !== -1 && ((left(o1) && ord(o1) <= ord(o2)) || (right(o1) && ord(o1) < ord(o2)))) {
         result.push(stack.pop());
         o2 = stack[stack.length - 1];
       }
+
       return stack.push(o1);
     }
     if (token.value === '(') {
@@ -41,5 +44,6 @@ export default function rawToRnp(sanitized) {
       stack.pop();
     }
   });
+
   return result.concat(stack.reverse());
 }

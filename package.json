@@ -24,6 +24,12 @@
   },
   "scripts": {
     "build": "webpack --config tools/webpack.config.js -p",
-    "build:watch": "webpack --config tools/webpack.config.js --watch"
+    "build:watch": "webpack --config tools/webpack.config.js --watch",
+    "lint": "eslint ./src --ext .js --quiet --fix"
+  },
+  "devDependencies": {
+    "eslint": "^3.19.0",
+    "eslint-config-qb": "^1.0.0",
+    "serve-local": "^1.0.0"
   }
 }

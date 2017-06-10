@@ -4,14 +4,14 @@ const ALL_OPERATORS = Object.keys(operators).concat(['(', ')']);
 
 const RX_WHITE_SPACE = /\s+/g;
 const RX_DIVISON = /\:/g;
-const RX_OPERATORS = new RegExp('([' + ALL_OPERATORS.map(key => '\\' + key).join('') + '])');
+const RX_OPERATORS = new RegExp(`([${ALL_OPERATORS.map((key) => `\\${key}`).join('')}])`);
 
 function sanitize(raw) {
   return raw
     .replace(RX_WHITE_SPACE, '')
     .replace(RX_DIVISON, '/')
     .split(RX_OPERATORS)
-    .filter(item => item !== '');
+    .filter((item) => item !== '');
 }
 
 function tokenize(sanitized) {

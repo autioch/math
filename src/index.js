@@ -22,9 +22,10 @@ import './styles/index';
   el: 'maximum',
   ev: 'keyup change',
   handler: app.updateMaximum
-}].forEach(function(eventDefinition) {
+}].forEach((eventDefinition) => {
   let handler = eventDefinition.handler;
-  eventDefinition.ev.split(' ').forEach(function(ev) {
+
+  eventDefinition.ev.split(' ').forEach((ev) => {
     if (ev === 'keyup') {
       handler = debounce(handler, 1000);
     }

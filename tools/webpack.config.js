@@ -4,7 +4,7 @@ npm i -S css-loader file-loader postcss-loader@1 style-loader sass-loader node-s
 npm i -S babel-core babel-loader babel-preset-es2015
 npm i -S template-minify-loader
 
-npm i -S eslint qslint-config-qb
+npm i -D eslint eslint-config-qb serve-local
 */
 
 const path = require('path');
@@ -18,6 +18,7 @@ const autoprefixer = require('autoprefixer');
 /* Setup */
 const isProduction = process.argv.indexOf('-p') > -1;
 const nameSuffix = new Date().getTime() + (isProduction ? '.min' : '');
+const port = 8080;
 
 /* Paths */
 const projectPath = path.join(__dirname, '..');
@@ -34,25 +35,31 @@ const config = {
   },
   resolve: {
     root: [path.join(sourcePath)],
-    extensions: ['', '.js', '.json', '.css', '.scss', '.json']
+    extensions: ['', '.js', '.scss']
   },
   module: {
     loaders: [{
+      /* styles */
       test: /\.s?css$/,
       loader: ExtractTextPlugin.extract('style', ['css-loader', 'postcss-loader', 'sass-loader'])
     }, {
+      /* root static assets. */
       test: /\.ico$/i,
       loader: 'file?name=[name].[ext]'
     }, {
-      test: /\.json$/i,
-      loader: `file?name=${path.join(dataPath,'[name].[ext]')}`
-    }, {
+      /* static assets */
       test: /\.woff$/i,
-      loader: `file?name=${path.join(assetsPath,'[name].[ext]')}`
+      loader: `file?name=${path.join(assetsPath, '[name].[ext]')}`
     }, {
-      test: /\.(html|svg|htm|tpl)$/i,
+      /* data, config, mocks */
+      test: /\.json$/i,
+      loader: `file?name=${path.join(dataPath, '[name].[ext]')}`
+    }, {
+      /* templates */
+      test: /\.(html|htm|svg|tpl)$/i,
       loader: 'template-minify-loader'
     }, {
+      /* javascript */
       test: /\.js$/,
       include: [sourcePath],
       loader: 'babel-loader',
@@ -91,6 +98,7 @@ const config = {
 };
 
 if (process.argv.indexOf('--watch') > -1) {
+  require('serve-local')(distPath, port);
   config.plugins.push(new LiveReloadPlugin({
     appendScriptTag: true,
     ignore: /.(js|json|ico|woff)$/
