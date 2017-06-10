@@ -1,6 +1,6 @@
 import debounce from 'lodash.debounce';
 import app from './app';
-import './styles/index.scss';
+import './styles/index';
 
 [{
   el: 'solve',
