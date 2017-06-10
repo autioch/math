@@ -1,9 +1,9 @@
-import parse from './parse';
-import rawToRnp from './rawToRnp';
-import rnpTree from './rnpTree';
-import rnpCalculator from './rnpCalculator';
+const parse = require('./parse');
+const rawToRnp = require('./rawToRnp');
+const rnpTree = require('./rnpTree');
+const rnpCalculator = require('./rnpCalculator');
 
-export default function calculator(expression) {
+module.exports = function calculator(expression) {
   const parsed = parse(expression);
   const rnp = rawToRnp(parsed);
 
@@ -13,4 +13,4 @@ export default function calculator(expression) {
     value: rnpCalculator(rnp),
     tree: rnpTree(rnp)
   };
-}
+};

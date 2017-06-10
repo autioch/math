@@ -1,4 +1,4 @@
-import operators from './operators';
+const operators = require('./operators');
 
 const ALL_OPERATORS = Object.keys(operators).concat(['(', ')']);
 
@@ -21,6 +21,6 @@ function tokenize(sanitized) {
   }));
 }
 
-export default function parse(raw) {
+module.exports = function parse(raw) {
   return tokenize(sanitize(raw));
-}
+};

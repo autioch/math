@@ -28,8 +28,10 @@
     "lint": "eslint ./src --ext .js --quiet --fix"
   },
   "devDependencies": {
+    "chai": "^4.0.2",
     "eslint": "^3.19.0",
     "eslint-config-qb": "^1.0.0",
+    "mocha": "^3.4.2",
     "serve-local": "^1.0.0"
   }
 }

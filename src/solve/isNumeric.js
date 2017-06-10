@@ -1,3 +1,3 @@
-export default function isNumeric(str) {
+module.exports = function isNumeric(str) {
   return !isNaN(parseFloat(str)) && isFinite(str);
-}
+};

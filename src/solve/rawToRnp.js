@@ -1,5 +1,5 @@
-import isNumeric from './isNumeric';
-import ops from './operators';
+const isNumeric = require('./isNumeric');
+const ops = require('./operators');
 
 function left(token) {
   return ops[token.value].side === 'Left';
@@ -13,7 +13,7 @@ function ord(token) {
   return ops[token.value].order;
 }
 
-export default function rawToRnp(sanitized) {
+module.exports = function rawToRnp(sanitized) {
   const result = [];
   const stack = [];
 
@@ -46,4 +46,4 @@ export default function rawToRnp(sanitized) {
   });
 
   return result.concat(stack.reverse());
-}
+};

@@ -1,7 +1,7 @@
-import isNumeric from './isNumeric';
-import operators from './operators';
+const isNumeric = require('./isNumeric');
+const operators = require('./operators');
 
-export default function rnpCalculator(sanitized) {
+module.exports = function rnpCalculator(sanitized) {
   const stack = [];
 
   sanitized
@@ -18,4 +18,4 @@ export default function rnpCalculator(sanitized) {
     });
 
   return stack[0];
-}
+};

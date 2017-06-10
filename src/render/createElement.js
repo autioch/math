@@ -1,4 +1,4 @@
-export default function createElement(properties = {}, tagName = 'div', namespace = undefined) {
+module.exports = function createElement(properties = {}, tagName = 'div', namespace = undefined) {
   let el;
 
   if (namespace === undefined) {
@@ -9,4 +9,4 @@ export default function createElement(properties = {}, tagName = 'div', namespac
   Object.keys(properties).forEach((key) => el[key] = properties[key]);
 
   return el;
-}
+};

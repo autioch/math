@@ -1,7 +1,7 @@
-import isNumeric from './isNumeric';
-import operators from './operators';
+const isNumeric = require('./isNumeric');
+const operators = require('./operators');
 
-export default function rnpTree(sanitized) {
+module.exports = function rnpTree(sanitized) {
   const steps = [];
   const stack = [];
   let id = sanitized.length + 100;
@@ -31,4 +31,4 @@ export default function rnpTree(sanitized) {
     tree: stack[0],
     steps
   };
-}
+};

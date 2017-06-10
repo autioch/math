@@ -1,3 +1,6 @@
 module.exports = {
-  extends: 'qb'
+  extends: 'qb',
+  rules: {
+    'id-blacklist': ['off']
+  }
 };

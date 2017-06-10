@@ -1,8 +1,8 @@
-import generate from './generate';
-import config from './config';
-import render from './render';
-import solve from './solve';
-import $ from 'jquery';
+const generate = require('./generator');
+const config = require('./config');
+const render = require('./render');
+const solve = require('./solve');
+const $ = require('jquery');
 
 const ui = {};
 
@@ -41,7 +41,7 @@ function setGenerated() {
   let expression = '';
 
   while (total > config.maximum || total < config.minimum) {
-    expression = generate(config.complexity);
+    expression = generate(config.complexity).join('');
     total = solve(expression).value;
   }
   ui.expression.val(expression);
@@ -61,7 +61,7 @@ ui.complexity.val(config.complexity);
 ui.minimum.val(config.minimum);
 ui.maximum.val(config.maximum);
 
-export default {
+module.exports = {
   ui,
   updateMinimum,
   updateMaximum,

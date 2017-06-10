@@ -1,4 +1,4 @@
-export default {
+module.exports = {
   '^': {
     order: 4,
     side: 'Right',
