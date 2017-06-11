@@ -6,10 +6,10 @@ require('./styles');
 
 const modeArray = Object.keys(modes).map((key) => modes[key]);
 
-module.exports = function TabsView({ setMode }) {
+module.exports = function TabsView({ setMode, currentMode }) {
   return (
     <div className="m-tabs">
-      {modeArray.map((item) => <ItemView key={item.key} item={item} setMode={setMode}/>)}
+      {modeArray.map((item) => <ItemView key={item.key} item={item} setMode={setMode} currentMode={currentMode}/>)}
     </div>
   );
 };

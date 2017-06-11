@@ -1,0 +1,12 @@
+.m-tabs-item {
+  padding: 1em;
+  cursor: pointer;
+  flex-wrap: nowrap;
+  flex-grow: 1;
+  text-align: center;
+
+  &.is-selected,
+  &:hover {
+    background: #9cf;
+  }
+}

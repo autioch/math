@@ -9,6 +9,8 @@ const TreeView = require('./tree/view');
 const MessageView = require('./message/view');
 const modes = require('./modes');
 
+require('./styles');
+
 const MODEVIEWS = {
   [modes.random.key]: RandomView,
   [modes.custom.key]: CustomView,
@@ -77,7 +79,7 @@ module.exports = class AppView extends Component {
 
     newHistory.unshift({
       expressionText,
-      timestamp: new Date()
+      timestamp: new Date().toLocaleTimeString()
     });
 
     this.setState({
@@ -101,17 +103,19 @@ module.exports = class AppView extends Component {
 
     return (
       <div>
-        <TabsView setMode={this.setMode} />
+        <TabsView setMode={this.setMode} currentMode={this.state.mode} />
         <MessageView message={this.state.error} />
-        <ModeView
-          setExpression={this.setExpression}
-          setCustom={this.setCustom}
-          setRandom={this.setRandom}
-          historyList={this.state.historyList}
-          setMode={this.setMode}
-          expressionText={this.state.expressionText}
-        />
-        <TreeView rnpExpression={this.state.rnpExpression} value={this.state.value} />
+        <div className="m-mode">
+          <ModeView
+            setExpression={this.setExpression}
+            setCustom={this.setCustom}
+            setRandom={this.setRandom}
+            historyList={this.state.historyList}
+            setMode={this.setMode}
+            expressionText={this.state.expressionText}
+          />
+        </div>
+        <TreeView steps={this.state.steps} value={this.state.value} />
       </div>
     );
   }

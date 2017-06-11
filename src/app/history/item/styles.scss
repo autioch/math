@@ -1,0 +1,18 @@
+.m-history-item {
+  padding: .25em;
+  display: flex;
+  cursor: pointer;
+
+  &:hover {
+    background: #6bf;
+  }
+}
+
+.m-history-item__text {
+  flex-grow: 1;
+}
+
+.m-history-item__timestamp {
+  white-space: nowrap;
+  color: #555;
+}

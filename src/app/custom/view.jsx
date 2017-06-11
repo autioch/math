@@ -28,8 +28,8 @@ module.exports = class CustomView extends Component {
     return (
       <div className="m-custom">
         <label className="m-custom__input">
-          <span className="m-custom__label">Enter expression:</span>
-          <input type="text" class="m-custom__field" onchange={this.setChange}/>
+          <div className="m-custom__label">Enter expression:</div>
+          <input type="text" class="m-custom__field" value={this.state.value} onchange={this.setChange}/>
         </label>
         <button className="m-custom__submit" onclick={this.confirmChange}>Solve</button>
       </div>
