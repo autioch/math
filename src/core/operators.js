@@ -12,16 +12,16 @@ module.exports = {
   '*': {
     order: 3,
     side: 'Left',
-    evalFunc: (a, b) => a * b
+    evalFunc: (left, right) => left * right
   },
   '+': {
     order: 2,
     side: 'Left',
-    evalFunc: (a, b) => a + b
+    evalFunc: (left, right) => left + right
   },
   '-': {
     order: 2,
     side: 'Left',
-    evalFunc: (a, b) => a - b
+    evalFunc: (left, right) => left - right
   }
 };

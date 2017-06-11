@@ -1,67 +1,39 @@
-const generate = require('./generate');
-const custom = require('./custom');
 const config = require('./config');
-const render = require('./render');
-const solve = require('./solve');
 const $ = require('jquery');
+const MathApp = require('./mathApp');
+
+const mathApp = new MathApp(config);
 
 const ui = {};
 
 ['expression', 'solve', 'generate', 'minimum', 'maximum', 'complexity', 'solution', 'history']
-  .forEach((key) => ui[key] = $(`.js-${key}`));
+  .forEach((key) => {
+    ui[key] = $(`.js-${key}`);
+  });
 
 function updateMaximum(ev) {
-  const value = ev.target.value;
-
-  if (value <= config.minimum) {
-    return alert('Maximum must be greater than minimum.');
-  }
-  config.maximum = value;
+  mathApp.settings.maximum = ev.target.value;
 }
 
 function updateMinimum(ev) {
-  const value = ev.target.value;
-
-  if (value >= config.maximum) {
-    return alert('Minimum must be smaller than maximum.');
-  }
-  config.minimum = value;
+  mathApp.settings.minimum = ev.target.value;
 }
 
 function updateComplexity(ev) {
-  const value = ev.target.value;
-
-  if (value < 1 || value > 50) {
-    return alert('Complexity must be between 1 and 50.');
-  }
-  config.complexity = value;
+  mathApp.settings.complexity = ev.target.value;
 }
 
 function setGenerated() {
-  let total = config.maximum + 1;
-  let expression = '';
-
-  while (total > config.maximum || total < config.minimum) {
-    expression = generate(config.complexity).join('');
-    total = solve(expression).value;
-  }
-  ui.expression.val(expression);
+  mathApp.generate();
+  ui.expression.val(mathApp.expressionText);
   ui.solution.empty();
 }
 
 function solveAndRender() {
-  const expression = ui.expression.val();
-  const sanitized = custom(expression);
+  mathApp.setCustom(ui.expression.val());
 
-  if (sanitized.error) {
-    alert(sanitized.error);
-
-    return;
-  }
-  const solved = solve(sanitized.expression);
-
-  render(solved, ui.solution);
-  ui.history.append(`<div class="history-list__item">${expression}</div>`);
+  // render(mathApp);
+  // ui.history.append(`<div class="history-list__item">${expression}</div>`);
 }
 
 ui.expression.val('(11+3* 2 + 3)+9*6-3-7*5');

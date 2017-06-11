@@ -1,6 +1,6 @@
-const operators = require('./operators');
+const operators = require('../operators');
 
-module.exports = function calculateRpn(rpnExpression) {
+module.exports = function solve(rpnExpression) {
   const stack = [];
 
   rpnExpression.forEach((token) => {

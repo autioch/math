@@ -1,8 +1,8 @@
-module.exports = function rawToRpn(sanitized) {
+module.exports = function toRpn(expression) {
   const result = [];
   const stack = [];
 
-  sanitized.forEach((token) => {
+  expression.forEach((token) => {
     if (token.isNumber) {
       result.push(token);
 

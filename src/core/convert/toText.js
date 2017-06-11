@@ -62,7 +62,7 @@ function visit(node) {
   return lhs + node.operator + rhs;
 }
 
-module.exports = function convertRPN2Infix(rpnExpr) {
+module.exports = function toText(rpnExpr) {
   const tree = convertRPN2Tree(rpnExpr);
 
   return visit(tree);
