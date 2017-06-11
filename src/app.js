@@ -1,4 +1,5 @@
-const generate = require('./generator');
+const generate = require('./generate');
+const custom = require('./custom');
 const config = require('./config');
 const render = require('./render');
 const solve = require('./solve');
@@ -50,7 +51,14 @@ function setGenerated() {
 
 function solveAndRender() {
   const expression = ui.expression.val();
-  const solved = solve(expression);
+  const sanitized = custom(expression);
+
+  if (sanitized.error) {
+    alert(sanitized.error);
+
+    return;
+  }
+  const solved = solve(sanitized.expression);
 
   render(solved, ui.solution);
   ui.history.append(`<div class="history-list__item">${expression}</div>`);

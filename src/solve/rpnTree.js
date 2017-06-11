@@ -1,29 +1,28 @@
-const isNumeric = require('./isNumeric');
 const operators = require('./operators');
 
-module.exports = function rnpTree(sanitized) {
+module.exports = function rpnTree(sanitized) {
   const steps = [];
   const stack = [];
   let id = sanitized.length + 100;
 
   sanitized.forEach((token) => {
-    if (isNumeric(token.value)) {
+    if (token.isNumber) {
       return stack.push(token);
     }
     const o2 = stack.pop();
     const o1 = stack.pop();
-    const value = operators[token.value].evalFunc(o1.value, o2.value);
-    const node = {
+    const computed = operators[token.value].evalFunc(o1.value, o2.value);
+    const operation = {
       id: id++,
       left: o1,
       right: o2,
       operator: token.value,
-      infix: `${o1.value} ${token.value} ${o2.value} = ${value}`,
-      value
+      infix: `${o1.value} ${token.value} ${o2.value} = ${computed}`,
+      value: computed
     };
 
-    stack.push(node);
-    steps.push(node);
+    stack.push(operation);
+    steps.push(operation);
   });
 
   return {

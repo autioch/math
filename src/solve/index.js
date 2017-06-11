@@ -1,16 +1,17 @@
-const parse = require('./parse');
-const rawToRnp = require('./rawToRnp');
-const rnpTree = require('./rnpTree');
-const rnpCalculator = require('./rnpCalculator');
+const rawToRpn = require('./rawToRpn');
+const rpnTree = require('./rpnTree');
+const calculateRpn = require('./calculateRpn');
+const goStepByStep = require('./goStepByStep');
+const tokenize = require('./tokenize');
 
-module.exports = function calculator(expression) {
-  const parsed = parse(expression);
-  const rnp = rawToRnp(parsed);
+module.exports = function solve(expression) {
+  const tokens = tokenize(expression);
+  const rnp = rawToRpn(tokens);
 
   return {
-    raw: expression,
-    parsed,
-    value: rnpCalculator(rnp),
-    tree: rnpTree(rnp)
+    expression: tokens,
+    value: calculateRpn(rnp),
+    tree: rpnTree(rnp),
+    steps: goStepByStep(rnp)
   };
 };
