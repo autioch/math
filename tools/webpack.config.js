@@ -1,12 +1,3 @@
-/*
-npm i -S webpack@1 html-webpack-plugin clean-webpack-plugin extract-text-webpack-plugin@1 webpack-livereload-plugin
-npm i -S css-loader file-loader postcss-loader@1 style-loader sass-loader node-sass autoprefixer
-npm i -S babel-core babel-loader babel-preset-es2015
-npm i -S template-minify-loader
-
-npm i -D eslint eslint-config-qb serve-local
-*/
-
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -35,7 +26,7 @@ const config = {
   },
   resolve: {
     root: [path.join(sourcePath)],
-    extensions: ['', '.js', '.scss']
+    extensions: ['', '.js', '.jsx', '.scss']
   },
   module: {
     loaders: [{
@@ -69,6 +60,21 @@ const config = {
           loose: true
         }] ]
       }
+    }, {
+      test: /\.jsx$/,
+      include: [sourcePath],
+      loader: 'babel-loader',
+      query: {
+        cacheDirectory: true,
+        presets: [ ['es2015', {
+          loose: true
+        }] ],
+        plugins: [
+          ['transform-react-jsx', {
+            pragma: 'h'
+          }]
+        ]
+      }
     }]
   },
   plugins: [
@@ -101,7 +107,7 @@ if (process.argv.indexOf('--watch') > -1) {
   require('serve-local')(distPath, port);
   config.plugins.push(new LiveReloadPlugin({
     appendScriptTag: true,
-    ignore: /.(js|json|ico|woff)$/
+    ignore: /.(js|jsx|json|ico|woff)$/
   }));
 }
 
