@@ -2,5 +2,15 @@
   const tokenize = require('./tokenize');
 
   module.exports = function parse(text) {
-    return tokenize(normalize(text));
+    const { error, expression } = normalize(text);
+
+    if (error) {
+      return {
+        error
+      };
+    }
+
+    return {
+      expression: tokenize(expression)
+    };
   };

@@ -1,4 +1,4 @@
-const operators = require('../solve/operators');
+const operators = require('../operators');
 const RX_WHITE_SPACE = /\s+/g;
 const RX_ALLOWED = /[0-9-+*()]/gi;
 

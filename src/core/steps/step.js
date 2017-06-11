@@ -1,5 +1,5 @@
-const operators = require('./operators');
-const rpnToRaw = require('./rpnToRaw');
+const operators = require('../operators');
+const { toText } = require('../convert');
 
 module.exports = function rnpStep(expression) {
   const id = Math.max(...expression.map((token) => token.id)) + 1;
@@ -40,8 +40,8 @@ module.exports = function rnpStep(expression) {
       operation,
       previousEx: expression,
       expression: newExpression,
-      previousString: rpnToRaw(expression),
-      string: rpnToRaw(newExpression)
+      previousString: toText(expression),
+      string: toText(newExpression)
     };
   }
 
