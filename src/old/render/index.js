@@ -1,7 +1,7 @@
-const markupsvg = require('./markupsvg.html');
-const setSteps = require('./setSteps');
+import markupsvg from './markupsvg.html';
+import setSteps from './setSteps';
 
-module.exports = function render(solved, container) {
+export function render(solved, container) {
   container.html(markupsvg(solved));
   setSteps(container);
-};
+}

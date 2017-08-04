@@ -1,11 +1,11 @@
-const operators = require('../operators');
+import operators from '../operators';
 const RX_WHITE_SPACE = /\s+/g;
 const RX_ALLOWED = /[0-9-+*()]/gi;
 
 const OPERATOR_KEYS = Object.keys(operators).concat(['(', ')']);
 const RX_OPERATORS = new RegExp(`([${OPERATOR_KEYS.map((key) => `\\${key}`).join('')}])`);
 
-module.exports = function normalize(userInput) {
+export default function normalize(userInput) {
   const charsOnly = userInput.replace(RX_WHITE_SPACE, '');
   const notAllowedChars = charsOnly.replace(RX_ALLOWED, '');
 
@@ -18,4 +18,4 @@ module.exports = function normalize(userInput) {
   return {
     expression: charsOnly.split(RX_OPERATORS).filter((item) => item !== '')
   };
-};
+}

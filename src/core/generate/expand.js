@@ -48,7 +48,7 @@ function getExpansion(character, result) {
   return '(e+e)';
 }
 
-module.exports = function expand(expression) {
+export default function expand(expression) {
   const indexes = getTagIndexes(expression);
   const index = indexes[Math.floor(Math.random() * indexes.length)];
   const expandRandom = Math.random();
@@ -57,4 +57,4 @@ module.exports = function expand(expression) {
   expression.splice(index, 1, ...expansion);
 
   return expression;
-};
+}

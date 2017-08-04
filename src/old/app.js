@@ -1,6 +1,6 @@
-const config = require('./config');
-const $ = require('jquery');
-const MathApp = require('./mathApp');
+import config from './config';
+import $ from 'jquery';
+import MathApp from './mathApp';
 
 const mathApp = new MathApp(config);
 
@@ -41,7 +41,7 @@ ui.complexity.val(config.complexity);
 ui.minimum.val(config.minimum);
 ui.maximum.val(config.maximum);
 
-module.exports = {
+export {
   ui,
   updateMinimum,
   updateMaximum,

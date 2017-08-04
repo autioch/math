@@ -1,8 +1,15 @@
-module.exports = {
-  convert: require('./convert'),
-  generate: require('./generate'),
-  parse: require('./parse'),
-  solve: require('./solve'),
-  steps: require('./steps'),
-  operators: require('./operators')
+import convert from './convert';
+import generate from './generate';
+import parse from './parse';
+import solve from './solve';
+import steps from './steps';
+import operators from './operators';
+
+export {
+  convert,
+  generate,
+  parse,
+  solve,
+  steps,
+  operators
 };

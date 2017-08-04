@@ -1,4 +1,4 @@
-module.exports = function toRpn(expression) {
+export default function toRpn(expression) {
   const result = [];
   const stack = [];
 
@@ -38,4 +38,4 @@ module.exports = function toRpn(expression) {
   });
 
   return result.concat(stack.reverse());
-};
+}

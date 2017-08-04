@@ -1,15 +1,15 @@
 /* eslint no-magic-numbers: 0 */
-const { h, Component } = require('preact');
-const { convert: { toRpn }, generate, parse, solve, steps } = require('core');
-const RandomView = require('./random/view');
-const CustomView = require('./custom/view');
-const HistoryView = require('./history/view');
-const TabsView = require('./tabs/view');
-const TreeView = require('./tree/view');
-const MessageView = require('./message/view');
-const modes = require('./modes');
+import { h, Component } from 'preact';
+import { convert, generate, parse, solve, steps } from 'core';
+import RandomView from './random/view';
+import CustomView from './custom/view';
+import HistoryView from './history/view';
+import TabsView from './tabs/view';
+import TreeView from './tree/view';
+import MessageView from './message/view';
+import modes from './modes';
 
-require('./styles');
+import './styles';
 
 const MODEVIEWS = {
   [modes.random.key]: RandomView,
@@ -17,7 +17,7 @@ const MODEVIEWS = {
   [modes.history.key]: HistoryView
 };
 
-module.exports = class AppView extends Component {
+export default class AppView extends Component {
   constructor() {
     super();
     this.state = {
@@ -51,7 +51,7 @@ module.exports = class AppView extends Component {
 
     while (minimum > value || value > maximum) {
       expression = generate(complexity).join('');
-      value = solve(toRpn(parse(expression).expression));
+      value = solve(convert.toRpn(parse(expression).expression));
     }
 
     this.setExpression(expression);
@@ -72,7 +72,7 @@ module.exports = class AppView extends Component {
       return;
     }
 
-    const rnpExpression = toRpn(expression);
+    const rnpExpression = convert.toRpn(expression);
     const newHistory = this.state.historyList.filter((item) => item.expressionText !== expressionText);
 
     const value = solve(rnpExpression);
@@ -119,4 +119,4 @@ module.exports = class AppView extends Component {
       </div>
     );
   }
-};
+}

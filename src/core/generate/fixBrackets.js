@@ -2,7 +2,7 @@ function isTag(item) {
   return item === 'i' || item === 'e' || item === 'm';
 }
 
-module.exports = function fixBrackets(expression) {
+export default function fixBrackets(expression) {
   const fixed = [];
 
   for (let index = 0; index < expression.length - 1; index++) {
@@ -27,4 +27,4 @@ module.exports = function fixBrackets(expression) {
   fixed.push(expression[expression.length - 1]);
 
   return fixed;
-};
+}

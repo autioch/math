@@ -1,8 +1,8 @@
-const { h, Component } = require('preact');
+import { h, Component } from 'preact';
 
-require('./styles');
+import './styles';
 
-module.exports = class CustomView extends Component {
+export default class CustomView extends Component {
   constructor({ setCustom, expressionText }) {
     super();
 
@@ -35,4 +35,4 @@ module.exports = class CustomView extends Component {
       </div>
     );
   }
-};
+}

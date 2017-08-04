@@ -1,6 +1,6 @@
 /* eslint no-magic-numbers: 0 */
 
-module.exports = {
+export default {
   random: {
     key: 1,
     label: 'Random'

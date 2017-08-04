@@ -1,6 +1,6 @@
-const step = require('./step');
+import step from './step';
 
-module.exports = function solve(rpnExpression) {
+export default function solve(rpnExpression) {
   const steps = [];
 
   let currentExpression = rpnExpression;
@@ -14,4 +14,4 @@ module.exports = function solve(rpnExpression) {
   }
 
   return steps;
-};
+}

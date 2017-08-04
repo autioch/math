@@ -1,4 +1,5 @@
-module.exports = {
+/* eslint no-magic-numbers: 0 */
+export default {
   // '^': {
   //   order: 4,
   //   side: 'Right',

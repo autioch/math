@@ -1,12 +1,12 @@
-const operators = require('../operators');
-const { toText } = require('../convert');
+import operators from '../operators';
+import convert from '../convert';
 
-module.exports = function rnpStep(expression) {
-  const id = Math.max(...expression.map((token) => token.id)) + 1;
+export default function rnpStep(previousExpression) {
+  const id = Math.max(...previousExpression.map((token) => token.id)) + 1;
   const stack = [];
 
-  for (let index = 0; index < expression.length; index++) {
-    const token = expression[index];
+  for (let index = 0; index < previousExpression.length; index++) {
+    const token = previousExpression[index];
 
     if (token.isNumber) {
       stack.push(token);
@@ -24,7 +24,8 @@ module.exports = function rnpStep(expression) {
       isOperator: false,
       isNumber: true,
       isLeft: false,
-      isRight: false
+      isRight: false,
+      previousTokens: [left, right]
     };
 
     const operation = {
@@ -34,16 +35,16 @@ module.exports = function rnpStep(expression) {
       operator: token
     };
 
-    const newExpression = stack.concat(newToken).concat(expression.slice(index + 1));
+    const expression = stack.concat(newToken).concat(previousExpression.slice(index + 1));
 
     return {
       operation,
-      previousEx: expression,
-      expression: newExpression,
-      previousString: toText(expression),
-      string: toText(newExpression)
+      previousExpression,
+      expression,
+      previousString: convert.toText(previousExpression),
+      string: convert.toText(expression)
     };
   }
 
   throw Error('Next step not possible!');
-};
+}

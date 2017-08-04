@@ -6,7 +6,7 @@ function isTag(item) {
   return item === 'i' || item === 'e' || item === 'm';
 }
 
-module.exports = function fillValues(expression) {
+export default function fillValues(expression) {
   return expression.map((item) => {
     if (isTag(item)) {
       return Math.round(Math.random() * MAX_VALUE) + MIN_VALUE;
@@ -14,4 +14,4 @@ module.exports = function fillValues(expression) {
 
     return item;
   });
-};
+}

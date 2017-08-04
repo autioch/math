@@ -1,4 +1,4 @@
-const operators = require('../operators');
+import operators from '../operators';
 
 function isLeft(token) {
   return operators[token].side === 'Left';
@@ -8,7 +8,7 @@ function isRight(token) {
   return operators[token].side === 'Right';
 }
 
-module.exports = function tokenize(expression) {
+export default function tokenize(expression) {
   return expression.map((token, index) => {
     const numericValue = parseInt(token, 10);
     const isNumber = !isNaN(numericValue);
@@ -24,4 +24,4 @@ module.exports = function tokenize(expression) {
       isRight: isOperator ? isRight(token) : false
     };
   });
-};
+}

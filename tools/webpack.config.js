@@ -9,7 +9,7 @@ const autoprefixer = require('autoprefixer');
 /* Setup */
 const isProduction = process.argv.indexOf('-p') > -1;
 const nameSuffix = new Date().getTime() + (isProduction ? '.min' : '');
-const port = 8080;
+const port = 8079;
 
 /* Paths */
 const projectPath = path.join(__dirname, '..');
@@ -52,16 +52,6 @@ const config = {
     }, {
       /* javascript */
       test: /\.js$/,
-      include: [sourcePath],
-      loader: 'babel-loader',
-      query: {
-        cacheDirectory: true,
-        presets: [ ['es2015', {
-          loose: true
-        }] ]
-      }
-    }, {
-      test: /\.jsx$/,
       include: [sourcePath],
       loader: 'babel-loader',
       query: {

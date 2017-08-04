@@ -1,12 +1,12 @@
-const { h } = require('preact');
+import { h } from 'preact';
 
-require('./styles');
+import './styles';
 
-module.exports = function View({ item: { timestamp, expressionText }, setExpression }) {
+export default function View({ item: { timestamp, expressionText }, setExpression }) {
   return (
     <div className="m-history-item" onclick={() => setExpression(expressionText)}>
       <div className="m-history-item__text">{expressionText}</div>
       <div className="m-history-item__timestamp">{timestamp.toString()}</div>
     </div>
   );
-};
+}

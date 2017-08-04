@@ -1,4 +1,4 @@
-const $ = require('jquery');
+import $ from 'jquery';
 
 function getLine(stepRect, fromRect, $containerRect) {
   return $(document.createElementNS('http://www.w3.org/2000/svg', 'line'))
@@ -10,7 +10,7 @@ function getLine(stepRect, fromRect, $containerRect) {
     });
 }
 
-module.exports = function setSteps($container) {
+export function setSteps($container) {
   const mainRect = $container[0].getBoundingClientRect();
   const $items = $container.find('.js-item');
   const $steps = $container.find('.task-step');
@@ -32,4 +32,4 @@ module.exports = function setSteps($container) {
     height: $steps.length * 30 + 40,
     width: $container.find('.task-token').length * 20 + 20
   });
-};
+}

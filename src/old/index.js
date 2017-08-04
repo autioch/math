@@ -1,5 +1,5 @@
-const debounce = require('lodash.debounce');
-const app = require('./app');
+import debounce from 'lodash.debounce';
+import app from './app';
 
 import './styles/index';
 

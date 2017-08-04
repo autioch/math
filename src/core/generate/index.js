@@ -1,8 +1,8 @@
-const expand = require('./expand');
-const fixBrackets = require('./fixBrackets');
-const fillValues = require('./fillValues');
+import expand from './expand';
+import fixBrackets from './fixBrackets';
+import fillValues from './fillValues';
 
-module.exports = function generate(stepCount) {
+export default function generate(stepCount) {
   let expression = ['e'];
 
   for (let step = 0; step < stepCount; step++) {
@@ -10,4 +10,4 @@ module.exports = function generate(stepCount) {
   }
 
   return fillValues(fixBrackets(expression));
-};
+}
