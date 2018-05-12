@@ -1,6 +1,8 @@
-import { render, h } from 'preact';
-import AppView from './app/view';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
+import registerServiceWorker from './registerServiceWorker';
 
-import './styles';
-
-render(<AppView />, document.body);
+ReactDOM.render(<App />, document.getElementById('root'));
+registerServiceWorker();
