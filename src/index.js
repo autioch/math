@@ -1,8 +1,8 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import registerServiceWorker from './registerServiceWorker';
+import App from './components/App';
+import actions from './actions';
+import initialState from './initialState';
+import { createApp } from 'pipe-and-gauge';
 
-ReactDOM.render(<App />, document.getElementById('root'));
-registerServiceWorker();
+const store = createApp(actions, initialState, App, document.querySelector('#root'));
+
+store.start();
