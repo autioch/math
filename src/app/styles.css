@@ -1,0 +1,25 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+html {
+  font-family: Verdana, Arial;
+  font-size: 12px;
+}
+
+@media (min-width: 960px) {
+  body {
+    width: 960px;
+    margin: 0 auto;
+  }
+}
+
+
+.m-mode {
+  padding: 1em;
+  background: #9cf;
+  min-height: 3em;
+}
