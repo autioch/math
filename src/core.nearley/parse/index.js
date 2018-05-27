@@ -1,4 +1,5 @@
-import compiledGrammar from './compiledGrammar';
+// import compiledGrammar from './compiledGrammar';
+import compiledGrammar from './compiled';
 import { Parser } from 'nearley';
 
 const RX_WHITE_SPACE = /\s+/g;

@@ -1,6 +1,19 @@
 import { convert, generate, solve, parse } from '../core';
 import parseNearley from '../core.nearley/parse';
 
+function filterEmpty(arr) {
+  if (!Array.isArray(arr)) {
+    return arr;
+  }
+  const filtered = arr.filter((item) => !Array.isArray(item) || item.length > 0);
+
+  if (filtered.length === 1) {
+    return filterEmpty(filtered[0]);
+  }
+
+  return filtered.map((item) => filterEmpty(item));
+}
+
 export default {
 
   setState({ data }) {
@@ -48,6 +61,7 @@ export default {
     }
 
     const newHistory = historyList.filter((item) => item.expressionText !== expressionText);
+    const steps = filterEmpty(tokens);
 
     newHistory.unshift({
       expressionText,
@@ -57,7 +71,7 @@ export default {
     return {
       expressionText,
       message: '',
-      steps: tokens,
+      steps,
       historyList: newHistory
     };
   }
