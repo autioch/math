@@ -4,11 +4,9 @@
 
 @lexer lexer
 
-MAIN -> _ AS _
-P -> %roundOpen _ AS _ %roundClose | %squareOpen _ AS _ %squareClose | %curlyOpen _ AS _ %curlyClose | N
-E -> P _ %factor _ E | P
-MD -> MD _ %multiply _ E | MD _ %divide _ E | E
-AS -> AS _ %substract _ MD | AS _ %add _ MD | MD
-N -> NUMBER | %fn _ P
-NUMBER ->  %integer %decimal %integer | %integer
-_ -> null | %space {% d => null %}
+MAIN -> AS
+EXPRESSION -> %roundOpen AS %roundClose | %squareOpen AS %squareClose | %curlyOpen AS %curlyClose | ATOM
+POWER -> EXPRESSION %factor POWER | EXPRESSION
+MD -> MD %multiply POWER | MD %divide POWER | POWER
+AS -> AS %substract MD | AS %add MD | MD
+ATOM -> %integer %decimal %integer | %integer | %fn EXPRESSION

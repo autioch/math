@@ -14,7 +14,5 @@ module.exports = moo.compile({
   squareClose: ']',
   curlyOpen: '{',
   curlyClose: '}',
-  fn: ['sin', 'cos', 'tan', 'asin', 'acos', 'atan', 'ln', 'sqr', 'sqrt'],
-  fixed: ['pi', 'e'],
-  space: / +/
+  fn: ['sin', 'cos', 'tan', 'asin', 'acos', 'atan', 'log']
 });

@@ -5,3 +5,7 @@
 .m-tree__value {
   margin-bottom: 1em;
 }
+
+.m-tree__steps {
+  padding-left: 3em;
+}

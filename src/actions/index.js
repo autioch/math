@@ -1,18 +1,6 @@
-import { convert, generate, solve, parse } from '../core';
+import { generate } from '../core';
 import parseNearley from '../core.nearley/parse';
-
-function filterEmpty(arr) {
-  if (!Array.isArray(arr)) {
-    return arr;
-  }
-  const filtered = arr.filter((item) => !Array.isArray(item) || item.length > 0);
-
-  if (filtered.length === 1) {
-    return filterEmpty(filtered[0]);
-  }
-
-  return filtered.map((item) => filterEmpty(item));
-}
+import solveNearley from '../core.nearley/solve';
 
 export default {
 
@@ -39,7 +27,9 @@ export default {
 
     while (minimum > value || value > maximum) {
       expressionText = generate(complexity).join('');
-      value = solve(convert.toRpn(parse(expressionText).expression));
+
+      // solve(convert.toRpn(parse(expressionText).expression));
+      value = '1';
     }
 
     return {
@@ -53,26 +43,24 @@ export default {
     if (message) {
       return {
         expressionText,
-        rnpExpression: [],
-        steps: [],
         message,
+        steps: [],
         value: null
       };
     }
 
-    const newHistory = historyList.filter((item) => item.expressionText !== expressionText);
-    const steps = filterEmpty(tokens);
-
-    newHistory.unshift({
+    const value = solveNearley(tokens);
+    const newHistoryList = [{
       expressionText,
       timestamp: new Date().toLocaleTimeString()
-    });
+    }].concat(historyList.filter((item) => item.expressionText !== expressionText));
 
     return {
       expressionText,
       message: '',
-      steps,
-      historyList: newHistory
+      steps: tokens,
+      value,
+      historyList: newHistoryList
     };
   }
 };
