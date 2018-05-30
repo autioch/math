@@ -5,19 +5,27 @@ import { createApp } from 'pipe-and-gauge';
 import 'antd/dist/antd.css';
 import { diff } from 'deep-object-diff';
 
-const store = createApp(actions, initialState, App, document.querySelector('#root'));
+const LS_KEY = 'math.state';
 
-let previousState = {
-  ...store.getState()
-};
+/* Restore state from localStorage */
+const restoredState = localStorage.getItem(LS_KEY);
+const currentState = restoredState ? JSON.parse(restoredState) : initialState;
+
+/* Setup app and store */
+const store = createApp(actions, currentState, App, document.querySelector('#root'));
+
+/* Save state in localStorage */
+store.subscribe(({ state }) => localStorage.setItem(LS_KEY, JSON.stringify(state)));
+
+/* Logging in the console for debugging. */
+let previousState = {};
 
 store.subscribe(({ state }) => {
-  const difference = diff(state, previousState);
+  console.log(diff(state, previousState));
 
-  console.log(difference); // eslint-disable-line no-console
   previousState = {
     ...state
   };
 });
 
-store.setExpression('11+3* 2 + 3+9*6-3-7*5');
+store.setExpression(store.getState().expressionText);

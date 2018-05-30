@@ -5,23 +5,20 @@ import './styles.css';
 function Expression({ exp }) {
   if (Array.isArray(exp)) {
     return (
-      <div className="m-tree__steps">
-        {exp.map((item, index) => <Expression exp={item} key={index} />)}
-      </div>
+      exp.map((item, index) => <Expression exp={item} key={index} />)
     );
   }
 
   return (
-    <div className="m-tree__steps">
+    <span className="m-tree__item">
       {exp.value === null ? exp.type : exp.value}
-    </div>
+    </span>
   );
 }
 
-export default function Tree({ steps, value }) {
+export default function Tree({ steps }) {
   return (
     <div className="m-tree">
-      <div className="m-tree__value">Solution: {value}</div>
       <Expression exp={steps} />
     </div>
   );

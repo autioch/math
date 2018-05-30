@@ -17,7 +17,13 @@ html {
   }
 }
 
-.expression {
+.flex-row {
   display: flex;
   align-items: center;
+  padding: .5em 0;
+}
+
+.flex-row__header {
+  width: 10em;
+  flex: none;
 }

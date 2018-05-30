@@ -2,11 +2,9 @@ import { generate } from '../core';
 import parseNearley from '../core.nearley/parse';
 import solveNearley from '../core.nearley/solve';
 
-export default {
+const HISTORY_COUNT = 15;
 
-  setState({ data }) {
-    return data;
-  },
+export default {
 
   setMode({ data }) {
     return {
@@ -14,9 +12,29 @@ export default {
     };
   },
 
-  setExpression({ data }) {
+  setMinimum({ data }) {
     return {
-      expressionText: data
+      minimum: parseFloat(data)
+    };
+  },
+
+  setMaximum({ data }) {
+    return {
+      maximum: parseFloat(data)
+    };
+  },
+
+  setComplexity({ data }) {
+    return {
+      complexity: parseInt(data, 10)
+    };
+  },
+
+  setExpression({ data, state: { mode, modes } }) {
+    return {
+      expressionText: data,
+      mode: mode === modes.result || mode === modes.steps ? undefined : mode,
+      message: ''
     };
   },
 
@@ -33,7 +51,8 @@ export default {
     }
 
     return {
-      expressionText
+      expressionText,
+      message: ''
     };
   },
 
@@ -50,10 +69,13 @@ export default {
     }
 
     const value = solveNearley(tokens);
-    const newHistoryList = [{
+    const historyEntry = {
       expressionText,
       timestamp: new Date().toLocaleTimeString()
-    }].concat(historyList.filter((item) => item.expressionText !== expressionText));
+    };
+    const newHistoryList = [historyEntry]
+      .concat(historyList.filter((item) => item.expressionText !== expressionText))
+      .slice(0, HISTORY_COUNT);
 
     return {
       expressionText,
