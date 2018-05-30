@@ -1,37 +1,44 @@
 import React from 'react';
-import RandomView from './random/view';
-import CustomView from './custom/view';
+import { Button, Input, Collapse } from 'antd';
 import HistoryView from './history/view';
-import TabsView from './tabs/view';
-import TreeView from './tree/view';
 import MessageView from './message/view';
+import TreeView from './tree/view';
+
 import './styles.css';
 
+const { Panel } = Collapse;
+
 export default function App({
-  state: { modes, mode, historyList, expressionText, message, steps, value },
+  state: { modes, mode, expressionText, historyList, message, steps, value },
   store: { setMode, setExpression, generate, solve }
 }) {
-  const MODEVIEWS = {
-    [modes.random.id]: RandomView,
-    [modes.custom.id]: CustomView,
-    [modes.history.id]: HistoryView
-  };
-  const ModeView = MODEVIEWS[mode];
-
   return (
     <div>
-      <TabsView modes={modes} setMode={setMode} currentMode={mode} />
-      <MessageView message={message} />
-      <div className="m-mode">
-        <ModeView
-          setExpression={setExpression}
-          generate={generate}
-          historyList={historyList}
-          expressionText={expressionText}
+      <div className="expression">
+        <Input
+          placeholder="2+3"
+          onPressEnter={solve}
+          defaultValue={expressionText}
+          value={expressionText}
+          onChange={(ev) => setExpression(ev.target.value)}
         />
+        <Button icon="play-circle-o" type="primary" onClick={solve}></Button>
       </div>
-      <div><span onClick={solve}>Solve</span></div>
-      <TreeView steps={steps} value={value} />
+      <MessageView message={message} />
+      <Collapse accordion onChange={setMode} activeKey={mode}>
+        <Panel header="Result" key={modes.result}>
+          {value}
+        </Panel>
+        <Panel header="Steps" key={modes.steps}>
+          <TreeView steps={steps} value={value} />
+        </Panel>
+        <Panel header="Generate" key={modes.generate}>
+          <Button icon="reload" type="primary" onClick={generate}>Generate</Button>
+        </Panel>
+        <Panel header="History" key={modes.history}>
+          <HistoryView historyList={historyList} setExpression={setExpression}/>
+        </Panel>
+      </Collapse>
     </div>
   );
 }

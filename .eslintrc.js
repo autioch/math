@@ -7,5 +7,7 @@ module.exports = {
     'id-blacklist': ['off'],
     'id-length': ['off'],
     'no-magic-numbers': ['off'],
+    'no-console': ['off'],
+    'no-undefined': ['off'],
   }
 };
