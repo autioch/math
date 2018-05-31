@@ -1,14 +1,29 @@
-.m-step {
-  display: flex;
-  align-items: center;
-  width: 100%;
+.m-tree {
+  position: relative;
+  z-index: 0;
 }
 
-.m-step:not(:last-child) {
-  margin-bottom: 3em;
+.m-step {
+  position: relative;
 }
+
 
 .m-item {
-  flex-grow: 1;
+  background: #efe;
+  position: absolute;
   text-align: center;
+}
+
+.m-tree__paths {
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.m-tree__path {
+  stroke: #09f;
+  stroke-width: 1;
 }

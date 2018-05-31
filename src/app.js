@@ -11,7 +11,7 @@ const { Panel } = Collapse;
 
 export default function App({
   state, store,
-  state: { modes, mode, expressionText, historyList, message, steps },
+  state: { modes, mode, expressionText, historyList, message, steps, paths, treeWidth, treeHeight },
   store: { setMode, setExpression, solve }
 }) {
   return (
@@ -30,7 +30,7 @@ export default function App({
       <MessageView message={message} />
       <Collapse accordion onChange={setMode} activeKey={mode}>
         <Panel header="Result" key={modes.result}>
-          <TreeView steps={steps} />
+          <TreeView steps={steps} paths={paths} treeWidth={treeWidth} treeHeight={treeHeight}/>
         </Panel>
         <Panel header="Generate" key={modes.generate}>
           <Generate state={state} store={store}/>

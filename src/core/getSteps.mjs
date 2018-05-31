@@ -14,16 +14,15 @@ const getItemPaths = (item) => item.solvedFrom.map((from) => ({
 }));
 const getStepPaths = (step) => step.filter((item) => item.solvedFrom).map((item) => getItemPaths(item));
 
-function reduceArray(arr, nextId) {
+function reduceArray(arr) {
   return {
-    id: nextId,
     type: 'number',
     value: solve(arr),
     solvedFrom: arr.map((item) => item.id)
   };
 }
 
-function simplify(exp, nextId) {
+function simplify(exp) {
   let current = exp;
 
   while (current) {
@@ -36,7 +35,7 @@ function simplify(exp, nextId) {
 
       if (isArr(item)) { // Item is subexpression
         if (isSimple(item)) { // Subexpression is simple, can be solved.
-          tmp[i] = reduceArray(item, nextId);
+          tmp[i] = reduceArray(item);
 
           return exp;
         }
@@ -59,10 +58,16 @@ export default function getSteps(exp) {
   let current = clone(exp);
 
   while (isArr(current)) {
-    const maxId = Math.max(...flattenDeep(current).map((item) => item.id));
-    const simplified = simplify(current, maxId + 1);
+    const simplified = simplify(current);
 
-    steps.push(serializeStep(simplified));
+    const flatSerialized = serializeStep(simplified);
+    let nextId = Math.max(...flatSerialized.map((item) => item.id).filter((id) => !!id));
+
+    flatSerialized.forEach((item) => {
+      item.id = nextId++;
+    });
+
+    steps.push(flatSerialized);
     current = clone(simplified);
   }
 

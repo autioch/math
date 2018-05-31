@@ -65,6 +65,7 @@ export default {
         expressionText,
         message,
         steps: [],
+        resultHeight: 30,
         value: null
       };
     }
@@ -77,10 +78,40 @@ export default {
       .concat(historyList.filter((item) => item.expressionText !== expressionText))
       .slice(0, HISTORY_COUNT);
 
+    const { steps, paths } = getSteps(tokens);
+    const items = steps[0].length;
+    const stepHeight = 21;
+    const stepBreak = 42;
+    const treeWidth = window.innerWidth - 50;
+    const treeHeight = (steps.length * (stepHeight + stepBreak)) - stepBreak;
+    const itemWidth = Math.floor(treeWidth / items);
+
+    const alignedSteps = steps.map((step, stepIndex) => {
+      const stepTop = stepIndex * (stepHeight + stepBreak);
+
+      step.forEach((item, itemIndex) => {
+        item.left = itemIndex * itemWidth;
+        item.width = itemWidth;
+        item.right = item.left + item.width;
+        item.top = stepTop;
+        item.bottom = item.top + stepHeight;
+      });
+
+      return {
+        top: stepTop,
+        items: step
+      };
+    });
+
     return {
       expressionText,
       message: '',
-      steps: getSteps(tokens),
+      steps: alignedSteps,
+      paths,
+      stepHeight,
+      stepBreak,
+      treeHeight,
+      treeWidth,
       value: solve(tokens),
       historyList: newHistoryList
     };
