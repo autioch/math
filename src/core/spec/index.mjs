@@ -21,7 +21,7 @@ const parsed = testCases.map((testCase) => {
     rpn: toVal(rpnArray),
     rpnArray,
     result: solve(tokens),
-    steps: getSteps(tokens).map((step) => toVal(flattenDeep(step))),
+    steps: getSteps(tokens).steps.map((step) => toVal(flattenDeep(step))),
     tokens
   };
 });

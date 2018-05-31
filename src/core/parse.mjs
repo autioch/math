@@ -42,6 +42,7 @@ export default function tokenize(text) {
   return {
     tokens: parse(results[0] || []),
     isAmbiguous: results.length > 1,
-    message
+    message,
+    maxId: nextId
   };
 }

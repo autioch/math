@@ -1,3 +1,14 @@
-.m-tree__item {
-  padding: 0 .5em;
+.m-step {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.m-step:not(:last-child) {
+  margin-bottom: 3em;
+}
+
+.m-item {
+  flex-grow: 1;
+  text-align: center;
 }
