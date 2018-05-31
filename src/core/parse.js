@@ -1,18 +1,18 @@
-import grammar from './grammar';
+import grammar from './grammar/grammar';
 import { Parser } from 'nearley';
-import { flattenDeep } from 'lodash';
 
 const RX_WHITE_SPACE = /\s+/g;
 
-function parse(item, index) {
-  const value = parseFloat(item);
-  const isNumber = !isNaN(value);
+function parse(arr) {
+  if (Array.isArray(arr)) {
+    return arr.map((item) => parse(item));
+  }
+
+  const value = parseFloat(arr.value);
 
   return {
-    id: index,
-    type: item.type,
-    isNumber,
-    value: isNumber ? value : item.value
+    type: arr.type,
+    value: isNaN(value) ? arr.value : value
   };
 }
 
@@ -28,11 +28,8 @@ export default function tokenize(text) {
     message = err.message; // eslint-disable-line prefer-destructuring
   }
 
-  const flat = flattenDeep(tokens);
-  const parsed = flat.map(parse);
-
   return {
-    tokens: parsed,
+    tokens: parse(tokens),
     message
   };
 }
