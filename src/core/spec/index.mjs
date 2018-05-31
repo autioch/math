@@ -2,20 +2,26 @@ import testCases from './testCases';
 import parse from '../parse';
 import solve from '../solve';
 import toRPN from '../toRPN';
+import getSteps from '../getSteps';
 import fs from 'fs';
 import path from 'path';
+import _ from 'lodash';
+
+const { flattenDeep } = _;
+const toVal = (arr) => arr.map((item) => item.value).join(' ');
 
 const parsed = testCases.map((testCase) => {
   const { isAmbiguous, message, tokens } = parse(testCase);
-  const rpnArray =  toRPN(tokens);
+  const rpnArray = toRPN(tokens);
 
   return {
     testCase,
     isAmbiguous,
     message,
-    rpn: rpnArray.map(item => item.value),
-    rpnArray: rpnArray,
+    rpn: toVal(rpnArray),
+    rpnArray,
     result: solve(tokens),
+    steps: getSteps(tokens).map((step) => toVal(flattenDeep(step))),
     tokens
   };
 });

@@ -1,6 +1,4 @@
-import parse from './core/parse';
-import solve from './core/solve';
-import generate from './core/generate';
+import { parse, solve, generate, getSteps } from './core';
 
 const HISTORY_COUNT = 15;
 
@@ -71,7 +69,6 @@ export default {
       };
     }
 
-    const value = solve(tokens);
     const historyEntry = {
       expressionText,
       timestamp: new Date().toLocaleTimeString()
@@ -83,8 +80,8 @@ export default {
     return {
       expressionText,
       message: '',
-      steps: tokens,
-      value,
+      steps: getSteps(tokens),
+      value: solve(tokens),
       historyList: newHistoryList
     };
   }

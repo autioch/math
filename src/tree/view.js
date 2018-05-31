@@ -1,25 +1,20 @@
 import React from 'react';
 import './styles.css';
 
-// import StepView from './step/view';
-function Expression({ exp }) {
-  if (Array.isArray(exp)) {
-    return (
-      exp.map((item, index) => <Expression exp={item} key={index} />)
-    );
-  }
-
+function Step({ step }) {
   return (
-    <span className="m-tree__item">
-      {exp.value === null ? exp.type : exp.value}
-    </span>
+    <div>
+      {step.map((item, index) => <span key={index}>{item.value}</span>)}
+    </div>
   );
 }
 
 export default function Tree({ steps }) {
+  console.log(steps);
+
   return (
     <div className="m-tree">
-      <Expression exp={steps} />
+      {steps.map((step, index) => <Step step={step} key={index} />)}
     </div>
   );
 }

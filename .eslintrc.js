@@ -10,6 +10,8 @@ module.exports = {
     'no-console': ['off'],
     'no-plusplus': ['off'],
     'no-undefined': ['off'],
+    'line-comment-position': ['off'],
+    'no-inline-comments': ['off'],
     'no-use-before-define': ['error', { "functions": false }]
   }
 };
