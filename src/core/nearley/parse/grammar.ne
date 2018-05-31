@@ -9,4 +9,5 @@ EXPRESSION -> %roundOpen AS %roundClose | %squareOpen AS %squareClose | %curlyOp
 POWER -> EXPRESSION %factor POWER | EXPRESSION
 MD -> MD %multiply POWER | MD %divide POWER | POWER
 AS -> AS %substract MD | AS %add MD | MD
-ATOM -> %integer %decimal %integer | %integer | %fn EXPRESSION
+ATOM -> DECIMAL | %integer | %fn EXPRESSION
+DECIMAL -> %integer %decimal %integer {% d => parseFloat(d[0] + '.' + d[1]) %}

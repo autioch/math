@@ -1,27 +1,22 @@
 import grammar from './grammar';
 import { Parser } from 'nearley';
+import { flattenDeep } from 'lodash';
 
 const RX_WHITE_SPACE = /\s+/g;
 
-function simplify(arr) {
-  if (!Array.isArray(arr)) {
-    const value = parseInt(arr.value, 10);
+function parse(item, index) {
+  const value = parseFloat(item);
+  const isNumber = !isNaN(value);
 
-    return {
-      type: arr.type,
-      value: isNaN(value) ? arr.value : value
-    };
-  }
-  const filtered = arr.filter((item) => !Array.isArray(item) || item.length > 0);
-
-  if (filtered.length === 1) {
-    return simplify(filtered[0]);
-  }
-
-  return filtered.map((item) => simplify(item));
+  return {
+    id: index,
+    type: item.type,
+    isNumber,
+    value: isNumber ? value : item.value
+  };
 }
 
-export default function parse(text) {
+export default function tokenize(text) {
   const charsOnly = text.trim().replace(RX_WHITE_SPACE, '');
 
   let tokens = [];
@@ -33,10 +28,11 @@ export default function parse(text) {
     message = err.message; // eslint-disable-line prefer-destructuring
   }
 
-  const simplified = simplify(tokens);
+  const flat = flattenDeep(tokens);
+  const parsed = flat.map(parse);
 
   return {
-    tokens: simplified,
+    tokens: parsed,
     message
   };
 }
