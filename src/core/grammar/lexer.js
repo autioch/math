@@ -1,9 +1,9 @@
 const moo = require('moo');
 
 module.exports = moo.compile({
-  number: /[0-9]+(:?\.[0-9]+)/,
+  number: /[0-9]+/,
   as: ['+', '-'],
-  md: ['*', '/'],
+  md: ['*', '/', ':'],
   pow: '^',
   open: '(',
   close: ')',

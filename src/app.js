@@ -30,10 +30,7 @@ export default function App({
       <MessageView message={message} />
       <Collapse accordion onChange={setMode} activeKey={mode}>
         <Panel header="Result" key={modes.result}>
-          {value}
-        </Panel>
-        <Panel header="Steps" key={modes.steps}>
-          <TreeView steps={steps} />
+          <TreeView steps={steps} /> = {value}
         </Panel>
         <Panel header="Generate" key={modes.generate}>
           <Generate state={state} store={store}/>

@@ -1,4 +1,4 @@
-import operators from '../operators';
+// import operators from '../operators';
 import convert from '../convert';
 
 export default function rnpStep(previousExpression) {
@@ -19,7 +19,8 @@ export default function rnpStep(previousExpression) {
 
     const newToken = {
       id,
-      value: operators[token.value].evalFunc(left.value, right.value),
+
+      // value: operators[token.value].evalFunc(left.value, right.value),
       order: -1,
       isOperator: false,
       isNumber: true,

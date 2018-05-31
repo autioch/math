@@ -1,6 +1,6 @@
-import { generate } from './core/old';
-import parseNearley from './core/nearley/parse';
-import solveNearley from './core/nearley/solve';
+import parse from './core/parse';
+import solve from './core/solve';
+import generate from './core/generate';
 
 const HISTORY_COUNT = 15;
 
@@ -42,12 +42,15 @@ export default {
     const { maximum, minimum, complexity } = state;
     let value = maximum + 1;
     let expressionText = '';
+    let attempts = 0;
 
-    while (minimum >= value || value >= maximum) {
-      expressionText = generate(complexity).join('');
+    while (attempts < 10 && (minimum > value || value > maximum)) {
+      expressionText = generate(complexity);
 
-      // solve(convert.toRpn(parse(expressionText).expression));
-      value = minimum;
+      const { tokens } = parse(expressionText);
+
+      value = tokens.length ? solve(tokens) : minimum;
+      attempts++;
     }
 
     return {
@@ -57,7 +60,7 @@ export default {
   },
 
   solve({ state: { expressionText, historyList } }) {
-    const { message, tokens } = parseNearley(expressionText);
+    const { message, tokens } = parse(expressionText);
 
     if (message) {
       return {
@@ -68,7 +71,7 @@ export default {
       };
     }
 
-    const value = solveNearley(tokens);
+    const value = solve(tokens);
     const historyEntry = {
       expressionText,
       timestamp: new Date().toLocaleTimeString()

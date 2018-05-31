@@ -1,0 +1,7515 @@
+[
+  {
+    "testCase": "sin(1)",
+    "isAmbiguous": false,
+    "message": "",
+    "rpn": [
+      "sin",
+      1
+    ],
+    "rpnArray": [
+      {
+        "id": 1,
+        "type": "fn",
+        "value": "sin"
+      },
+      {
+        "id": 3,
+        "type": "number",
+        "value": 1
+      }
+    ],
+    "result": 0.8414709848078965,
+    "tokens": [
+      {
+        "id": 1,
+        "type": "fn",
+        "value": "sin"
+      },
+      [
+        {
+          "id": 2,
+          "type": "open",
+          "value": "("
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "value": 1
+        },
+        {
+          "id": 4,
+          "type": "close",
+          "value": ")"
+        }
+      ]
+    ]
+  },
+  {
+    "testCase": "(10+4-4)*6+8",
+    "isAmbiguous": false,
+    "message": "",
+    "rpn": [
+      10,
+      4,
+      "+",
+      4,
+      "-",
+      6,
+      "*",
+      8,
+      "+"
+    ],
+    "rpnArray": [
+      {
+        "id": 2,
+        "type": "number",
+        "value": 10
+      },
+      {
+        "id": 4,
+        "type": "number",
+        "value": 4
+      },
+      {
+        "id": 3,
+        "type": "as",
+        "value": "+"
+      },
+      {
+        "id": 6,
+        "type": "number",
+        "value": 4
+      },
+      {
+        "id": 5,
+        "type": "as",
+        "value": "-"
+      },
+      {
+        "id": 9,
+        "type": "number",
+        "value": 6
+      },
+      {
+        "id": 8,
+        "type": "md",
+        "value": "*"
+      },
+      {
+        "id": 11,
+        "type": "number",
+        "value": 8
+      },
+      {
+        "id": 10,
+        "type": "as",
+        "value": "+"
+      }
+    ],
+    "result": 68,
+    "tokens": [
+      [
+        [
+          {
+            "id": 1,
+            "type": "open",
+            "value": "("
+          },
+          [
+            [
+              {
+                "id": 2,
+                "type": "number",
+                "value": 10
+              },
+              {
+                "id": 3,
+                "type": "as",
+                "value": "+"
+              },
+              {
+                "id": 4,
+                "type": "number",
+                "value": 4
+              }
+            ],
+            {
+              "id": 5,
+              "type": "as",
+              "value": "-"
+            },
+            {
+              "id": 6,
+              "type": "number",
+              "value": 4
+            }
+          ],
+          {
+            "id": 7,
+            "type": "close",
+            "value": ")"
+          }
+        ],
+        {
+          "id": 8,
+          "type": "md",
+          "value": "*"
+        },
+        {
+          "id": 9,
+          "type": "number",
+          "value": 6
+        }
+      ],
+      {
+        "id": 10,
+        "type": "as",
+        "value": "+"
+      },
+      {
+        "id": 11,
+        "type": "number",
+        "value": 8
+      }
+    ]
+  },
+  {
+    "testCase": "(10+7-7+5)",
+    "isAmbiguous": false,
+    "message": "",
+    "rpn": [
+      10,
+      7,
+      "+",
+      7,
+      "-",
+      5,
+      "+"
+    ],
+    "rpnArray": [
+      {
+        "id": 2,
+        "type": "number",
+        "value": 10
+      },
+      {
+        "id": 4,
+        "type": "number",
+        "value": 7
+      },
+      {
+        "id": 3,
+        "type": "as",
+        "value": "+"
+      },
+      {
+        "id": 6,
+        "type": "number",
+        "value": 7
+      },
+      {
+        "id": 5,
+        "type": "as",
+        "value": "-"
+      },
+      {
+        "id": 8,
+        "type": "number",
+        "value": 5
+      },
+      {
+        "id": 7,
+        "type": "as",
+        "value": "+"
+      }
+    ],
+    "result": 15,
+    "tokens": [
+      {
+        "id": 1,
+        "type": "open",
+        "value": "("
+      },
+      [
+        [
+          [
+            {
+              "id": 2,
+              "type": "number",
+              "value": 10
+            },
+            {
+              "id": 3,
+              "type": "as",
+              "value": "+"
+            },
+            {
+              "id": 4,
+              "type": "number",
+              "value": 7
+            }
+          ],
+          {
+            "id": 5,
+            "type": "as",
+            "value": "-"
+          },
+          {
+            "id": 6,
+            "type": "number",
+            "value": 7
+          }
+        ],
+        {
+          "id": 7,
+          "type": "as",
+          "value": "+"
+        },
+        {
+          "id": 8,
+          "type": "number",
+          "value": 5
+        }
+      ],
+      {
+        "id": 9,
+        "type": "close",
+        "value": ")"
+      }
+    ]
+  },
+  {
+    "testCase": "(10-2+5)*6-4-10",
+    "isAmbiguous": false,
+    "message": "",
+    "rpn": [
+      10,
+      2,
+      "-",
+      5,
+      "+",
+      6,
+      "*",
+      4,
+      "-",
+      10,
+      "-"
+    ],
+    "rpnArray": [
+      {
+        "id": 2,
+        "type": "number",
+        "value": 10
+      },
+      {
+        "id": 4,
+        "type": "number",
+        "value": 2
+      },
+      {
+        "id": 3,
+        "type": "as",
+        "value": "-"
+      },
+      {
+        "id": 6,
+        "type": "number",
+        "value": 5
+      },
+      {
+        "id": 5,
+        "type": "as",
+        "value": "+"
+      },
+      {
+        "id": 9,
+        "type": "number",
+        "value": 6
+      },
+      {
+        "id": 8,
+        "type": "md",
+        "value": "*"
+      },
+      {
+        "id": 11,
+        "type": "number",
+        "value": 4
+      },
+      {
+        "id": 10,
+        "type": "as",
+        "value": "-"
+      },
+      {
+        "id": 13,
+        "type": "number",
+        "value": 10
+      },
+      {
+        "id": 12,
+        "type": "as",
+        "value": "-"
+      }
+    ],
+    "result": 64,
+    "tokens": [
+      [
+        [
+          [
+            {
+              "id": 1,
+              "type": "open",
+              "value": "("
+            },
+            [
+              [
+                {
+                  "id": 2,
+                  "type": "number",
+                  "value": 10
+                },
+                {
+                  "id": 3,
+                  "type": "as",
+                  "value": "-"
+                },
+                {
+                  "id": 4,
+                  "type": "number",
+                  "value": 2
+                }
+              ],
+              {
+                "id": 5,
+                "type": "as",
+                "value": "+"
+              },
+              {
+                "id": 6,
+                "type": "number",
+                "value": 5
+              }
+            ],
+            {
+              "id": 7,
+              "type": "close",
+              "value": ")"
+            }
+          ],
+          {
+            "id": 8,
+            "type": "md",
+            "value": "*"
+          },
+          {
+            "id": 9,
+            "type": "number",
+            "value": 6
+          }
+        ],
+        {
+          "id": 10,
+          "type": "as",
+          "value": "-"
+        },
+        {
+          "id": 11,
+          "type": "number",
+          "value": 4
+        }
+      ],
+      {
+        "id": 12,
+        "type": "as",
+        "value": "-"
+      },
+      {
+        "id": 13,
+        "type": "number",
+        "value": 10
+      }
+    ]
+  },
+  {
+    "testCase": "(11+3* 2 + 3)+9*6-3-7*5",
+    "isAmbiguous": false,
+    "message": "",
+    "rpn": [
+      11,
+      3,
+      2,
+      "*",
+      "+",
+      3,
+      "+",
+      9,
+      6,
+      "*",
+      "+",
+      3,
+      "-",
+      7,
+      5,
+      "*",
+      "-"
+    ],
+    "rpnArray": [
+      {
+        "id": 2,
+        "type": "number",
+        "value": 11
+      },
+      {
+        "id": 4,
+        "type": "number",
+        "value": 3
+      },
+      {
+        "id": 6,
+        "type": "number",
+        "value": 2
+      },
+      {
+        "id": 5,
+        "type": "md",
+        "value": "*"
+      },
+      {
+        "id": 3,
+        "type": "as",
+        "value": "+"
+      },
+      {
+        "id": 8,
+        "type": "number",
+        "value": 3
+      },
+      {
+        "id": 7,
+        "type": "as",
+        "value": "+"
+      },
+      {
+        "id": 11,
+        "type": "number",
+        "value": 9
+      },
+      {
+        "id": 13,
+        "type": "number",
+        "value": 6
+      },
+      {
+        "id": 12,
+        "type": "md",
+        "value": "*"
+      },
+      {
+        "id": 10,
+        "type": "as",
+        "value": "+"
+      },
+      {
+        "id": 15,
+        "type": "number",
+        "value": 3
+      },
+      {
+        "id": 14,
+        "type": "as",
+        "value": "-"
+      },
+      {
+        "id": 17,
+        "type": "number",
+        "value": 7
+      },
+      {
+        "id": 19,
+        "type": "number",
+        "value": 5
+      },
+      {
+        "id": 18,
+        "type": "md",
+        "value": "*"
+      },
+      {
+        "id": 16,
+        "type": "as",
+        "value": "-"
+      }
+    ],
+    "result": 36,
+    "tokens": [
+      [
+        [
+          [
+            {
+              "id": 1,
+              "type": "open",
+              "value": "("
+            },
+            [
+              [
+                {
+                  "id": 2,
+                  "type": "number",
+                  "value": 11
+                },
+                {
+                  "id": 3,
+                  "type": "as",
+                  "value": "+"
+                },
+                [
+                  {
+                    "id": 4,
+                    "type": "number",
+                    "value": 3
+                  },
+                  {
+                    "id": 5,
+                    "type": "md",
+                    "value": "*"
+                  },
+                  {
+                    "id": 6,
+                    "type": "number",
+                    "value": 2
+                  }
+                ]
+              ],
+              {
+                "id": 7,
+                "type": "as",
+                "value": "+"
+              },
+              {
+                "id": 8,
+                "type": "number",
+                "value": 3
+              }
+            ],
+            {
+              "id": 9,
+              "type": "close",
+              "value": ")"
+            }
+          ],
+          {
+            "id": 10,
+            "type": "as",
+            "value": "+"
+          },
+          [
+            {
+              "id": 11,
+              "type": "number",
+              "value": 9
+            },
+            {
+              "id": 12,
+              "type": "md",
+              "value": "*"
+            },
+            {
+              "id": 13,
+              "type": "number",
+              "value": 6
+            }
+          ]
+        ],
+        {
+          "id": 14,
+          "type": "as",
+          "value": "-"
+        },
+        {
+          "id": 15,
+          "type": "number",
+          "value": 3
+        }
+      ],
+      {
+        "id": 16,
+        "type": "as",
+        "value": "-"
+      },
+      [
+        {
+          "id": 17,
+          "type": "number",
+          "value": 7
+        },
+        {
+          "id": 18,
+          "type": "md",
+          "value": "*"
+        },
+        {
+          "id": 19,
+          "type": "number",
+          "value": 5
+        }
+      ]
+    ]
+  },
+  {
+    "testCase": "(11+5)+3*11-4-8",
+    "isAmbiguous": false,
+    "message": "",
+    "rpn": [
+      11,
+      5,
+      "+",
+      3,
+      11,
+      "*",
+      "+",
+      4,
+      "-",
+      8,
+      "-"
+    ],
+    "rpnArray": [
+      {
+        "id": 2,
+        "type": "number",
+        "value": 11
+      },
+      {
+        "id": 4,
+        "type": "number",
+        "value": 5
+      },
+      {
+        "id": 3,
+        "type": "as",
+        "value": "+"
+      },
+      {
+        "id": 7,
+        "type": "number",
+        "value": 3
+      },
+      {
+        "id": 9,
+        "type": "number",
+        "value": 11
+      },
+      {
+        "id": 8,
+        "type": "md",
+        "value": "*"
+      },
+      {
+        "id": 6,
+        "type": "as",
+        "value": "+"
+      },
+      {
+        "id": 11,
+        "type": "number",
+        "value": 4
+      },
+      {
+        "id": 10,
+        "type": "as",
+        "value": "-"
+      },
+      {
+        "id": 13,
+        "type": "number",
+        "value": 8
+      },
+      {
+        "id": 12,
+        "type": "as",
+        "value": "-"
+      }
+    ],
+    "result": 37,
+    "tokens": [
+      [
+        [
+          [
+            {
+              "id": 1,
+              "type": "open",
+              "value": "("
+            },
+            [
+              {
+                "id": 2,
+                "type": "number",
+                "value": 11
+              },
+              {
+                "id": 3,
+                "type": "as",
+                "value": "+"
+              },
+              {
+                "id": 4,
+                "type": "number",
+                "value": 5
+              }
+            ],
+            {
+              "id": 5,
+              "type": "close",
+              "value": ")"
+            }
+          ],
+          {
+            "id": 6,
+            "type": "as",
+            "value": "+"
+          },
+          [
+            {
+              "id": 7,
+              "type": "number",
+              "value": 3
+            },
+            {
+              "id": 8,
+              "type": "md",
+              "value": "*"
+            },
+            {
+              "id": 9,
+              "type": "number",
+              "value": 11
+            }
+          ]
+        ],
+        {
+          "id": 10,
+          "type": "as",
+          "value": "-"
+        },
+        {
+          "id": 11,
+          "type": "number",
+          "value": 4
+        }
+      ],
+      {
+        "id": 12,
+        "type": "as",
+        "value": "-"
+      },
+      {
+        "id": 13,
+        "type": "number",
+        "value": 8
+      }
+    ]
+  },
+  {
+    "testCase": "(11-9+5*9+3)",
+    "isAmbiguous": false,
+    "message": "",
+    "rpn": [
+      11,
+      9,
+      "-",
+      5,
+      9,
+      "*",
+      "+",
+      3,
+      "+"
+    ],
+    "rpnArray": [
+      {
+        "id": 2,
+        "type": "number",
+        "value": 11
+      },
+      {
+        "id": 4,
+        "type": "number",
+        "value": 9
+      },
+      {
+        "id": 3,
+        "type": "as",
+        "value": "-"
+      },
+      {
+        "id": 6,
+        "type": "number",
+        "value": 5
+      },
+      {
+        "id": 8,
+        "type": "number",
+        "value": 9
+      },
+      {
+        "id": 7,
+        "type": "md",
+        "value": "*"
+      },
+      {
+        "id": 5,
+        "type": "as",
+        "value": "+"
+      },
+      {
+        "id": 10,
+        "type": "number",
+        "value": 3
+      },
+      {
+        "id": 9,
+        "type": "as",
+        "value": "+"
+      }
+    ],
+    "result": 50,
+    "tokens": [
+      {
+        "id": 1,
+        "type": "open",
+        "value": "("
+      },
+      [
+        [
+          [
+            {
+              "id": 2,
+              "type": "number",
+              "value": 11
+            },
+            {
+              "id": 3,
+              "type": "as",
+              "value": "-"
+            },
+            {
+              "id": 4,
+              "type": "number",
+              "value": 9
+            }
+          ],
+          {
+            "id": 5,
+            "type": "as",
+            "value": "+"
+          },
+          [
+            {
+              "id": 6,
+              "type": "number",
+              "value": 5
+            },
+            {
+              "id": 7,
+              "type": "md",
+              "value": "*"
+            },
+            {
+              "id": 8,
+              "type": "number",
+              "value": 9
+            }
+          ]
+        ],
+        {
+          "id": 9,
+          "type": "as",
+          "value": "+"
+        },
+        {
+          "id": 10,
+          "type": "number",
+          "value": 3
+        }
+      ],
+      {
+        "id": 11,
+        "type": "close",
+        "value": ")"
+      }
+    ]
+  },
+  {
+    "testCase": "(3*9+(4+8)*3)",
+    "isAmbiguous": false,
+    "message": "",
+    "rpn": [
+      3,
+      9,
+      "*",
+      4,
+      8,
+      "+",
+      3,
+      "*",
+      "+"
+    ],
+    "rpnArray": [
+      {
+        "id": 2,
+        "type": "number",
+        "value": 3
+      },
+      {
+        "id": 4,
+        "type": "number",
+        "value": 9
+      },
+      {
+        "id": 3,
+        "type": "md",
+        "value": "*"
+      },
+      {
+        "id": 7,
+        "type": "number",
+        "value": 4
+      },
+      {
+        "id": 9,
+        "type": "number",
+        "value": 8
+      },
+      {
+        "id": 8,
+        "type": "as",
+        "value": "+"
+      },
+      {
+        "id": 12,
+        "type": "number",
+        "value": 3
+      },
+      {
+        "id": 11,
+        "type": "md",
+        "value": "*"
+      },
+      {
+        "id": 5,
+        "type": "as",
+        "value": "+"
+      }
+    ],
+    "result": 63,
+    "tokens": [
+      {
+        "id": 1,
+        "type": "open",
+        "value": "("
+      },
+      [
+        [
+          {
+            "id": 2,
+            "type": "number",
+            "value": 3
+          },
+          {
+            "id": 3,
+            "type": "md",
+            "value": "*"
+          },
+          {
+            "id": 4,
+            "type": "number",
+            "value": 9
+          }
+        ],
+        {
+          "id": 5,
+          "type": "as",
+          "value": "+"
+        },
+        [
+          [
+            {
+              "id": 6,
+              "type": "open",
+              "value": "("
+            },
+            [
+              {
+                "id": 7,
+                "type": "number",
+                "value": 4
+              },
+              {
+                "id": 8,
+                "type": "as",
+                "value": "+"
+              },
+              {
+                "id": 9,
+                "type": "number",
+                "value": 8
+              }
+            ],
+            {
+              "id": 10,
+              "type": "close",
+              "value": ")"
+            }
+          ],
+          {
+            "id": 11,
+            "type": "md",
+            "value": "*"
+          },
+          {
+            "id": 12,
+            "type": "number",
+            "value": 3
+          }
+        ]
+      ],
+      {
+        "id": 13,
+        "type": "close",
+        "value": ")"
+      }
+    ]
+  },
+  {
+    "testCase": "(3-7-11+6*11)",
+    "isAmbiguous": false,
+    "message": "",
+    "rpn": [
+      3,
+      7,
+      "-",
+      11,
+      "-",
+      6,
+      11,
+      "*",
+      "+"
+    ],
+    "rpnArray": [
+      {
+        "id": 2,
+        "type": "number",
+        "value": 3
+      },
+      {
+        "id": 4,
+        "type": "number",
+        "value": 7
+      },
+      {
+        "id": 3,
+        "type": "as",
+        "value": "-"
+      },
+      {
+        "id": 6,
+        "type": "number",
+        "value": 11
+      },
+      {
+        "id": 5,
+        "type": "as",
+        "value": "-"
+      },
+      {
+        "id": 8,
+        "type": "number",
+        "value": 6
+      },
+      {
+        "id": 10,
+        "type": "number",
+        "value": 11
+      },
+      {
+        "id": 9,
+        "type": "md",
+        "value": "*"
+      },
+      {
+        "id": 7,
+        "type": "as",
+        "value": "+"
+      }
+    ],
+    "result": 51,
+    "tokens": [
+      {
+        "id": 1,
+        "type": "open",
+        "value": "("
+      },
+      [
+        [
+          [
+            {
+              "id": 2,
+              "type": "number",
+              "value": 3
+            },
+            {
+              "id": 3,
+              "type": "as",
+              "value": "-"
+            },
+            {
+              "id": 4,
+              "type": "number",
+              "value": 7
+            }
+          ],
+          {
+            "id": 5,
+            "type": "as",
+            "value": "-"
+          },
+          {
+            "id": 6,
+            "type": "number",
+            "value": 11
+          }
+        ],
+        {
+          "id": 7,
+          "type": "as",
+          "value": "+"
+        },
+        [
+          {
+            "id": 8,
+            "type": "number",
+            "value": 6
+          },
+          {
+            "id": 9,
+            "type": "md",
+            "value": "*"
+          },
+          {
+            "id": 10,
+            "type": "number",
+            "value": 11
+          }
+        ]
+      ],
+      {
+        "id": 11,
+        "type": "close",
+        "value": ")"
+      }
+    ]
+  },
+  {
+    "testCase": "(4*(7+4)+10+3)",
+    "isAmbiguous": false,
+    "message": "",
+    "rpn": [
+      4,
+      7,
+      4,
+      "+",
+      "*",
+      10,
+      "+",
+      3,
+      "+"
+    ],
+    "rpnArray": [
+      {
+        "id": 2,
+        "type": "number",
+        "value": 4
+      },
+      {
+        "id": 5,
+        "type": "number",
+        "value": 7
+      },
+      {
+        "id": 7,
+        "type": "number",
+        "value": 4
+      },
+      {
+        "id": 6,
+        "type": "as",
+        "value": "+"
+      },
+      {
+        "id": 3,
+        "type": "md",
+        "value": "*"
+      },
+      {
+        "id": 10,
+        "type": "number",
+        "value": 10
+      },
+      {
+        "id": 9,
+        "type": "as",
+        "value": "+"
+      },
+      {
+        "id": 12,
+        "type": "number",
+        "value": 3
+      },
+      {
+        "id": 11,
+        "type": "as",
+        "value": "+"
+      }
+    ],
+    "result": 57,
+    "tokens": [
+      {
+        "id": 1,
+        "type": "open",
+        "value": "("
+      },
+      [
+        [
+          [
+            {
+              "id": 2,
+              "type": "number",
+              "value": 4
+            },
+            {
+              "id": 3,
+              "type": "md",
+              "value": "*"
+            },
+            [
+              {
+                "id": 4,
+                "type": "open",
+                "value": "("
+              },
+              [
+                {
+                  "id": 5,
+                  "type": "number",
+                  "value": 7
+                },
+                {
+                  "id": 6,
+                  "type": "as",
+                  "value": "+"
+                },
+                {
+                  "id": 7,
+                  "type": "number",
+                  "value": 4
+                }
+              ],
+              {
+                "id": 8,
+                "type": "close",
+                "value": ")"
+              }
+            ]
+          ],
+          {
+            "id": 9,
+            "type": "as",
+            "value": "+"
+          },
+          {
+            "id": 10,
+            "type": "number",
+            "value": 10
+          }
+        ],
+        {
+          "id": 11,
+          "type": "as",
+          "value": "+"
+        },
+        {
+          "id": 12,
+          "type": "number",
+          "value": 3
+        }
+      ],
+      {
+        "id": 13,
+        "type": "close",
+        "value": ")"
+      }
+    ]
+  },
+  {
+    "testCase": "(4*11+(11+8))",
+    "isAmbiguous": false,
+    "message": "",
+    "rpn": [
+      4,
+      11,
+      "*",
+      11,
+      8,
+      "+",
+      "+"
+    ],
+    "rpnArray": [
+      {
+        "id": 2,
+        "type": "number",
+        "value": 4
+      },
+      {
+        "id": 4,
+        "type": "number",
+        "value": 11
+      },
+      {
+        "id": 3,
+        "type": "md",
+        "value": "*"
+      },
+      {
+        "id": 7,
+        "type": "number",
+        "value": 11
+      },
+      {
+        "id": 9,
+        "type": "number",
+        "value": 8
+      },
+      {
+        "id": 8,
+        "type": "as",
+        "value": "+"
+      },
+      {
+        "id": 5,
+        "type": "as",
+        "value": "+"
+      }
+    ],
+    "result": 63,
+    "tokens": [
+      {
+        "id": 1,
+        "type": "open",
+        "value": "("
+      },
+      [
+        [
+          {
+            "id": 2,
+            "type": "number",
+            "value": 4
+          },
+          {
+            "id": 3,
+            "type": "md",
+            "value": "*"
+          },
+          {
+            "id": 4,
+            "type": "number",
+            "value": 11
+          }
+        ],
+        {
+          "id": 5,
+          "type": "as",
+          "value": "+"
+        },
+        [
+          {
+            "id": 6,
+            "type": "open",
+            "value": "("
+          },
+          [
+            {
+              "id": 7,
+              "type": "number",
+              "value": 11
+            },
+            {
+              "id": 8,
+              "type": "as",
+              "value": "+"
+            },
+            {
+              "id": 9,
+              "type": "number",
+              "value": 8
+            }
+          ],
+          {
+            "id": 10,
+            "type": "close",
+            "value": ")"
+          }
+        ]
+      ],
+      {
+        "id": 11,
+        "type": "close",
+        "value": ")"
+      }
+    ]
+  },
+  {
+    "testCase": "(4+11+5)+12*6",
+    "isAmbiguous": false,
+    "message": "",
+    "rpn": [
+      4,
+      11,
+      "+",
+      5,
+      "+",
+      12,
+      6,
+      "*",
+      "+"
+    ],
+    "rpnArray": [
+      {
+        "id": 2,
+        "type": "number",
+        "value": 4
+      },
+      {
+        "id": 4,
+        "type": "number",
+        "value": 11
+      },
+      {
+        "id": 3,
+        "type": "as",
+        "value": "+"
+      },
+      {
+        "id": 6,
+        "type": "number",
+        "value": 5
+      },
+      {
+        "id": 5,
+        "type": "as",
+        "value": "+"
+      },
+      {
+        "id": 9,
+        "type": "number",
+        "value": 12
+      },
+      {
+        "id": 11,
+        "type": "number",
+        "value": 6
+      },
+      {
+        "id": 10,
+        "type": "md",
+        "value": "*"
+      },
+      {
+        "id": 8,
+        "type": "as",
+        "value": "+"
+      }
+    ],
+    "result": 92,
+    "tokens": [
+      [
+        {
+          "id": 1,
+          "type": "open",
+          "value": "("
+        },
+        [
+          [
+            {
+              "id": 2,
+              "type": "number",
+              "value": 4
+            },
+            {
+              "id": 3,
+              "type": "as",
+              "value": "+"
+            },
+            {
+              "id": 4,
+              "type": "number",
+              "value": 11
+            }
+          ],
+          {
+            "id": 5,
+            "type": "as",
+            "value": "+"
+          },
+          {
+            "id": 6,
+            "type": "number",
+            "value": 5
+          }
+        ],
+        {
+          "id": 7,
+          "type": "close",
+          "value": ")"
+        }
+      ],
+      {
+        "id": 8,
+        "type": "as",
+        "value": "+"
+      },
+      [
+        {
+          "id": 9,
+          "type": "number",
+          "value": 12
+        },
+        {
+          "id": 10,
+          "type": "md",
+          "value": "*"
+        },
+        {
+          "id": 11,
+          "type": "number",
+          "value": 6
+        }
+      ]
+    ]
+  },
+  {
+    "testCase": "(4-4+7-10)+10",
+    "isAmbiguous": false,
+    "message": "",
+    "rpn": [
+      4,
+      4,
+      "-",
+      7,
+      "+",
+      10,
+      "-",
+      10,
+      "+"
+    ],
+    "rpnArray": [
+      {
+        "id": 2,
+        "type": "number",
+        "value": 4
+      },
+      {
+        "id": 4,
+        "type": "number",
+        "value": 4
+      },
+      {
+        "id": 3,
+        "type": "as",
+        "value": "-"
+      },
+      {
+        "id": 6,
+        "type": "number",
+        "value": 7
+      },
+      {
+        "id": 5,
+        "type": "as",
+        "value": "+"
+      },
+      {
+        "id": 8,
+        "type": "number",
+        "value": 10
+      },
+      {
+        "id": 7,
+        "type": "as",
+        "value": "-"
+      },
+      {
+        "id": 11,
+        "type": "number",
+        "value": 10
+      },
+      {
+        "id": 10,
+        "type": "as",
+        "value": "+"
+      }
+    ],
+    "result": 7,
+    "tokens": [
+      [
+        {
+          "id": 1,
+          "type": "open",
+          "value": "("
+        },
+        [
+          [
+            [
+              {
+                "id": 2,
+                "type": "number",
+                "value": 4
+              },
+              {
+                "id": 3,
+                "type": "as",
+                "value": "-"
+              },
+              {
+                "id": 4,
+                "type": "number",
+                "value": 4
+              }
+            ],
+            {
+              "id": 5,
+              "type": "as",
+              "value": "+"
+            },
+            {
+              "id": 6,
+              "type": "number",
+              "value": 7
+            }
+          ],
+          {
+            "id": 7,
+            "type": "as",
+            "value": "-"
+          },
+          {
+            "id": 8,
+            "type": "number",
+            "value": 10
+          }
+        ],
+        {
+          "id": 9,
+          "type": "close",
+          "value": ")"
+        }
+      ],
+      {
+        "id": 10,
+        "type": "as",
+        "value": "+"
+      },
+      {
+        "id": 11,
+        "type": "number",
+        "value": 10
+      }
+    ]
+  },
+  {
+    "testCase": "(6+(9+9)+3*5)",
+    "isAmbiguous": false,
+    "message": "",
+    "rpn": [
+      6,
+      9,
+      9,
+      "+",
+      "+",
+      3,
+      5,
+      "*",
+      "+"
+    ],
+    "rpnArray": [
+      {
+        "id": 2,
+        "type": "number",
+        "value": 6
+      },
+      {
+        "id": 5,
+        "type": "number",
+        "value": 9
+      },
+      {
+        "id": 7,
+        "type": "number",
+        "value": 9
+      },
+      {
+        "id": 6,
+        "type": "as",
+        "value": "+"
+      },
+      {
+        "id": 3,
+        "type": "as",
+        "value": "+"
+      },
+      {
+        "id": 10,
+        "type": "number",
+        "value": 3
+      },
+      {
+        "id": 12,
+        "type": "number",
+        "value": 5
+      },
+      {
+        "id": 11,
+        "type": "md",
+        "value": "*"
+      },
+      {
+        "id": 9,
+        "type": "as",
+        "value": "+"
+      }
+    ],
+    "result": 39,
+    "tokens": [
+      {
+        "id": 1,
+        "type": "open",
+        "value": "("
+      },
+      [
+        [
+          {
+            "id": 2,
+            "type": "number",
+            "value": 6
+          },
+          {
+            "id": 3,
+            "type": "as",
+            "value": "+"
+          },
+          [
+            {
+              "id": 4,
+              "type": "open",
+              "value": "("
+            },
+            [
+              {
+                "id": 5,
+                "type": "number",
+                "value": 9
+              },
+              {
+                "id": 6,
+                "type": "as",
+                "value": "+"
+              },
+              {
+                "id": 7,
+                "type": "number",
+                "value": 9
+              }
+            ],
+            {
+              "id": 8,
+              "type": "close",
+              "value": ")"
+            }
+          ]
+        ],
+        {
+          "id": 9,
+          "type": "as",
+          "value": "+"
+        },
+        [
+          {
+            "id": 10,
+            "type": "number",
+            "value": 3
+          },
+          {
+            "id": 11,
+            "type": "md",
+            "value": "*"
+          },
+          {
+            "id": 12,
+            "type": "number",
+            "value": 5
+          }
+        ]
+      ],
+      {
+        "id": 13,
+        "type": "close",
+        "value": ")"
+      }
+    ]
+  },
+  {
+    "testCase": "(6+2)*7-8-7-6",
+    "isAmbiguous": false,
+    "message": "",
+    "rpn": [
+      6,
+      2,
+      "+",
+      7,
+      "*",
+      8,
+      "-",
+      7,
+      "-",
+      6,
+      "-"
+    ],
+    "rpnArray": [
+      {
+        "id": 2,
+        "type": "number",
+        "value": 6
+      },
+      {
+        "id": 4,
+        "type": "number",
+        "value": 2
+      },
+      {
+        "id": 3,
+        "type": "as",
+        "value": "+"
+      },
+      {
+        "id": 7,
+        "type": "number",
+        "value": 7
+      },
+      {
+        "id": 6,
+        "type": "md",
+        "value": "*"
+      },
+      {
+        "id": 9,
+        "type": "number",
+        "value": 8
+      },
+      {
+        "id": 8,
+        "type": "as",
+        "value": "-"
+      },
+      {
+        "id": 11,
+        "type": "number",
+        "value": 7
+      },
+      {
+        "id": 10,
+        "type": "as",
+        "value": "-"
+      },
+      {
+        "id": 13,
+        "type": "number",
+        "value": 6
+      },
+      {
+        "id": 12,
+        "type": "as",
+        "value": "-"
+      }
+    ],
+    "result": 35,
+    "tokens": [
+      [
+        [
+          [
+            [
+              {
+                "id": 1,
+                "type": "open",
+                "value": "("
+              },
+              [
+                {
+                  "id": 2,
+                  "type": "number",
+                  "value": 6
+                },
+                {
+                  "id": 3,
+                  "type": "as",
+                  "value": "+"
+                },
+                {
+                  "id": 4,
+                  "type": "number",
+                  "value": 2
+                }
+              ],
+              {
+                "id": 5,
+                "type": "close",
+                "value": ")"
+              }
+            ],
+            {
+              "id": 6,
+              "type": "md",
+              "value": "*"
+            },
+            {
+              "id": 7,
+              "type": "number",
+              "value": 7
+            }
+          ],
+          {
+            "id": 8,
+            "type": "as",
+            "value": "-"
+          },
+          {
+            "id": 9,
+            "type": "number",
+            "value": 8
+          }
+        ],
+        {
+          "id": 10,
+          "type": "as",
+          "value": "-"
+        },
+        {
+          "id": 11,
+          "type": "number",
+          "value": 7
+        }
+      ],
+      {
+        "id": 12,
+        "type": "as",
+        "value": "-"
+      },
+      {
+        "id": 13,
+        "type": "number",
+        "value": 6
+      }
+    ]
+  },
+  {
+    "testCase": "(6+2)-5",
+    "isAmbiguous": false,
+    "message": "",
+    "rpn": [
+      6,
+      2,
+      "+",
+      5,
+      "-"
+    ],
+    "rpnArray": [
+      {
+        "id": 2,
+        "type": "number",
+        "value": 6
+      },
+      {
+        "id": 4,
+        "type": "number",
+        "value": 2
+      },
+      {
+        "id": 3,
+        "type": "as",
+        "value": "+"
+      },
+      {
+        "id": 7,
+        "type": "number",
+        "value": 5
+      },
+      {
+        "id": 6,
+        "type": "as",
+        "value": "-"
+      }
+    ],
+    "result": 3,
+    "tokens": [
+      [
+        {
+          "id": 1,
+          "type": "open",
+          "value": "("
+        },
+        [
+          {
+            "id": 2,
+            "type": "number",
+            "value": 6
+          },
+          {
+            "id": 3,
+            "type": "as",
+            "value": "+"
+          },
+          {
+            "id": 4,
+            "type": "number",
+            "value": 2
+          }
+        ],
+        {
+          "id": 5,
+          "type": "close",
+          "value": ")"
+        }
+      ],
+      {
+        "id": 6,
+        "type": "as",
+        "value": "-"
+      },
+      {
+        "id": 7,
+        "type": "number",
+        "value": 5
+      }
+    ]
+  },
+  {
+    "testCase": "(6+4)*2-5-3-9",
+    "isAmbiguous": false,
+    "message": "",
+    "rpn": [
+      6,
+      4,
+      "+",
+      2,
+      "*",
+      5,
+      "-",
+      3,
+      "-",
+      9,
+      "-"
+    ],
+    "rpnArray": [
+      {
+        "id": 2,
+        "type": "number",
+        "value": 6
+      },
+      {
+        "id": 4,
+        "type": "number",
+        "value": 4
+      },
+      {
+        "id": 3,
+        "type": "as",
+        "value": "+"
+      },
+      {
+        "id": 7,
+        "type": "number",
+        "value": 2
+      },
+      {
+        "id": 6,
+        "type": "md",
+        "value": "*"
+      },
+      {
+        "id": 9,
+        "type": "number",
+        "value": 5
+      },
+      {
+        "id": 8,
+        "type": "as",
+        "value": "-"
+      },
+      {
+        "id": 11,
+        "type": "number",
+        "value": 3
+      },
+      {
+        "id": 10,
+        "type": "as",
+        "value": "-"
+      },
+      {
+        "id": 13,
+        "type": "number",
+        "value": 9
+      },
+      {
+        "id": 12,
+        "type": "as",
+        "value": "-"
+      }
+    ],
+    "result": 3,
+    "tokens": [
+      [
+        [
+          [
+            [
+              {
+                "id": 1,
+                "type": "open",
+                "value": "("
+              },
+              [
+                {
+                  "id": 2,
+                  "type": "number",
+                  "value": 6
+                },
+                {
+                  "id": 3,
+                  "type": "as",
+                  "value": "+"
+                },
+                {
+                  "id": 4,
+                  "type": "number",
+                  "value": 4
+                }
+              ],
+              {
+                "id": 5,
+                "type": "close",
+                "value": ")"
+              }
+            ],
+            {
+              "id": 6,
+              "type": "md",
+              "value": "*"
+            },
+            {
+              "id": 7,
+              "type": "number",
+              "value": 2
+            }
+          ],
+          {
+            "id": 8,
+            "type": "as",
+            "value": "-"
+          },
+          {
+            "id": 9,
+            "type": "number",
+            "value": 5
+          }
+        ],
+        {
+          "id": 10,
+          "type": "as",
+          "value": "-"
+        },
+        {
+          "id": 11,
+          "type": "number",
+          "value": 3
+        }
+      ],
+      {
+        "id": 12,
+        "type": "as",
+        "value": "-"
+      },
+      {
+        "id": 13,
+        "type": "number",
+        "value": 9
+      }
+    ]
+  },
+  {
+    "testCase": "(7+6-4-3)",
+    "isAmbiguous": false,
+    "message": "",
+    "rpn": [
+      7,
+      6,
+      "+",
+      4,
+      "-",
+      3,
+      "-"
+    ],
+    "rpnArray": [
+      {
+        "id": 2,
+        "type": "number",
+        "value": 7
+      },
+      {
+        "id": 4,
+        "type": "number",
+        "value": 6
+      },
+      {
+        "id": 3,
+        "type": "as",
+        "value": "+"
+      },
+      {
+        "id": 6,
+        "type": "number",
+        "value": 4
+      },
+      {
+        "id": 5,
+        "type": "as",
+        "value": "-"
+      },
+      {
+        "id": 8,
+        "type": "number",
+        "value": 3
+      },
+      {
+        "id": 7,
+        "type": "as",
+        "value": "-"
+      }
+    ],
+    "result": 6,
+    "tokens": [
+      {
+        "id": 1,
+        "type": "open",
+        "value": "("
+      },
+      [
+        [
+          [
+            {
+              "id": 2,
+              "type": "number",
+              "value": 7
+            },
+            {
+              "id": 3,
+              "type": "as",
+              "value": "+"
+            },
+            {
+              "id": 4,
+              "type": "number",
+              "value": 6
+            }
+          ],
+          {
+            "id": 5,
+            "type": "as",
+            "value": "-"
+          },
+          {
+            "id": 6,
+            "type": "number",
+            "value": 4
+          }
+        ],
+        {
+          "id": 7,
+          "type": "as",
+          "value": "-"
+        },
+        {
+          "id": 8,
+          "type": "number",
+          "value": 3
+        }
+      ],
+      {
+        "id": 9,
+        "type": "close",
+        "value": ")"
+      }
+    ]
+  },
+  {
+    "testCase": "(8*2+8)+11-8",
+    "isAmbiguous": false,
+    "message": "",
+    "rpn": [
+      8,
+      2,
+      "*",
+      8,
+      "+",
+      11,
+      "+",
+      8,
+      "-"
+    ],
+    "rpnArray": [
+      {
+        "id": 2,
+        "type": "number",
+        "value": 8
+      },
+      {
+        "id": 4,
+        "type": "number",
+        "value": 2
+      },
+      {
+        "id": 3,
+        "type": "md",
+        "value": "*"
+      },
+      {
+        "id": 6,
+        "type": "number",
+        "value": 8
+      },
+      {
+        "id": 5,
+        "type": "as",
+        "value": "+"
+      },
+      {
+        "id": 9,
+        "type": "number",
+        "value": 11
+      },
+      {
+        "id": 8,
+        "type": "as",
+        "value": "+"
+      },
+      {
+        "id": 11,
+        "type": "number",
+        "value": 8
+      },
+      {
+        "id": 10,
+        "type": "as",
+        "value": "-"
+      }
+    ],
+    "result": 27,
+    "tokens": [
+      [
+        [
+          {
+            "id": 1,
+            "type": "open",
+            "value": "("
+          },
+          [
+            [
+              {
+                "id": 2,
+                "type": "number",
+                "value": 8
+              },
+              {
+                "id": 3,
+                "type": "md",
+                "value": "*"
+              },
+              {
+                "id": 4,
+                "type": "number",
+                "value": 2
+              }
+            ],
+            {
+              "id": 5,
+              "type": "as",
+              "value": "+"
+            },
+            {
+              "id": 6,
+              "type": "number",
+              "value": 8
+            }
+          ],
+          {
+            "id": 7,
+            "type": "close",
+            "value": ")"
+          }
+        ],
+        {
+          "id": 8,
+          "type": "as",
+          "value": "+"
+        },
+        {
+          "id": 9,
+          "type": "number",
+          "value": 11
+        }
+      ],
+      {
+        "id": 10,
+        "type": "as",
+        "value": "-"
+      },
+      {
+        "id": 11,
+        "type": "number",
+        "value": 8
+      }
+    ]
+  },
+  {
+    "testCase": "(8+6+5*7+8-9)",
+    "isAmbiguous": false,
+    "message": "",
+    "rpn": [
+      8,
+      6,
+      "+",
+      5,
+      7,
+      "*",
+      "+",
+      8,
+      "+",
+      9,
+      "-"
+    ],
+    "rpnArray": [
+      {
+        "id": 2,
+        "type": "number",
+        "value": 8
+      },
+      {
+        "id": 4,
+        "type": "number",
+        "value": 6
+      },
+      {
+        "id": 3,
+        "type": "as",
+        "value": "+"
+      },
+      {
+        "id": 6,
+        "type": "number",
+        "value": 5
+      },
+      {
+        "id": 8,
+        "type": "number",
+        "value": 7
+      },
+      {
+        "id": 7,
+        "type": "md",
+        "value": "*"
+      },
+      {
+        "id": 5,
+        "type": "as",
+        "value": "+"
+      },
+      {
+        "id": 10,
+        "type": "number",
+        "value": 8
+      },
+      {
+        "id": 9,
+        "type": "as",
+        "value": "+"
+      },
+      {
+        "id": 12,
+        "type": "number",
+        "value": 9
+      },
+      {
+        "id": 11,
+        "type": "as",
+        "value": "-"
+      }
+    ],
+    "result": 48,
+    "tokens": [
+      {
+        "id": 1,
+        "type": "open",
+        "value": "("
+      },
+      [
+        [
+          [
+            [
+              {
+                "id": 2,
+                "type": "number",
+                "value": 8
+              },
+              {
+                "id": 3,
+                "type": "as",
+                "value": "+"
+              },
+              {
+                "id": 4,
+                "type": "number",
+                "value": 6
+              }
+            ],
+            {
+              "id": 5,
+              "type": "as",
+              "value": "+"
+            },
+            [
+              {
+                "id": 6,
+                "type": "number",
+                "value": 5
+              },
+              {
+                "id": 7,
+                "type": "md",
+                "value": "*"
+              },
+              {
+                "id": 8,
+                "type": "number",
+                "value": 7
+              }
+            ]
+          ],
+          {
+            "id": 9,
+            "type": "as",
+            "value": "+"
+          },
+          {
+            "id": 10,
+            "type": "number",
+            "value": 8
+          }
+        ],
+        {
+          "id": 11,
+          "type": "as",
+          "value": "-"
+        },
+        {
+          "id": 12,
+          "type": "number",
+          "value": 9
+        }
+      ],
+      {
+        "id": 13,
+        "type": "close",
+        "value": ")"
+      }
+    ]
+  },
+  {
+    "testCase": "(9*10-3-3+9-5)",
+    "isAmbiguous": false,
+    "message": "",
+    "rpn": [
+      9,
+      10,
+      "*",
+      3,
+      "-",
+      3,
+      "-",
+      9,
+      "+",
+      5,
+      "-"
+    ],
+    "rpnArray": [
+      {
+        "id": 2,
+        "type": "number",
+        "value": 9
+      },
+      {
+        "id": 4,
+        "type": "number",
+        "value": 10
+      },
+      {
+        "id": 3,
+        "type": "md",
+        "value": "*"
+      },
+      {
+        "id": 6,
+        "type": "number",
+        "value": 3
+      },
+      {
+        "id": 5,
+        "type": "as",
+        "value": "-"
+      },
+      {
+        "id": 8,
+        "type": "number",
+        "value": 3
+      },
+      {
+        "id": 7,
+        "type": "as",
+        "value": "-"
+      },
+      {
+        "id": 10,
+        "type": "number",
+        "value": 9
+      },
+      {
+        "id": 9,
+        "type": "as",
+        "value": "+"
+      },
+      {
+        "id": 12,
+        "type": "number",
+        "value": 5
+      },
+      {
+        "id": 11,
+        "type": "as",
+        "value": "-"
+      }
+    ],
+    "result": 88,
+    "tokens": [
+      {
+        "id": 1,
+        "type": "open",
+        "value": "("
+      },
+      [
+        [
+          [
+            [
+              [
+                {
+                  "id": 2,
+                  "type": "number",
+                  "value": 9
+                },
+                {
+                  "id": 3,
+                  "type": "md",
+                  "value": "*"
+                },
+                {
+                  "id": 4,
+                  "type": "number",
+                  "value": 10
+                }
+              ],
+              {
+                "id": 5,
+                "type": "as",
+                "value": "-"
+              },
+              {
+                "id": 6,
+                "type": "number",
+                "value": 3
+              }
+            ],
+            {
+              "id": 7,
+              "type": "as",
+              "value": "-"
+            },
+            {
+              "id": 8,
+              "type": "number",
+              "value": 3
+            }
+          ],
+          {
+            "id": 9,
+            "type": "as",
+            "value": "+"
+          },
+          {
+            "id": 10,
+            "type": "number",
+            "value": 9
+          }
+        ],
+        {
+          "id": 11,
+          "type": "as",
+          "value": "-"
+        },
+        {
+          "id": 12,
+          "type": "number",
+          "value": 5
+        }
+      ],
+      {
+        "id": 13,
+        "type": "close",
+        "value": ")"
+      }
+    ]
+  },
+  {
+    "testCase": "(9+11*4)-7-9",
+    "isAmbiguous": false,
+    "message": "",
+    "rpn": [
+      9,
+      11,
+      4,
+      "*",
+      "+",
+      7,
+      "-",
+      9,
+      "-"
+    ],
+    "rpnArray": [
+      {
+        "id": 2,
+        "type": "number",
+        "value": 9
+      },
+      {
+        "id": 4,
+        "type": "number",
+        "value": 11
+      },
+      {
+        "id": 6,
+        "type": "number",
+        "value": 4
+      },
+      {
+        "id": 5,
+        "type": "md",
+        "value": "*"
+      },
+      {
+        "id": 3,
+        "type": "as",
+        "value": "+"
+      },
+      {
+        "id": 9,
+        "type": "number",
+        "value": 7
+      },
+      {
+        "id": 8,
+        "type": "as",
+        "value": "-"
+      },
+      {
+        "id": 11,
+        "type": "number",
+        "value": 9
+      },
+      {
+        "id": 10,
+        "type": "as",
+        "value": "-"
+      }
+    ],
+    "result": 37,
+    "tokens": [
+      [
+        [
+          {
+            "id": 1,
+            "type": "open",
+            "value": "("
+          },
+          [
+            {
+              "id": 2,
+              "type": "number",
+              "value": 9
+            },
+            {
+              "id": 3,
+              "type": "as",
+              "value": "+"
+            },
+            [
+              {
+                "id": 4,
+                "type": "number",
+                "value": 11
+              },
+              {
+                "id": 5,
+                "type": "md",
+                "value": "*"
+              },
+              {
+                "id": 6,
+                "type": "number",
+                "value": 4
+              }
+            ]
+          ],
+          {
+            "id": 7,
+            "type": "close",
+            "value": ")"
+          }
+        ],
+        {
+          "id": 8,
+          "type": "as",
+          "value": "-"
+        },
+        {
+          "id": 9,
+          "type": "number",
+          "value": 7
+        }
+      ],
+      {
+        "id": 10,
+        "type": "as",
+        "value": "-"
+      },
+      {
+        "id": 11,
+        "type": "number",
+        "value": 9
+      }
+    ]
+  },
+  {
+    "testCase": "(9+5*9)",
+    "isAmbiguous": false,
+    "message": "",
+    "rpn": [
+      9,
+      5,
+      9,
+      "*",
+      "+"
+    ],
+    "rpnArray": [
+      {
+        "id": 2,
+        "type": "number",
+        "value": 9
+      },
+      {
+        "id": 4,
+        "type": "number",
+        "value": 5
+      },
+      {
+        "id": 6,
+        "type": "number",
+        "value": 9
+      },
+      {
+        "id": 5,
+        "type": "md",
+        "value": "*"
+      },
+      {
+        "id": 3,
+        "type": "as",
+        "value": "+"
+      }
+    ],
+    "result": 54,
+    "tokens": [
+      {
+        "id": 1,
+        "type": "open",
+        "value": "("
+      },
+      [
+        {
+          "id": 2,
+          "type": "number",
+          "value": 9
+        },
+        {
+          "id": 3,
+          "type": "as",
+          "value": "+"
+        },
+        [
+          {
+            "id": 4,
+            "type": "number",
+            "value": 5
+          },
+          {
+            "id": 5,
+            "type": "md",
+            "value": "*"
+          },
+          {
+            "id": 6,
+            "type": "number",
+            "value": 9
+          }
+        ]
+      ],
+      {
+        "id": 7,
+        "type": "close",
+        "value": ")"
+      }
+    ]
+  },
+  {
+    "testCase": "(9+5-6)+(3+8-3)*3",
+    "isAmbiguous": false,
+    "message": "",
+    "rpn": [
+      9,
+      5,
+      "+",
+      6,
+      "-",
+      3,
+      8,
+      "+",
+      3,
+      "-",
+      3,
+      "*",
+      "+"
+    ],
+    "rpnArray": [
+      {
+        "id": 2,
+        "type": "number",
+        "value": 9
+      },
+      {
+        "id": 4,
+        "type": "number",
+        "value": 5
+      },
+      {
+        "id": 3,
+        "type": "as",
+        "value": "+"
+      },
+      {
+        "id": 6,
+        "type": "number",
+        "value": 6
+      },
+      {
+        "id": 5,
+        "type": "as",
+        "value": "-"
+      },
+      {
+        "id": 10,
+        "type": "number",
+        "value": 3
+      },
+      {
+        "id": 12,
+        "type": "number",
+        "value": 8
+      },
+      {
+        "id": 11,
+        "type": "as",
+        "value": "+"
+      },
+      {
+        "id": 14,
+        "type": "number",
+        "value": 3
+      },
+      {
+        "id": 13,
+        "type": "as",
+        "value": "-"
+      },
+      {
+        "id": 17,
+        "type": "number",
+        "value": 3
+      },
+      {
+        "id": 16,
+        "type": "md",
+        "value": "*"
+      },
+      {
+        "id": 8,
+        "type": "as",
+        "value": "+"
+      }
+    ],
+    "result": 32,
+    "tokens": [
+      [
+        {
+          "id": 1,
+          "type": "open",
+          "value": "("
+        },
+        [
+          [
+            {
+              "id": 2,
+              "type": "number",
+              "value": 9
+            },
+            {
+              "id": 3,
+              "type": "as",
+              "value": "+"
+            },
+            {
+              "id": 4,
+              "type": "number",
+              "value": 5
+            }
+          ],
+          {
+            "id": 5,
+            "type": "as",
+            "value": "-"
+          },
+          {
+            "id": 6,
+            "type": "number",
+            "value": 6
+          }
+        ],
+        {
+          "id": 7,
+          "type": "close",
+          "value": ")"
+        }
+      ],
+      {
+        "id": 8,
+        "type": "as",
+        "value": "+"
+      },
+      [
+        [
+          {
+            "id": 9,
+            "type": "open",
+            "value": "("
+          },
+          [
+            [
+              {
+                "id": 10,
+                "type": "number",
+                "value": 3
+              },
+              {
+                "id": 11,
+                "type": "as",
+                "value": "+"
+              },
+              {
+                "id": 12,
+                "type": "number",
+                "value": 8
+              }
+            ],
+            {
+              "id": 13,
+              "type": "as",
+              "value": "-"
+            },
+            {
+              "id": 14,
+              "type": "number",
+              "value": 3
+            }
+          ],
+          {
+            "id": 15,
+            "type": "close",
+            "value": ")"
+          }
+        ],
+        {
+          "id": 16,
+          "type": "md",
+          "value": "*"
+        },
+        {
+          "id": 17,
+          "type": "number",
+          "value": 3
+        }
+      ]
+    ]
+  },
+  {
+    "testCase": "10+8-2+8",
+    "isAmbiguous": false,
+    "message": "",
+    "rpn": [
+      10,
+      8,
+      "+",
+      2,
+      "-",
+      8,
+      "+"
+    ],
+    "rpnArray": [
+      {
+        "id": 1,
+        "type": "number",
+        "value": 10
+      },
+      {
+        "id": 3,
+        "type": "number",
+        "value": 8
+      },
+      {
+        "id": 2,
+        "type": "as",
+        "value": "+"
+      },
+      {
+        "id": 5,
+        "type": "number",
+        "value": 2
+      },
+      {
+        "id": 4,
+        "type": "as",
+        "value": "-"
+      },
+      {
+        "id": 7,
+        "type": "number",
+        "value": 8
+      },
+      {
+        "id": 6,
+        "type": "as",
+        "value": "+"
+      }
+    ],
+    "result": 24,
+    "tokens": [
+      [
+        [
+          {
+            "id": 1,
+            "type": "number",
+            "value": 10
+          },
+          {
+            "id": 2,
+            "type": "as",
+            "value": "+"
+          },
+          {
+            "id": 3,
+            "type": "number",
+            "value": 8
+          }
+        ],
+        {
+          "id": 4,
+          "type": "as",
+          "value": "-"
+        },
+        {
+          "id": 5,
+          "type": "number",
+          "value": 2
+        }
+      ],
+      {
+        "id": 6,
+        "type": "as",
+        "value": "+"
+      },
+      {
+        "id": 7,
+        "type": "number",
+        "value": 8
+      }
+    ]
+  },
+  {
+    "testCase": "10+9+8-7+9",
+    "isAmbiguous": false,
+    "message": "",
+    "rpn": [
+      10,
+      9,
+      "+",
+      8,
+      "+",
+      7,
+      "-",
+      9,
+      "+"
+    ],
+    "rpnArray": [
+      {
+        "id": 1,
+        "type": "number",
+        "value": 10
+      },
+      {
+        "id": 3,
+        "type": "number",
+        "value": 9
+      },
+      {
+        "id": 2,
+        "type": "as",
+        "value": "+"
+      },
+      {
+        "id": 5,
+        "type": "number",
+        "value": 8
+      },
+      {
+        "id": 4,
+        "type": "as",
+        "value": "+"
+      },
+      {
+        "id": 7,
+        "type": "number",
+        "value": 7
+      },
+      {
+        "id": 6,
+        "type": "as",
+        "value": "-"
+      },
+      {
+        "id": 9,
+        "type": "number",
+        "value": 9
+      },
+      {
+        "id": 8,
+        "type": "as",
+        "value": "+"
+      }
+    ],
+    "result": 29,
+    "tokens": [
+      [
+        [
+          [
+            {
+              "id": 1,
+              "type": "number",
+              "value": 10
+            },
+            {
+              "id": 2,
+              "type": "as",
+              "value": "+"
+            },
+            {
+              "id": 3,
+              "type": "number",
+              "value": 9
+            }
+          ],
+          {
+            "id": 4,
+            "type": "as",
+            "value": "+"
+          },
+          {
+            "id": 5,
+            "type": "number",
+            "value": 8
+          }
+        ],
+        {
+          "id": 6,
+          "type": "as",
+          "value": "-"
+        },
+        {
+          "id": 7,
+          "type": "number",
+          "value": 7
+        }
+      ],
+      {
+        "id": 8,
+        "type": "as",
+        "value": "+"
+      },
+      {
+        "id": 9,
+        "type": "number",
+        "value": 9
+      }
+    ]
+  },
+  {
+    "testCase": "11-(8-10+2)",
+    "isAmbiguous": false,
+    "message": "",
+    "rpn": [
+      11,
+      8,
+      10,
+      "-",
+      2,
+      "+",
+      "-"
+    ],
+    "rpnArray": [
+      {
+        "id": 1,
+        "type": "number",
+        "value": 11
+      },
+      {
+        "id": 4,
+        "type": "number",
+        "value": 8
+      },
+      {
+        "id": 6,
+        "type": "number",
+        "value": 10
+      },
+      {
+        "id": 5,
+        "type": "as",
+        "value": "-"
+      },
+      {
+        "id": 8,
+        "type": "number",
+        "value": 2
+      },
+      {
+        "id": 7,
+        "type": "as",
+        "value": "+"
+      },
+      {
+        "id": 2,
+        "type": "as",
+        "value": "-"
+      }
+    ],
+    "result": 11,
+    "tokens": [
+      {
+        "id": 1,
+        "type": "number",
+        "value": 11
+      },
+      {
+        "id": 2,
+        "type": "as",
+        "value": "-"
+      },
+      [
+        {
+          "id": 3,
+          "type": "open",
+          "value": "("
+        },
+        [
+          [
+            {
+              "id": 4,
+              "type": "number",
+              "value": 8
+            },
+            {
+              "id": 5,
+              "type": "as",
+              "value": "-"
+            },
+            {
+              "id": 6,
+              "type": "number",
+              "value": 10
+            }
+          ],
+          {
+            "id": 7,
+            "type": "as",
+            "value": "+"
+          },
+          {
+            "id": 8,
+            "type": "number",
+            "value": 2
+          }
+        ],
+        {
+          "id": 9,
+          "type": "close",
+          "value": ")"
+        }
+      ]
+    ]
+  },
+  {
+    "testCase": "3*(3-2+9)",
+    "isAmbiguous": false,
+    "message": "",
+    "rpn": [
+      3,
+      3,
+      2,
+      "-",
+      9,
+      "+",
+      "*"
+    ],
+    "rpnArray": [
+      {
+        "id": 1,
+        "type": "number",
+        "value": 3
+      },
+      {
+        "id": 4,
+        "type": "number",
+        "value": 3
+      },
+      {
+        "id": 6,
+        "type": "number",
+        "value": 2
+      },
+      {
+        "id": 5,
+        "type": "as",
+        "value": "-"
+      },
+      {
+        "id": 8,
+        "type": "number",
+        "value": 9
+      },
+      {
+        "id": 7,
+        "type": "as",
+        "value": "+"
+      },
+      {
+        "id": 2,
+        "type": "md",
+        "value": "*"
+      }
+    ],
+    "result": 30,
+    "tokens": [
+      {
+        "id": 1,
+        "type": "number",
+        "value": 3
+      },
+      {
+        "id": 2,
+        "type": "md",
+        "value": "*"
+      },
+      [
+        {
+          "id": 3,
+          "type": "open",
+          "value": "("
+        },
+        [
+          [
+            {
+              "id": 4,
+              "type": "number",
+              "value": 3
+            },
+            {
+              "id": 5,
+              "type": "as",
+              "value": "-"
+            },
+            {
+              "id": 6,
+              "type": "number",
+              "value": 2
+            }
+          ],
+          {
+            "id": 7,
+            "type": "as",
+            "value": "+"
+          },
+          {
+            "id": 8,
+            "type": "number",
+            "value": 9
+          }
+        ],
+        {
+          "id": 9,
+          "type": "close",
+          "value": ")"
+        }
+      ]
+    ]
+  },
+  {
+    "testCase": "3*5+5-9-3*2",
+    "isAmbiguous": false,
+    "message": "",
+    "rpn": [
+      3,
+      5,
+      "*",
+      5,
+      "+",
+      9,
+      "-",
+      3,
+      2,
+      "*",
+      "-"
+    ],
+    "rpnArray": [
+      {
+        "id": 1,
+        "type": "number",
+        "value": 3
+      },
+      {
+        "id": 3,
+        "type": "number",
+        "value": 5
+      },
+      {
+        "id": 2,
+        "type": "md",
+        "value": "*"
+      },
+      {
+        "id": 5,
+        "type": "number",
+        "value": 5
+      },
+      {
+        "id": 4,
+        "type": "as",
+        "value": "+"
+      },
+      {
+        "id": 7,
+        "type": "number",
+        "value": 9
+      },
+      {
+        "id": 6,
+        "type": "as",
+        "value": "-"
+      },
+      {
+        "id": 9,
+        "type": "number",
+        "value": 3
+      },
+      {
+        "id": 11,
+        "type": "number",
+        "value": 2
+      },
+      {
+        "id": 10,
+        "type": "md",
+        "value": "*"
+      },
+      {
+        "id": 8,
+        "type": "as",
+        "value": "-"
+      }
+    ],
+    "result": 5,
+    "tokens": [
+      [
+        [
+          [
+            {
+              "id": 1,
+              "type": "number",
+              "value": 3
+            },
+            {
+              "id": 2,
+              "type": "md",
+              "value": "*"
+            },
+            {
+              "id": 3,
+              "type": "number",
+              "value": 5
+            }
+          ],
+          {
+            "id": 4,
+            "type": "as",
+            "value": "+"
+          },
+          {
+            "id": 5,
+            "type": "number",
+            "value": 5
+          }
+        ],
+        {
+          "id": 6,
+          "type": "as",
+          "value": "-"
+        },
+        {
+          "id": 7,
+          "type": "number",
+          "value": 9
+        }
+      ],
+      {
+        "id": 8,
+        "type": "as",
+        "value": "-"
+      },
+      [
+        {
+          "id": 9,
+          "type": "number",
+          "value": 3
+        },
+        {
+          "id": 10,
+          "type": "md",
+          "value": "*"
+        },
+        {
+          "id": 11,
+          "type": "number",
+          "value": 2
+        }
+      ]
+    ]
+  },
+  {
+    "testCase": "3*8-4*4+4-12",
+    "isAmbiguous": false,
+    "message": "",
+    "rpn": [
+      3,
+      8,
+      "*",
+      4,
+      4,
+      "*",
+      "-",
+      4,
+      "+",
+      12,
+      "-"
+    ],
+    "rpnArray": [
+      {
+        "id": 1,
+        "type": "number",
+        "value": 3
+      },
+      {
+        "id": 3,
+        "type": "number",
+        "value": 8
+      },
+      {
+        "id": 2,
+        "type": "md",
+        "value": "*"
+      },
+      {
+        "id": 5,
+        "type": "number",
+        "value": 4
+      },
+      {
+        "id": 7,
+        "type": "number",
+        "value": 4
+      },
+      {
+        "id": 6,
+        "type": "md",
+        "value": "*"
+      },
+      {
+        "id": 4,
+        "type": "as",
+        "value": "-"
+      },
+      {
+        "id": 9,
+        "type": "number",
+        "value": 4
+      },
+      {
+        "id": 8,
+        "type": "as",
+        "value": "+"
+      },
+      {
+        "id": 11,
+        "type": "number",
+        "value": 12
+      },
+      {
+        "id": 10,
+        "type": "as",
+        "value": "-"
+      }
+    ],
+    "result": 0,
+    "tokens": [
+      [
+        [
+          [
+            {
+              "id": 1,
+              "type": "number",
+              "value": 3
+            },
+            {
+              "id": 2,
+              "type": "md",
+              "value": "*"
+            },
+            {
+              "id": 3,
+              "type": "number",
+              "value": 8
+            }
+          ],
+          {
+            "id": 4,
+            "type": "as",
+            "value": "-"
+          },
+          [
+            {
+              "id": 5,
+              "type": "number",
+              "value": 4
+            },
+            {
+              "id": 6,
+              "type": "md",
+              "value": "*"
+            },
+            {
+              "id": 7,
+              "type": "number",
+              "value": 4
+            }
+          ]
+        ],
+        {
+          "id": 8,
+          "type": "as",
+          "value": "+"
+        },
+        {
+          "id": 9,
+          "type": "number",
+          "value": 4
+        }
+      ],
+      {
+        "id": 10,
+        "type": "as",
+        "value": "-"
+      },
+      {
+        "id": 11,
+        "type": "number",
+        "value": 12
+      }
+    ]
+  },
+  {
+    "testCase": "3-7-6+4*8+7",
+    "isAmbiguous": false,
+    "message": "",
+    "rpn": [
+      3,
+      7,
+      "-",
+      6,
+      "-",
+      4,
+      8,
+      "*",
+      "+",
+      7,
+      "+"
+    ],
+    "rpnArray": [
+      {
+        "id": 1,
+        "type": "number",
+        "value": 3
+      },
+      {
+        "id": 3,
+        "type": "number",
+        "value": 7
+      },
+      {
+        "id": 2,
+        "type": "as",
+        "value": "-"
+      },
+      {
+        "id": 5,
+        "type": "number",
+        "value": 6
+      },
+      {
+        "id": 4,
+        "type": "as",
+        "value": "-"
+      },
+      {
+        "id": 7,
+        "type": "number",
+        "value": 4
+      },
+      {
+        "id": 9,
+        "type": "number",
+        "value": 8
+      },
+      {
+        "id": 8,
+        "type": "md",
+        "value": "*"
+      },
+      {
+        "id": 6,
+        "type": "as",
+        "value": "+"
+      },
+      {
+        "id": 11,
+        "type": "number",
+        "value": 7
+      },
+      {
+        "id": 10,
+        "type": "as",
+        "value": "+"
+      }
+    ],
+    "result": 29,
+    "tokens": [
+      [
+        [
+          [
+            {
+              "id": 1,
+              "type": "number",
+              "value": 3
+            },
+            {
+              "id": 2,
+              "type": "as",
+              "value": "-"
+            },
+            {
+              "id": 3,
+              "type": "number",
+              "value": 7
+            }
+          ],
+          {
+            "id": 4,
+            "type": "as",
+            "value": "-"
+          },
+          {
+            "id": 5,
+            "type": "number",
+            "value": 6
+          }
+        ],
+        {
+          "id": 6,
+          "type": "as",
+          "value": "+"
+        },
+        [
+          {
+            "id": 7,
+            "type": "number",
+            "value": 4
+          },
+          {
+            "id": 8,
+            "type": "md",
+            "value": "*"
+          },
+          {
+            "id": 9,
+            "type": "number",
+            "value": 8
+          }
+        ]
+      ],
+      {
+        "id": 10,
+        "type": "as",
+        "value": "+"
+      },
+      {
+        "id": 11,
+        "type": "number",
+        "value": 7
+      }
+    ]
+  },
+  {
+    "testCase": "3-8-6+12*6",
+    "isAmbiguous": false,
+    "message": "",
+    "rpn": [
+      3,
+      8,
+      "-",
+      6,
+      "-",
+      12,
+      6,
+      "*",
+      "+"
+    ],
+    "rpnArray": [
+      {
+        "id": 1,
+        "type": "number",
+        "value": 3
+      },
+      {
+        "id": 3,
+        "type": "number",
+        "value": 8
+      },
+      {
+        "id": 2,
+        "type": "as",
+        "value": "-"
+      },
+      {
+        "id": 5,
+        "type": "number",
+        "value": 6
+      },
+      {
+        "id": 4,
+        "type": "as",
+        "value": "-"
+      },
+      {
+        "id": 7,
+        "type": "number",
+        "value": 12
+      },
+      {
+        "id": 9,
+        "type": "number",
+        "value": 6
+      },
+      {
+        "id": 8,
+        "type": "md",
+        "value": "*"
+      },
+      {
+        "id": 6,
+        "type": "as",
+        "value": "+"
+      }
+    ],
+    "result": 61,
+    "tokens": [
+      [
+        [
+          {
+            "id": 1,
+            "type": "number",
+            "value": 3
+          },
+          {
+            "id": 2,
+            "type": "as",
+            "value": "-"
+          },
+          {
+            "id": 3,
+            "type": "number",
+            "value": 8
+          }
+        ],
+        {
+          "id": 4,
+          "type": "as",
+          "value": "-"
+        },
+        {
+          "id": 5,
+          "type": "number",
+          "value": 6
+        }
+      ],
+      {
+        "id": 6,
+        "type": "as",
+        "value": "+"
+      },
+      [
+        {
+          "id": 7,
+          "type": "number",
+          "value": 12
+        },
+        {
+          "id": 8,
+          "type": "md",
+          "value": "*"
+        },
+        {
+          "id": 9,
+          "type": "number",
+          "value": 6
+        }
+      ]
+    ]
+  },
+  {
+    "testCase": "4*(6+9+8)",
+    "isAmbiguous": false,
+    "message": "",
+    "rpn": [
+      4,
+      6,
+      9,
+      "+",
+      8,
+      "+",
+      "*"
+    ],
+    "rpnArray": [
+      {
+        "id": 1,
+        "type": "number",
+        "value": 4
+      },
+      {
+        "id": 4,
+        "type": "number",
+        "value": 6
+      },
+      {
+        "id": 6,
+        "type": "number",
+        "value": 9
+      },
+      {
+        "id": 5,
+        "type": "as",
+        "value": "+"
+      },
+      {
+        "id": 8,
+        "type": "number",
+        "value": 8
+      },
+      {
+        "id": 7,
+        "type": "as",
+        "value": "+"
+      },
+      {
+        "id": 2,
+        "type": "md",
+        "value": "*"
+      }
+    ],
+    "result": 92,
+    "tokens": [
+      {
+        "id": 1,
+        "type": "number",
+        "value": 4
+      },
+      {
+        "id": 2,
+        "type": "md",
+        "value": "*"
+      },
+      [
+        {
+          "id": 3,
+          "type": "open",
+          "value": "("
+        },
+        [
+          [
+            {
+              "id": 4,
+              "type": "number",
+              "value": 6
+            },
+            {
+              "id": 5,
+              "type": "as",
+              "value": "+"
+            },
+            {
+              "id": 6,
+              "type": "number",
+              "value": 9
+            }
+          ],
+          {
+            "id": 7,
+            "type": "as",
+            "value": "+"
+          },
+          {
+            "id": 8,
+            "type": "number",
+            "value": 8
+          }
+        ],
+        {
+          "id": 9,
+          "type": "close",
+          "value": ")"
+        }
+      ]
+    ]
+  },
+  {
+    "testCase": "4+12*(9-6-4+6)",
+    "isAmbiguous": false,
+    "message": "",
+    "rpn": [
+      4,
+      12,
+      9,
+      6,
+      "-",
+      4,
+      "-",
+      6,
+      "+",
+      "*",
+      "+"
+    ],
+    "rpnArray": [
+      {
+        "id": 1,
+        "type": "number",
+        "value": 4
+      },
+      {
+        "id": 3,
+        "type": "number",
+        "value": 12
+      },
+      {
+        "id": 6,
+        "type": "number",
+        "value": 9
+      },
+      {
+        "id": 8,
+        "type": "number",
+        "value": 6
+      },
+      {
+        "id": 7,
+        "type": "as",
+        "value": "-"
+      },
+      {
+        "id": 10,
+        "type": "number",
+        "value": 4
+      },
+      {
+        "id": 9,
+        "type": "as",
+        "value": "-"
+      },
+      {
+        "id": 12,
+        "type": "number",
+        "value": 6
+      },
+      {
+        "id": 11,
+        "type": "as",
+        "value": "+"
+      },
+      {
+        "id": 4,
+        "type": "md",
+        "value": "*"
+      },
+      {
+        "id": 2,
+        "type": "as",
+        "value": "+"
+      }
+    ],
+    "result": 64,
+    "tokens": [
+      {
+        "id": 1,
+        "type": "number",
+        "value": 4
+      },
+      {
+        "id": 2,
+        "type": "as",
+        "value": "+"
+      },
+      [
+        {
+          "id": 3,
+          "type": "number",
+          "value": 12
+        },
+        {
+          "id": 4,
+          "type": "md",
+          "value": "*"
+        },
+        [
+          {
+            "id": 5,
+            "type": "open",
+            "value": "("
+          },
+          [
+            [
+              [
+                {
+                  "id": 6,
+                  "type": "number",
+                  "value": 9
+                },
+                {
+                  "id": 7,
+                  "type": "as",
+                  "value": "-"
+                },
+                {
+                  "id": 8,
+                  "type": "number",
+                  "value": 6
+                }
+              ],
+              {
+                "id": 9,
+                "type": "as",
+                "value": "-"
+              },
+              {
+                "id": 10,
+                "type": "number",
+                "value": 4
+              }
+            ],
+            {
+              "id": 11,
+              "type": "as",
+              "value": "+"
+            },
+            {
+              "id": 12,
+              "type": "number",
+              "value": 6
+            }
+          ],
+          {
+            "id": 13,
+            "type": "close",
+            "value": ")"
+          }
+        ]
+      ]
+    ]
+  },
+  {
+    "testCase": "4+5*7-11*3",
+    "isAmbiguous": false,
+    "message": "",
+    "rpn": [
+      4,
+      5,
+      7,
+      "*",
+      "+",
+      11,
+      3,
+      "*",
+      "-"
+    ],
+    "rpnArray": [
+      {
+        "id": 1,
+        "type": "number",
+        "value": 4
+      },
+      {
+        "id": 3,
+        "type": "number",
+        "value": 5
+      },
+      {
+        "id": 5,
+        "type": "number",
+        "value": 7
+      },
+      {
+        "id": 4,
+        "type": "md",
+        "value": "*"
+      },
+      {
+        "id": 2,
+        "type": "as",
+        "value": "+"
+      },
+      {
+        "id": 7,
+        "type": "number",
+        "value": 11
+      },
+      {
+        "id": 9,
+        "type": "number",
+        "value": 3
+      },
+      {
+        "id": 8,
+        "type": "md",
+        "value": "*"
+      },
+      {
+        "id": 6,
+        "type": "as",
+        "value": "-"
+      }
+    ],
+    "result": 6,
+    "tokens": [
+      [
+        {
+          "id": 1,
+          "type": "number",
+          "value": 4
+        },
+        {
+          "id": 2,
+          "type": "as",
+          "value": "+"
+        },
+        [
+          {
+            "id": 3,
+            "type": "number",
+            "value": 5
+          },
+          {
+            "id": 4,
+            "type": "md",
+            "value": "*"
+          },
+          {
+            "id": 5,
+            "type": "number",
+            "value": 7
+          }
+        ]
+      ],
+      {
+        "id": 6,
+        "type": "as",
+        "value": "-"
+      },
+      [
+        {
+          "id": 7,
+          "type": "number",
+          "value": 11
+        },
+        {
+          "id": 8,
+          "type": "md",
+          "value": "*"
+        },
+        {
+          "id": 9,
+          "type": "number",
+          "value": 3
+        }
+      ]
+    ]
+  },
+  {
+    "testCase": "4+6+5+5+3",
+    "isAmbiguous": false,
+    "message": "",
+    "rpn": [
+      4,
+      6,
+      "+",
+      5,
+      "+",
+      5,
+      "+",
+      3,
+      "+"
+    ],
+    "rpnArray": [
+      {
+        "id": 1,
+        "type": "number",
+        "value": 4
+      },
+      {
+        "id": 3,
+        "type": "number",
+        "value": 6
+      },
+      {
+        "id": 2,
+        "type": "as",
+        "value": "+"
+      },
+      {
+        "id": 5,
+        "type": "number",
+        "value": 5
+      },
+      {
+        "id": 4,
+        "type": "as",
+        "value": "+"
+      },
+      {
+        "id": 7,
+        "type": "number",
+        "value": 5
+      },
+      {
+        "id": 6,
+        "type": "as",
+        "value": "+"
+      },
+      {
+        "id": 9,
+        "type": "number",
+        "value": 3
+      },
+      {
+        "id": 8,
+        "type": "as",
+        "value": "+"
+      }
+    ],
+    "result": 23,
+    "tokens": [
+      [
+        [
+          [
+            {
+              "id": 1,
+              "type": "number",
+              "value": 4
+            },
+            {
+              "id": 2,
+              "type": "as",
+              "value": "+"
+            },
+            {
+              "id": 3,
+              "type": "number",
+              "value": 6
+            }
+          ],
+          {
+            "id": 4,
+            "type": "as",
+            "value": "+"
+          },
+          {
+            "id": 5,
+            "type": "number",
+            "value": 5
+          }
+        ],
+        {
+          "id": 6,
+          "type": "as",
+          "value": "+"
+        },
+        {
+          "id": 7,
+          "type": "number",
+          "value": 5
+        }
+      ],
+      {
+        "id": 8,
+        "type": "as",
+        "value": "+"
+      },
+      {
+        "id": 9,
+        "type": "number",
+        "value": 3
+      }
+    ]
+  },
+  {
+    "testCase": "4-8+11*6+12-4",
+    "isAmbiguous": false,
+    "message": "",
+    "rpn": [
+      4,
+      8,
+      "-",
+      11,
+      6,
+      "*",
+      "+",
+      12,
+      "+",
+      4,
+      "-"
+    ],
+    "rpnArray": [
+      {
+        "id": 1,
+        "type": "number",
+        "value": 4
+      },
+      {
+        "id": 3,
+        "type": "number",
+        "value": 8
+      },
+      {
+        "id": 2,
+        "type": "as",
+        "value": "-"
+      },
+      {
+        "id": 5,
+        "type": "number",
+        "value": 11
+      },
+      {
+        "id": 7,
+        "type": "number",
+        "value": 6
+      },
+      {
+        "id": 6,
+        "type": "md",
+        "value": "*"
+      },
+      {
+        "id": 4,
+        "type": "as",
+        "value": "+"
+      },
+      {
+        "id": 9,
+        "type": "number",
+        "value": 12
+      },
+      {
+        "id": 8,
+        "type": "as",
+        "value": "+"
+      },
+      {
+        "id": 11,
+        "type": "number",
+        "value": 4
+      },
+      {
+        "id": 10,
+        "type": "as",
+        "value": "-"
+      }
+    ],
+    "result": 70,
+    "tokens": [
+      [
+        [
+          [
+            {
+              "id": 1,
+              "type": "number",
+              "value": 4
+            },
+            {
+              "id": 2,
+              "type": "as",
+              "value": "-"
+            },
+            {
+              "id": 3,
+              "type": "number",
+              "value": 8
+            }
+          ],
+          {
+            "id": 4,
+            "type": "as",
+            "value": "+"
+          },
+          [
+            {
+              "id": 5,
+              "type": "number",
+              "value": 11
+            },
+            {
+              "id": 6,
+              "type": "md",
+              "value": "*"
+            },
+            {
+              "id": 7,
+              "type": "number",
+              "value": 6
+            }
+          ]
+        ],
+        {
+          "id": 8,
+          "type": "as",
+          "value": "+"
+        },
+        {
+          "id": 9,
+          "type": "number",
+          "value": 12
+        }
+      ],
+      {
+        "id": 10,
+        "type": "as",
+        "value": "-"
+      },
+      {
+        "id": 11,
+        "type": "number",
+        "value": 4
+      }
+    ]
+  },
+  {
+    "testCase": "5*(9+9)-8*5",
+    "isAmbiguous": false,
+    "message": "",
+    "rpn": [
+      5,
+      9,
+      9,
+      "+",
+      "*",
+      8,
+      5,
+      "*",
+      "-"
+    ],
+    "rpnArray": [
+      {
+        "id": 1,
+        "type": "number",
+        "value": 5
+      },
+      {
+        "id": 4,
+        "type": "number",
+        "value": 9
+      },
+      {
+        "id": 6,
+        "type": "number",
+        "value": 9
+      },
+      {
+        "id": 5,
+        "type": "as",
+        "value": "+"
+      },
+      {
+        "id": 2,
+        "type": "md",
+        "value": "*"
+      },
+      {
+        "id": 9,
+        "type": "number",
+        "value": 8
+      },
+      {
+        "id": 11,
+        "type": "number",
+        "value": 5
+      },
+      {
+        "id": 10,
+        "type": "md",
+        "value": "*"
+      },
+      {
+        "id": 8,
+        "type": "as",
+        "value": "-"
+      }
+    ],
+    "result": 50,
+    "tokens": [
+      [
+        {
+          "id": 1,
+          "type": "number",
+          "value": 5
+        },
+        {
+          "id": 2,
+          "type": "md",
+          "value": "*"
+        },
+        [
+          {
+            "id": 3,
+            "type": "open",
+            "value": "("
+          },
+          [
+            {
+              "id": 4,
+              "type": "number",
+              "value": 9
+            },
+            {
+              "id": 5,
+              "type": "as",
+              "value": "+"
+            },
+            {
+              "id": 6,
+              "type": "number",
+              "value": 9
+            }
+          ],
+          {
+            "id": 7,
+            "type": "close",
+            "value": ")"
+          }
+        ]
+      ],
+      {
+        "id": 8,
+        "type": "as",
+        "value": "-"
+      },
+      [
+        {
+          "id": 9,
+          "type": "number",
+          "value": 8
+        },
+        {
+          "id": 10,
+          "type": "md",
+          "value": "*"
+        },
+        {
+          "id": 11,
+          "type": "number",
+          "value": 5
+        }
+      ]
+    ]
+  },
+  {
+    "testCase": "5*11+12-4-10-6",
+    "isAmbiguous": false,
+    "message": "",
+    "rpn": [
+      5,
+      11,
+      "*",
+      12,
+      "+",
+      4,
+      "-",
+      10,
+      "-",
+      6,
+      "-"
+    ],
+    "rpnArray": [
+      {
+        "id": 1,
+        "type": "number",
+        "value": 5
+      },
+      {
+        "id": 3,
+        "type": "number",
+        "value": 11
+      },
+      {
+        "id": 2,
+        "type": "md",
+        "value": "*"
+      },
+      {
+        "id": 5,
+        "type": "number",
+        "value": 12
+      },
+      {
+        "id": 4,
+        "type": "as",
+        "value": "+"
+      },
+      {
+        "id": 7,
+        "type": "number",
+        "value": 4
+      },
+      {
+        "id": 6,
+        "type": "as",
+        "value": "-"
+      },
+      {
+        "id": 9,
+        "type": "number",
+        "value": 10
+      },
+      {
+        "id": 8,
+        "type": "as",
+        "value": "-"
+      },
+      {
+        "id": 11,
+        "type": "number",
+        "value": 6
+      },
+      {
+        "id": 10,
+        "type": "as",
+        "value": "-"
+      }
+    ],
+    "result": 47,
+    "tokens": [
+      [
+        [
+          [
+            [
+              {
+                "id": 1,
+                "type": "number",
+                "value": 5
+              },
+              {
+                "id": 2,
+                "type": "md",
+                "value": "*"
+              },
+              {
+                "id": 3,
+                "type": "number",
+                "value": 11
+              }
+            ],
+            {
+              "id": 4,
+              "type": "as",
+              "value": "+"
+            },
+            {
+              "id": 5,
+              "type": "number",
+              "value": 12
+            }
+          ],
+          {
+            "id": 6,
+            "type": "as",
+            "value": "-"
+          },
+          {
+            "id": 7,
+            "type": "number",
+            "value": 4
+          }
+        ],
+        {
+          "id": 8,
+          "type": "as",
+          "value": "-"
+        },
+        {
+          "id": 9,
+          "type": "number",
+          "value": 10
+        }
+      ],
+      {
+        "id": 10,
+        "type": "as",
+        "value": "-"
+      },
+      {
+        "id": 11,
+        "type": "number",
+        "value": 6
+      }
+    ]
+  },
+  {
+    "testCase": "5+3+6+4-10",
+    "isAmbiguous": false,
+    "message": "",
+    "rpn": [
+      5,
+      3,
+      "+",
+      6,
+      "+",
+      4,
+      "+",
+      10,
+      "-"
+    ],
+    "rpnArray": [
+      {
+        "id": 1,
+        "type": "number",
+        "value": 5
+      },
+      {
+        "id": 3,
+        "type": "number",
+        "value": 3
+      },
+      {
+        "id": 2,
+        "type": "as",
+        "value": "+"
+      },
+      {
+        "id": 5,
+        "type": "number",
+        "value": 6
+      },
+      {
+        "id": 4,
+        "type": "as",
+        "value": "+"
+      },
+      {
+        "id": 7,
+        "type": "number",
+        "value": 4
+      },
+      {
+        "id": 6,
+        "type": "as",
+        "value": "+"
+      },
+      {
+        "id": 9,
+        "type": "number",
+        "value": 10
+      },
+      {
+        "id": 8,
+        "type": "as",
+        "value": "-"
+      }
+    ],
+    "result": 8,
+    "tokens": [
+      [
+        [
+          [
+            {
+              "id": 1,
+              "type": "number",
+              "value": 5
+            },
+            {
+              "id": 2,
+              "type": "as",
+              "value": "+"
+            },
+            {
+              "id": 3,
+              "type": "number",
+              "value": 3
+            }
+          ],
+          {
+            "id": 4,
+            "type": "as",
+            "value": "+"
+          },
+          {
+            "id": 5,
+            "type": "number",
+            "value": 6
+          }
+        ],
+        {
+          "id": 6,
+          "type": "as",
+          "value": "+"
+        },
+        {
+          "id": 7,
+          "type": "number",
+          "value": 4
+        }
+      ],
+      {
+        "id": 8,
+        "type": "as",
+        "value": "-"
+      },
+      {
+        "id": 9,
+        "type": "number",
+        "value": 10
+      }
+    ]
+  },
+  {
+    "testCase": "5+4+(11+9*4)",
+    "isAmbiguous": false,
+    "message": "",
+    "rpn": [
+      5,
+      4,
+      "+",
+      11,
+      9,
+      4,
+      "*",
+      "+",
+      "+"
+    ],
+    "rpnArray": [
+      {
+        "id": 1,
+        "type": "number",
+        "value": 5
+      },
+      {
+        "id": 3,
+        "type": "number",
+        "value": 4
+      },
+      {
+        "id": 2,
+        "type": "as",
+        "value": "+"
+      },
+      {
+        "id": 6,
+        "type": "number",
+        "value": 11
+      },
+      {
+        "id": 8,
+        "type": "number",
+        "value": 9
+      },
+      {
+        "id": 10,
+        "type": "number",
+        "value": 4
+      },
+      {
+        "id": 9,
+        "type": "md",
+        "value": "*"
+      },
+      {
+        "id": 7,
+        "type": "as",
+        "value": "+"
+      },
+      {
+        "id": 4,
+        "type": "as",
+        "value": "+"
+      }
+    ],
+    "result": 56,
+    "tokens": [
+      [
+        {
+          "id": 1,
+          "type": "number",
+          "value": 5
+        },
+        {
+          "id": 2,
+          "type": "as",
+          "value": "+"
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "value": 4
+        }
+      ],
+      {
+        "id": 4,
+        "type": "as",
+        "value": "+"
+      },
+      [
+        {
+          "id": 5,
+          "type": "open",
+          "value": "("
+        },
+        [
+          {
+            "id": 6,
+            "type": "number",
+            "value": 11
+          },
+          {
+            "id": 7,
+            "type": "as",
+            "value": "+"
+          },
+          [
+            {
+              "id": 8,
+              "type": "number",
+              "value": 9
+            },
+            {
+              "id": 9,
+              "type": "md",
+              "value": "*"
+            },
+            {
+              "id": 10,
+              "type": "number",
+              "value": 4
+            }
+          ]
+        ],
+        {
+          "id": 11,
+          "type": "close",
+          "value": ")"
+        }
+      ]
+    ]
+  },
+  {
+    "testCase": "5+9+8+10+5",
+    "isAmbiguous": false,
+    "message": "",
+    "rpn": [
+      5,
+      9,
+      "+",
+      8,
+      "+",
+      10,
+      "+",
+      5,
+      "+"
+    ],
+    "rpnArray": [
+      {
+        "id": 1,
+        "type": "number",
+        "value": 5
+      },
+      {
+        "id": 3,
+        "type": "number",
+        "value": 9
+      },
+      {
+        "id": 2,
+        "type": "as",
+        "value": "+"
+      },
+      {
+        "id": 5,
+        "type": "number",
+        "value": 8
+      },
+      {
+        "id": 4,
+        "type": "as",
+        "value": "+"
+      },
+      {
+        "id": 7,
+        "type": "number",
+        "value": 10
+      },
+      {
+        "id": 6,
+        "type": "as",
+        "value": "+"
+      },
+      {
+        "id": 9,
+        "type": "number",
+        "value": 5
+      },
+      {
+        "id": 8,
+        "type": "as",
+        "value": "+"
+      }
+    ],
+    "result": 37,
+    "tokens": [
+      [
+        [
+          [
+            {
+              "id": 1,
+              "type": "number",
+              "value": 5
+            },
+            {
+              "id": 2,
+              "type": "as",
+              "value": "+"
+            },
+            {
+              "id": 3,
+              "type": "number",
+              "value": 9
+            }
+          ],
+          {
+            "id": 4,
+            "type": "as",
+            "value": "+"
+          },
+          {
+            "id": 5,
+            "type": "number",
+            "value": 8
+          }
+        ],
+        {
+          "id": 6,
+          "type": "as",
+          "value": "+"
+        },
+        {
+          "id": 7,
+          "type": "number",
+          "value": 10
+        }
+      ],
+      {
+        "id": 8,
+        "type": "as",
+        "value": "+"
+      },
+      {
+        "id": 9,
+        "type": "number",
+        "value": 5
+      }
+    ]
+  },
+  {
+    "testCase": "5-10+10",
+    "isAmbiguous": false,
+    "message": "",
+    "rpn": [
+      5,
+      10,
+      "-",
+      10,
+      "+"
+    ],
+    "rpnArray": [
+      {
+        "id": 1,
+        "type": "number",
+        "value": 5
+      },
+      {
+        "id": 3,
+        "type": "number",
+        "value": 10
+      },
+      {
+        "id": 2,
+        "type": "as",
+        "value": "-"
+      },
+      {
+        "id": 5,
+        "type": "number",
+        "value": 10
+      },
+      {
+        "id": 4,
+        "type": "as",
+        "value": "+"
+      }
+    ],
+    "result": 5,
+    "tokens": [
+      [
+        {
+          "id": 1,
+          "type": "number",
+          "value": 5
+        },
+        {
+          "id": 2,
+          "type": "as",
+          "value": "-"
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "value": 10
+        }
+      ],
+      {
+        "id": 4,
+        "type": "as",
+        "value": "+"
+      },
+      {
+        "id": 5,
+        "type": "number",
+        "value": 10
+      }
+    ]
+  },
+  {
+    "testCase": "6*10+12-5-5*3",
+    "isAmbiguous": false,
+    "message": "",
+    "rpn": [
+      6,
+      10,
+      "*",
+      12,
+      "+",
+      5,
+      "-",
+      5,
+      3,
+      "*",
+      "-"
+    ],
+    "rpnArray": [
+      {
+        "id": 1,
+        "type": "number",
+        "value": 6
+      },
+      {
+        "id": 3,
+        "type": "number",
+        "value": 10
+      },
+      {
+        "id": 2,
+        "type": "md",
+        "value": "*"
+      },
+      {
+        "id": 5,
+        "type": "number",
+        "value": 12
+      },
+      {
+        "id": 4,
+        "type": "as",
+        "value": "+"
+      },
+      {
+        "id": 7,
+        "type": "number",
+        "value": 5
+      },
+      {
+        "id": 6,
+        "type": "as",
+        "value": "-"
+      },
+      {
+        "id": 9,
+        "type": "number",
+        "value": 5
+      },
+      {
+        "id": 11,
+        "type": "number",
+        "value": 3
+      },
+      {
+        "id": 10,
+        "type": "md",
+        "value": "*"
+      },
+      {
+        "id": 8,
+        "type": "as",
+        "value": "-"
+      }
+    ],
+    "result": 52,
+    "tokens": [
+      [
+        [
+          [
+            {
+              "id": 1,
+              "type": "number",
+              "value": 6
+            },
+            {
+              "id": 2,
+              "type": "md",
+              "value": "*"
+            },
+            {
+              "id": 3,
+              "type": "number",
+              "value": 10
+            }
+          ],
+          {
+            "id": 4,
+            "type": "as",
+            "value": "+"
+          },
+          {
+            "id": 5,
+            "type": "number",
+            "value": 12
+          }
+        ],
+        {
+          "id": 6,
+          "type": "as",
+          "value": "-"
+        },
+        {
+          "id": 7,
+          "type": "number",
+          "value": 5
+        }
+      ],
+      {
+        "id": 8,
+        "type": "as",
+        "value": "-"
+      },
+      [
+        {
+          "id": 9,
+          "type": "number",
+          "value": 5
+        },
+        {
+          "id": 10,
+          "type": "md",
+          "value": "*"
+        },
+        {
+          "id": 11,
+          "type": "number",
+          "value": 3
+        }
+      ]
+    ]
+  },
+  {
+    "testCase": "6*3+2-9+8-8",
+    "isAmbiguous": false,
+    "message": "",
+    "rpn": [
+      6,
+      3,
+      "*",
+      2,
+      "+",
+      9,
+      "-",
+      8,
+      "+",
+      8,
+      "-"
+    ],
+    "rpnArray": [
+      {
+        "id": 1,
+        "type": "number",
+        "value": 6
+      },
+      {
+        "id": 3,
+        "type": "number",
+        "value": 3
+      },
+      {
+        "id": 2,
+        "type": "md",
+        "value": "*"
+      },
+      {
+        "id": 5,
+        "type": "number",
+        "value": 2
+      },
+      {
+        "id": 4,
+        "type": "as",
+        "value": "+"
+      },
+      {
+        "id": 7,
+        "type": "number",
+        "value": 9
+      },
+      {
+        "id": 6,
+        "type": "as",
+        "value": "-"
+      },
+      {
+        "id": 9,
+        "type": "number",
+        "value": 8
+      },
+      {
+        "id": 8,
+        "type": "as",
+        "value": "+"
+      },
+      {
+        "id": 11,
+        "type": "number",
+        "value": 8
+      },
+      {
+        "id": 10,
+        "type": "as",
+        "value": "-"
+      }
+    ],
+    "result": 11,
+    "tokens": [
+      [
+        [
+          [
+            [
+              {
+                "id": 1,
+                "type": "number",
+                "value": 6
+              },
+              {
+                "id": 2,
+                "type": "md",
+                "value": "*"
+              },
+              {
+                "id": 3,
+                "type": "number",
+                "value": 3
+              }
+            ],
+            {
+              "id": 4,
+              "type": "as",
+              "value": "+"
+            },
+            {
+              "id": 5,
+              "type": "number",
+              "value": 2
+            }
+          ],
+          {
+            "id": 6,
+            "type": "as",
+            "value": "-"
+          },
+          {
+            "id": 7,
+            "type": "number",
+            "value": 9
+          }
+        ],
+        {
+          "id": 8,
+          "type": "as",
+          "value": "+"
+        },
+        {
+          "id": 9,
+          "type": "number",
+          "value": 8
+        }
+      ],
+      {
+        "id": 10,
+        "type": "as",
+        "value": "-"
+      },
+      {
+        "id": 11,
+        "type": "number",
+        "value": 8
+      }
+    ]
+  },
+  {
+    "testCase": "6+5*(12-2+9-7)",
+    "isAmbiguous": false,
+    "message": "",
+    "rpn": [
+      6,
+      5,
+      12,
+      2,
+      "-",
+      9,
+      "+",
+      7,
+      "-",
+      "*",
+      "+"
+    ],
+    "rpnArray": [
+      {
+        "id": 1,
+        "type": "number",
+        "value": 6
+      },
+      {
+        "id": 3,
+        "type": "number",
+        "value": 5
+      },
+      {
+        "id": 6,
+        "type": "number",
+        "value": 12
+      },
+      {
+        "id": 8,
+        "type": "number",
+        "value": 2
+      },
+      {
+        "id": 7,
+        "type": "as",
+        "value": "-"
+      },
+      {
+        "id": 10,
+        "type": "number",
+        "value": 9
+      },
+      {
+        "id": 9,
+        "type": "as",
+        "value": "+"
+      },
+      {
+        "id": 12,
+        "type": "number",
+        "value": 7
+      },
+      {
+        "id": 11,
+        "type": "as",
+        "value": "-"
+      },
+      {
+        "id": 4,
+        "type": "md",
+        "value": "*"
+      },
+      {
+        "id": 2,
+        "type": "as",
+        "value": "+"
+      }
+    ],
+    "result": 66,
+    "tokens": [
+      {
+        "id": 1,
+        "type": "number",
+        "value": 6
+      },
+      {
+        "id": 2,
+        "type": "as",
+        "value": "+"
+      },
+      [
+        {
+          "id": 3,
+          "type": "number",
+          "value": 5
+        },
+        {
+          "id": 4,
+          "type": "md",
+          "value": "*"
+        },
+        [
+          {
+            "id": 5,
+            "type": "open",
+            "value": "("
+          },
+          [
+            [
+              [
+                {
+                  "id": 6,
+                  "type": "number",
+                  "value": 12
+                },
+                {
+                  "id": 7,
+                  "type": "as",
+                  "value": "-"
+                },
+                {
+                  "id": 8,
+                  "type": "number",
+                  "value": 2
+                }
+              ],
+              {
+                "id": 9,
+                "type": "as",
+                "value": "+"
+              },
+              {
+                "id": 10,
+                "type": "number",
+                "value": 9
+              }
+            ],
+            {
+              "id": 11,
+              "type": "as",
+              "value": "-"
+            },
+            {
+              "id": 12,
+              "type": "number",
+              "value": 7
+            }
+          ],
+          {
+            "id": 13,
+            "type": "close",
+            "value": ")"
+          }
+        ]
+      ]
+    ]
+  },
+  {
+    "testCase": "6+5+4",
+    "isAmbiguous": false,
+    "message": "",
+    "rpn": [
+      6,
+      5,
+      "+",
+      4,
+      "+"
+    ],
+    "rpnArray": [
+      {
+        "id": 1,
+        "type": "number",
+        "value": 6
+      },
+      {
+        "id": 3,
+        "type": "number",
+        "value": 5
+      },
+      {
+        "id": 2,
+        "type": "as",
+        "value": "+"
+      },
+      {
+        "id": 5,
+        "type": "number",
+        "value": 4
+      },
+      {
+        "id": 4,
+        "type": "as",
+        "value": "+"
+      }
+    ],
+    "result": 15,
+    "tokens": [
+      [
+        {
+          "id": 1,
+          "type": "number",
+          "value": 6
+        },
+        {
+          "id": 2,
+          "type": "as",
+          "value": "+"
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "value": 5
+        }
+      ],
+      {
+        "id": 4,
+        "type": "as",
+        "value": "+"
+      },
+      {
+        "id": 5,
+        "type": "number",
+        "value": 4
+      }
+    ]
+  },
+  {
+    "testCase": "6-6+5",
+    "isAmbiguous": false,
+    "message": "",
+    "rpn": [
+      6,
+      6,
+      "-",
+      5,
+      "+"
+    ],
+    "rpnArray": [
+      {
+        "id": 1,
+        "type": "number",
+        "value": 6
+      },
+      {
+        "id": 3,
+        "type": "number",
+        "value": 6
+      },
+      {
+        "id": 2,
+        "type": "as",
+        "value": "-"
+      },
+      {
+        "id": 5,
+        "type": "number",
+        "value": 5
+      },
+      {
+        "id": 4,
+        "type": "as",
+        "value": "+"
+      }
+    ],
+    "result": 5,
+    "tokens": [
+      [
+        {
+          "id": 1,
+          "type": "number",
+          "value": 6
+        },
+        {
+          "id": 2,
+          "type": "as",
+          "value": "-"
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "value": 6
+        }
+      ],
+      {
+        "id": 4,
+        "type": "as",
+        "value": "+"
+      },
+      {
+        "id": 5,
+        "type": "number",
+        "value": 5
+      }
+    ]
+  },
+  {
+    "testCase": "7*3-4-8",
+    "isAmbiguous": false,
+    "message": "",
+    "rpn": [
+      7,
+      3,
+      "*",
+      4,
+      "-",
+      8,
+      "-"
+    ],
+    "rpnArray": [
+      {
+        "id": 1,
+        "type": "number",
+        "value": 7
+      },
+      {
+        "id": 3,
+        "type": "number",
+        "value": 3
+      },
+      {
+        "id": 2,
+        "type": "md",
+        "value": "*"
+      },
+      {
+        "id": 5,
+        "type": "number",
+        "value": 4
+      },
+      {
+        "id": 4,
+        "type": "as",
+        "value": "-"
+      },
+      {
+        "id": 7,
+        "type": "number",
+        "value": 8
+      },
+      {
+        "id": 6,
+        "type": "as",
+        "value": "-"
+      }
+    ],
+    "result": 9,
+    "tokens": [
+      [
+        [
+          {
+            "id": 1,
+            "type": "number",
+            "value": 7
+          },
+          {
+            "id": 2,
+            "type": "md",
+            "value": "*"
+          },
+          {
+            "id": 3,
+            "type": "number",
+            "value": 3
+          }
+        ],
+        {
+          "id": 4,
+          "type": "as",
+          "value": "-"
+        },
+        {
+          "id": 5,
+          "type": "number",
+          "value": 4
+        }
+      ],
+      {
+        "id": 6,
+        "type": "as",
+        "value": "-"
+      },
+      {
+        "id": 7,
+        "type": "number",
+        "value": 8
+      }
+    ]
+  },
+  {
+    "testCase": "7*4-4+(4+6)-5-2",
+    "isAmbiguous": false,
+    "message": "",
+    "rpn": [
+      7,
+      4,
+      "*",
+      4,
+      "-",
+      4,
+      6,
+      "+",
+      "+",
+      5,
+      "-",
+      2,
+      "-"
+    ],
+    "rpnArray": [
+      {
+        "id": 1,
+        "type": "number",
+        "value": 7
+      },
+      {
+        "id": 3,
+        "type": "number",
+        "value": 4
+      },
+      {
+        "id": 2,
+        "type": "md",
+        "value": "*"
+      },
+      {
+        "id": 5,
+        "type": "number",
+        "value": 4
+      },
+      {
+        "id": 4,
+        "type": "as",
+        "value": "-"
+      },
+      {
+        "id": 8,
+        "type": "number",
+        "value": 4
+      },
+      {
+        "id": 10,
+        "type": "number",
+        "value": 6
+      },
+      {
+        "id": 9,
+        "type": "as",
+        "value": "+"
+      },
+      {
+        "id": 6,
+        "type": "as",
+        "value": "+"
+      },
+      {
+        "id": 13,
+        "type": "number",
+        "value": 5
+      },
+      {
+        "id": 12,
+        "type": "as",
+        "value": "-"
+      },
+      {
+        "id": 15,
+        "type": "number",
+        "value": 2
+      },
+      {
+        "id": 14,
+        "type": "as",
+        "value": "-"
+      }
+    ],
+    "result": 27,
+    "tokens": [
+      [
+        [
+          [
+            [
+              {
+                "id": 1,
+                "type": "number",
+                "value": 7
+              },
+              {
+                "id": 2,
+                "type": "md",
+                "value": "*"
+              },
+              {
+                "id": 3,
+                "type": "number",
+                "value": 4
+              }
+            ],
+            {
+              "id": 4,
+              "type": "as",
+              "value": "-"
+            },
+            {
+              "id": 5,
+              "type": "number",
+              "value": 4
+            }
+          ],
+          {
+            "id": 6,
+            "type": "as",
+            "value": "+"
+          },
+          [
+            {
+              "id": 7,
+              "type": "open",
+              "value": "("
+            },
+            [
+              {
+                "id": 8,
+                "type": "number",
+                "value": 4
+              },
+              {
+                "id": 9,
+                "type": "as",
+                "value": "+"
+              },
+              {
+                "id": 10,
+                "type": "number",
+                "value": 6
+              }
+            ],
+            {
+              "id": 11,
+              "type": "close",
+              "value": ")"
+            }
+          ]
+        ],
+        {
+          "id": 12,
+          "type": "as",
+          "value": "-"
+        },
+        {
+          "id": 13,
+          "type": "number",
+          "value": 5
+        }
+      ],
+      {
+        "id": 14,
+        "type": "as",
+        "value": "-"
+      },
+      {
+        "id": 15,
+        "type": "number",
+        "value": 2
+      }
+    ]
+  },
+  {
+    "testCase": "7+10*8",
+    "isAmbiguous": false,
+    "message": "",
+    "rpn": [
+      7,
+      10,
+      8,
+      "*",
+      "+"
+    ],
+    "rpnArray": [
+      {
+        "id": 1,
+        "type": "number",
+        "value": 7
+      },
+      {
+        "id": 3,
+        "type": "number",
+        "value": 10
+      },
+      {
+        "id": 5,
+        "type": "number",
+        "value": 8
+      },
+      {
+        "id": 4,
+        "type": "md",
+        "value": "*"
+      },
+      {
+        "id": 2,
+        "type": "as",
+        "value": "+"
+      }
+    ],
+    "result": 87,
+    "tokens": [
+      {
+        "id": 1,
+        "type": "number",
+        "value": 7
+      },
+      {
+        "id": 2,
+        "type": "as",
+        "value": "+"
+      },
+      [
+        {
+          "id": 3,
+          "type": "number",
+          "value": 10
+        },
+        {
+          "id": 4,
+          "type": "md",
+          "value": "*"
+        },
+        {
+          "id": 5,
+          "type": "number",
+          "value": 8
+        }
+      ]
+    ]
+  },
+  {
+    "testCase": "7+9*6-3-4",
+    "isAmbiguous": false,
+    "message": "",
+    "rpn": [
+      7,
+      9,
+      6,
+      "*",
+      "+",
+      3,
+      "-",
+      4,
+      "-"
+    ],
+    "rpnArray": [
+      {
+        "id": 1,
+        "type": "number",
+        "value": 7
+      },
+      {
+        "id": 3,
+        "type": "number",
+        "value": 9
+      },
+      {
+        "id": 5,
+        "type": "number",
+        "value": 6
+      },
+      {
+        "id": 4,
+        "type": "md",
+        "value": "*"
+      },
+      {
+        "id": 2,
+        "type": "as",
+        "value": "+"
+      },
+      {
+        "id": 7,
+        "type": "number",
+        "value": 3
+      },
+      {
+        "id": 6,
+        "type": "as",
+        "value": "-"
+      },
+      {
+        "id": 9,
+        "type": "number",
+        "value": 4
+      },
+      {
+        "id": 8,
+        "type": "as",
+        "value": "-"
+      }
+    ],
+    "result": 54,
+    "tokens": [
+      [
+        [
+          {
+            "id": 1,
+            "type": "number",
+            "value": 7
+          },
+          {
+            "id": 2,
+            "type": "as",
+            "value": "+"
+          },
+          [
+            {
+              "id": 3,
+              "type": "number",
+              "value": 9
+            },
+            {
+              "id": 4,
+              "type": "md",
+              "value": "*"
+            },
+            {
+              "id": 5,
+              "type": "number",
+              "value": 6
+            }
+          ]
+        ],
+        {
+          "id": 6,
+          "type": "as",
+          "value": "-"
+        },
+        {
+          "id": 7,
+          "type": "number",
+          "value": 3
+        }
+      ],
+      {
+        "id": 8,
+        "type": "as",
+        "value": "-"
+      },
+      {
+        "id": 9,
+        "type": "number",
+        "value": 4
+      }
+    ]
+  },
+  {
+    "testCase": "7-8+11*(2+11-4)",
+    "isAmbiguous": false,
+    "message": "",
+    "rpn": [
+      7,
+      8,
+      "-",
+      11,
+      2,
+      11,
+      "+",
+      4,
+      "-",
+      "*",
+      "+"
+    ],
+    "rpnArray": [
+      {
+        "id": 1,
+        "type": "number",
+        "value": 7
+      },
+      {
+        "id": 3,
+        "type": "number",
+        "value": 8
+      },
+      {
+        "id": 2,
+        "type": "as",
+        "value": "-"
+      },
+      {
+        "id": 5,
+        "type": "number",
+        "value": 11
+      },
+      {
+        "id": 8,
+        "type": "number",
+        "value": 2
+      },
+      {
+        "id": 10,
+        "type": "number",
+        "value": 11
+      },
+      {
+        "id": 9,
+        "type": "as",
+        "value": "+"
+      },
+      {
+        "id": 12,
+        "type": "number",
+        "value": 4
+      },
+      {
+        "id": 11,
+        "type": "as",
+        "value": "-"
+      },
+      {
+        "id": 6,
+        "type": "md",
+        "value": "*"
+      },
+      {
+        "id": 4,
+        "type": "as",
+        "value": "+"
+      }
+    ],
+    "result": 98,
+    "tokens": [
+      [
+        {
+          "id": 1,
+          "type": "number",
+          "value": 7
+        },
+        {
+          "id": 2,
+          "type": "as",
+          "value": "-"
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "value": 8
+        }
+      ],
+      {
+        "id": 4,
+        "type": "as",
+        "value": "+"
+      },
+      [
+        {
+          "id": 5,
+          "type": "number",
+          "value": 11
+        },
+        {
+          "id": 6,
+          "type": "md",
+          "value": "*"
+        },
+        [
+          {
+            "id": 7,
+            "type": "open",
+            "value": "("
+          },
+          [
+            [
+              {
+                "id": 8,
+                "type": "number",
+                "value": 2
+              },
+              {
+                "id": 9,
+                "type": "as",
+                "value": "+"
+              },
+              {
+                "id": 10,
+                "type": "number",
+                "value": 11
+              }
+            ],
+            {
+              "id": 11,
+              "type": "as",
+              "value": "-"
+            },
+            {
+              "id": 12,
+              "type": "number",
+              "value": 4
+            }
+          ],
+          {
+            "id": 13,
+            "type": "close",
+            "value": ")"
+          }
+        ]
+      ]
+    ]
+  },
+  {
+    "testCase": "8*8-7-11-11-7-5",
+    "isAmbiguous": false,
+    "message": "",
+    "rpn": [
+      8,
+      8,
+      "*",
+      7,
+      "-",
+      11,
+      "-",
+      11,
+      "-",
+      7,
+      "-",
+      5,
+      "-"
+    ],
+    "rpnArray": [
+      {
+        "id": 1,
+        "type": "number",
+        "value": 8
+      },
+      {
+        "id": 3,
+        "type": "number",
+        "value": 8
+      },
+      {
+        "id": 2,
+        "type": "md",
+        "value": "*"
+      },
+      {
+        "id": 5,
+        "type": "number",
+        "value": 7
+      },
+      {
+        "id": 4,
+        "type": "as",
+        "value": "-"
+      },
+      {
+        "id": 7,
+        "type": "number",
+        "value": 11
+      },
+      {
+        "id": 6,
+        "type": "as",
+        "value": "-"
+      },
+      {
+        "id": 9,
+        "type": "number",
+        "value": 11
+      },
+      {
+        "id": 8,
+        "type": "as",
+        "value": "-"
+      },
+      {
+        "id": 11,
+        "type": "number",
+        "value": 7
+      },
+      {
+        "id": 10,
+        "type": "as",
+        "value": "-"
+      },
+      {
+        "id": 13,
+        "type": "number",
+        "value": 5
+      },
+      {
+        "id": 12,
+        "type": "as",
+        "value": "-"
+      }
+    ],
+    "result": 23,
+    "tokens": [
+      [
+        [
+          [
+            [
+              [
+                {
+                  "id": 1,
+                  "type": "number",
+                  "value": 8
+                },
+                {
+                  "id": 2,
+                  "type": "md",
+                  "value": "*"
+                },
+                {
+                  "id": 3,
+                  "type": "number",
+                  "value": 8
+                }
+              ],
+              {
+                "id": 4,
+                "type": "as",
+                "value": "-"
+              },
+              {
+                "id": 5,
+                "type": "number",
+                "value": 7
+              }
+            ],
+            {
+              "id": 6,
+              "type": "as",
+              "value": "-"
+            },
+            {
+              "id": 7,
+              "type": "number",
+              "value": 11
+            }
+          ],
+          {
+            "id": 8,
+            "type": "as",
+            "value": "-"
+          },
+          {
+            "id": 9,
+            "type": "number",
+            "value": 11
+          }
+        ],
+        {
+          "id": 10,
+          "type": "as",
+          "value": "-"
+        },
+        {
+          "id": 11,
+          "type": "number",
+          "value": 7
+        }
+      ],
+      {
+        "id": 12,
+        "type": "as",
+        "value": "-"
+      },
+      {
+        "id": 13,
+        "type": "number",
+        "value": 5
+      }
+    ]
+  },
+  {
+    "testCase": "8*9-(2+6)",
+    "isAmbiguous": false,
+    "message": "",
+    "rpn": [
+      8,
+      9,
+      "*",
+      2,
+      6,
+      "+",
+      "-"
+    ],
+    "rpnArray": [
+      {
+        "id": 1,
+        "type": "number",
+        "value": 8
+      },
+      {
+        "id": 3,
+        "type": "number",
+        "value": 9
+      },
+      {
+        "id": 2,
+        "type": "md",
+        "value": "*"
+      },
+      {
+        "id": 6,
+        "type": "number",
+        "value": 2
+      },
+      {
+        "id": 8,
+        "type": "number",
+        "value": 6
+      },
+      {
+        "id": 7,
+        "type": "as",
+        "value": "+"
+      },
+      {
+        "id": 4,
+        "type": "as",
+        "value": "-"
+      }
+    ],
+    "result": 64,
+    "tokens": [
+      [
+        {
+          "id": 1,
+          "type": "number",
+          "value": 8
+        },
+        {
+          "id": 2,
+          "type": "md",
+          "value": "*"
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "value": 9
+        }
+      ],
+      {
+        "id": 4,
+        "type": "as",
+        "value": "-"
+      },
+      [
+        {
+          "id": 5,
+          "type": "open",
+          "value": "("
+        },
+        [
+          {
+            "id": 6,
+            "type": "number",
+            "value": 2
+          },
+          {
+            "id": 7,
+            "type": "as",
+            "value": "+"
+          },
+          {
+            "id": 8,
+            "type": "number",
+            "value": 6
+          }
+        ],
+        {
+          "id": 9,
+          "type": "close",
+          "value": ")"
+        }
+      ]
+    ]
+  },
+  {
+    "testCase": "8*9-3*6-8",
+    "isAmbiguous": false,
+    "message": "",
+    "rpn": [
+      8,
+      9,
+      "*",
+      3,
+      6,
+      "*",
+      "-",
+      8,
+      "-"
+    ],
+    "rpnArray": [
+      {
+        "id": 1,
+        "type": "number",
+        "value": 8
+      },
+      {
+        "id": 3,
+        "type": "number",
+        "value": 9
+      },
+      {
+        "id": 2,
+        "type": "md",
+        "value": "*"
+      },
+      {
+        "id": 5,
+        "type": "number",
+        "value": 3
+      },
+      {
+        "id": 7,
+        "type": "number",
+        "value": 6
+      },
+      {
+        "id": 6,
+        "type": "md",
+        "value": "*"
+      },
+      {
+        "id": 4,
+        "type": "as",
+        "value": "-"
+      },
+      {
+        "id": 9,
+        "type": "number",
+        "value": 8
+      },
+      {
+        "id": 8,
+        "type": "as",
+        "value": "-"
+      }
+    ],
+    "result": 46,
+    "tokens": [
+      [
+        [
+          {
+            "id": 1,
+            "type": "number",
+            "value": 8
+          },
+          {
+            "id": 2,
+            "type": "md",
+            "value": "*"
+          },
+          {
+            "id": 3,
+            "type": "number",
+            "value": 9
+          }
+        ],
+        {
+          "id": 4,
+          "type": "as",
+          "value": "-"
+        },
+        [
+          {
+            "id": 5,
+            "type": "number",
+            "value": 3
+          },
+          {
+            "id": 6,
+            "type": "md",
+            "value": "*"
+          },
+          {
+            "id": 7,
+            "type": "number",
+            "value": 6
+          }
+        ]
+      ],
+      {
+        "id": 8,
+        "type": "as",
+        "value": "-"
+      },
+      {
+        "id": 9,
+        "type": "number",
+        "value": 8
+      }
+    ]
+  },
+  {
+    "testCase": "8+7*12-5*9+5",
+    "isAmbiguous": false,
+    "message": "",
+    "rpn": [
+      8,
+      7,
+      12,
+      "*",
+      "+",
+      5,
+      9,
+      "*",
+      "-",
+      5,
+      "+"
+    ],
+    "rpnArray": [
+      {
+        "id": 1,
+        "type": "number",
+        "value": 8
+      },
+      {
+        "id": 3,
+        "type": "number",
+        "value": 7
+      },
+      {
+        "id": 5,
+        "type": "number",
+        "value": 12
+      },
+      {
+        "id": 4,
+        "type": "md",
+        "value": "*"
+      },
+      {
+        "id": 2,
+        "type": "as",
+        "value": "+"
+      },
+      {
+        "id": 7,
+        "type": "number",
+        "value": 5
+      },
+      {
+        "id": 9,
+        "type": "number",
+        "value": 9
+      },
+      {
+        "id": 8,
+        "type": "md",
+        "value": "*"
+      },
+      {
+        "id": 6,
+        "type": "as",
+        "value": "-"
+      },
+      {
+        "id": 11,
+        "type": "number",
+        "value": 5
+      },
+      {
+        "id": 10,
+        "type": "as",
+        "value": "+"
+      }
+    ],
+    "result": 52,
+    "tokens": [
+      [
+        [
+          {
+            "id": 1,
+            "type": "number",
+            "value": 8
+          },
+          {
+            "id": 2,
+            "type": "as",
+            "value": "+"
+          },
+          [
+            {
+              "id": 3,
+              "type": "number",
+              "value": 7
+            },
+            {
+              "id": 4,
+              "type": "md",
+              "value": "*"
+            },
+            {
+              "id": 5,
+              "type": "number",
+              "value": 12
+            }
+          ]
+        ],
+        {
+          "id": 6,
+          "type": "as",
+          "value": "-"
+        },
+        [
+          {
+            "id": 7,
+            "type": "number",
+            "value": 5
+          },
+          {
+            "id": 8,
+            "type": "md",
+            "value": "*"
+          },
+          {
+            "id": 9,
+            "type": "number",
+            "value": 9
+          }
+        ]
+      ],
+      {
+        "id": 10,
+        "type": "as",
+        "value": "+"
+      },
+      {
+        "id": 11,
+        "type": "number",
+        "value": 5
+      }
+    ]
+  },
+  {
+    "testCase": "8+9+(6+3)",
+    "isAmbiguous": false,
+    "message": "",
+    "rpn": [
+      8,
+      9,
+      "+",
+      6,
+      3,
+      "+",
+      "+"
+    ],
+    "rpnArray": [
+      {
+        "id": 1,
+        "type": "number",
+        "value": 8
+      },
+      {
+        "id": 3,
+        "type": "number",
+        "value": 9
+      },
+      {
+        "id": 2,
+        "type": "as",
+        "value": "+"
+      },
+      {
+        "id": 6,
+        "type": "number",
+        "value": 6
+      },
+      {
+        "id": 8,
+        "type": "number",
+        "value": 3
+      },
+      {
+        "id": 7,
+        "type": "as",
+        "value": "+"
+      },
+      {
+        "id": 4,
+        "type": "as",
+        "value": "+"
+      }
+    ],
+    "result": 26,
+    "tokens": [
+      [
+        {
+          "id": 1,
+          "type": "number",
+          "value": 8
+        },
+        {
+          "id": 2,
+          "type": "as",
+          "value": "+"
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "value": 9
+        }
+      ],
+      {
+        "id": 4,
+        "type": "as",
+        "value": "+"
+      },
+      [
+        {
+          "id": 5,
+          "type": "open",
+          "value": "("
+        },
+        [
+          {
+            "id": 6,
+            "type": "number",
+            "value": 6
+          },
+          {
+            "id": 7,
+            "type": "as",
+            "value": "+"
+          },
+          {
+            "id": 8,
+            "type": "number",
+            "value": 3
+          }
+        ],
+        {
+          "id": 9,
+          "type": "close",
+          "value": ")"
+        }
+      ]
+    ]
+  },
+  {
+    "testCase": "9+7+5+5+2",
+    "isAmbiguous": false,
+    "message": "",
+    "rpn": [
+      9,
+      7,
+      "+",
+      5,
+      "+",
+      5,
+      "+",
+      2,
+      "+"
+    ],
+    "rpnArray": [
+      {
+        "id": 1,
+        "type": "number",
+        "value": 9
+      },
+      {
+        "id": 3,
+        "type": "number",
+        "value": 7
+      },
+      {
+        "id": 2,
+        "type": "as",
+        "value": "+"
+      },
+      {
+        "id": 5,
+        "type": "number",
+        "value": 5
+      },
+      {
+        "id": 4,
+        "type": "as",
+        "value": "+"
+      },
+      {
+        "id": 7,
+        "type": "number",
+        "value": 5
+      },
+      {
+        "id": 6,
+        "type": "as",
+        "value": "+"
+      },
+      {
+        "id": 9,
+        "type": "number",
+        "value": 2
+      },
+      {
+        "id": 8,
+        "type": "as",
+        "value": "+"
+      }
+    ],
+    "result": 28,
+    "tokens": [
+      [
+        [
+          [
+            {
+              "id": 1,
+              "type": "number",
+              "value": 9
+            },
+            {
+              "id": 2,
+              "type": "as",
+              "value": "+"
+            },
+            {
+              "id": 3,
+              "type": "number",
+              "value": 7
+            }
+          ],
+          {
+            "id": 4,
+            "type": "as",
+            "value": "+"
+          },
+          {
+            "id": 5,
+            "type": "number",
+            "value": 5
+          }
+        ],
+        {
+          "id": 6,
+          "type": "as",
+          "value": "+"
+        },
+        {
+          "id": 7,
+          "type": "number",
+          "value": 5
+        }
+      ],
+      {
+        "id": 8,
+        "type": "as",
+        "value": "+"
+      },
+      {
+        "id": 9,
+        "type": "number",
+        "value": 2
+      }
+    ]
+  },
+  {
+    "testCase": "9+9+10+9",
+    "isAmbiguous": false,
+    "message": "",
+    "rpn": [
+      9,
+      9,
+      "+",
+      10,
+      "+",
+      9,
+      "+"
+    ],
+    "rpnArray": [
+      {
+        "id": 1,
+        "type": "number",
+        "value": 9
+      },
+      {
+        "id": 3,
+        "type": "number",
+        "value": 9
+      },
+      {
+        "id": 2,
+        "type": "as",
+        "value": "+"
+      },
+      {
+        "id": 5,
+        "type": "number",
+        "value": 10
+      },
+      {
+        "id": 4,
+        "type": "as",
+        "value": "+"
+      },
+      {
+        "id": 7,
+        "type": "number",
+        "value": 9
+      },
+      {
+        "id": 6,
+        "type": "as",
+        "value": "+"
+      }
+    ],
+    "result": 37,
+    "tokens": [
+      [
+        [
+          {
+            "id": 1,
+            "type": "number",
+            "value": 9
+          },
+          {
+            "id": 2,
+            "type": "as",
+            "value": "+"
+          },
+          {
+            "id": 3,
+            "type": "number",
+            "value": 9
+          }
+        ],
+        {
+          "id": 4,
+          "type": "as",
+          "value": "+"
+        },
+        {
+          "id": 5,
+          "type": "number",
+          "value": 10
+        }
+      ],
+      {
+        "id": 6,
+        "type": "as",
+        "value": "+"
+      },
+      {
+        "id": 7,
+        "type": "number",
+        "value": 9
+      }
+    ]
+  }
+]
