@@ -1,6 +1,0 @@
-<% expression.forEach(function(token, index){ %>
-  <text className="task-token js-item" iid="<%= token.id %>" y="15" x="<%=10 + index * 20 %>" width="20"><%= token.value %></text>
-<% }) %>
-<% tree.steps.forEach(function(step){ %>
-  <text className="task-step js-item" iid="<%= step.id %>" ileft="<%= step.left.id %>" iright="<%= step.right.id %>"><%= step.value %></text>
-<% }) %>

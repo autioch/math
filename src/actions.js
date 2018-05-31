@@ -1,6 +1,6 @@
-import { generate } from '../core';
-import parseNearley from '../core.nearley/parse';
-import solveNearley from '../core.nearley/solve';
+import { generate } from './core/old';
+import parseNearley from './core/nearley/parse';
+import solveNearley from './core/nearley/solve';
 
 const HISTORY_COUNT = 15;
 
@@ -43,11 +43,11 @@ export default {
     let value = maximum + 1;
     let expressionText = '';
 
-    while (minimum > value || value > maximum) {
+    while (minimum >= value || value >= maximum) {
       expressionText = generate(complexity).join('');
 
       // solve(convert.toRpn(parse(expressionText).expression));
-      value = '1';
+      value = minimum;
     }
 
     return {

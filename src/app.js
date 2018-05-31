@@ -37,27 +37,15 @@ export default function App({
           <Button icon="reload" type="primary" onClick={generate}>Generate</Button>
           <div className="flex-row">
             <span className="flex-row__header">Complexity</span>
-            <InputNumber
-              value={complexity}
-              defaultValue={complexity}
-              onChange={(ev) => setComplexity(ev.target.value)}
-            />
+            <InputNumber value={complexity} defaultValue={complexity} onChange={setComplexity} />
           </div>
           <div className="flex-row">
             <span className="flex-row__header">Minimum value</span>
-            <InputNumber
-              value={minimum}
-              defaultValue={minimum}
-              onChange={(ev) => setMinimum(ev.target.value)}
-            />
+            <InputNumber value={minimum} defaultValue={minimum} onChange={setMinimum} />
           </div>
           <div className="flex-row">
             <span className="flex-row__header">Maximum value</span>
-            <InputNumber
-              value={maximum}
-              defaultValue={maximum}
-              onChange={(ev) => setMaximum(ev.target.value)}
-            />
+            <InputNumber value={maximum} defaultValue={maximum} onChange={setMaximum} />
           </div>
         </Panel>
         <Panel header="History" key={modes.history}>
