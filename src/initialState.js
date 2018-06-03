@@ -5,6 +5,7 @@ export default {
   historyList: [],
   message: '',
   steps: [],
+  rects: [],
   value: null,
 
   /* Generate */

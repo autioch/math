@@ -79,18 +79,19 @@ export default {
       .slice(0, HISTORY_COUNT);
 
     const { steps, paths } = getSteps(tokens);
-    const items = steps[0].length;
+    const itemCount = steps[0].length;
     const stepHeight = 21;
     const stepBreak = 42;
     const treeWidth = window.innerWidth - 50;
     const treeHeight = (steps.length * (stepHeight + stepBreak)) - stepBreak;
-    const itemWidth = Math.floor(treeWidth / items);
+    const itemWidth = Math.floor(treeWidth / itemCount);
 
     const alignedSteps = steps.map((step, stepIndex) => {
       const stepTop = stepIndex * (stepHeight + stepBreak);
+      const marginLeft = Math.floor((treeWidth - (step.length * itemWidth)) / 2);
 
       step.forEach((item, itemIndex) => {
-        item.left = itemIndex * itemWidth;
+        item.left = marginLeft + (itemIndex * itemWidth);
         item.width = itemWidth;
         item.right = item.left + item.width;
         item.top = stepTop;
@@ -103,11 +104,20 @@ export default {
       };
     });
 
+    const rects = {};
+
+    alignedSteps.forEach(({ items }) => {
+      items.forEach((item) => {
+        rects[item.id] = item;
+      });
+    });
+
     return {
       expressionText,
       message: '',
       steps: alignedSteps,
       paths,
+      rects,
       stepHeight,
       stepBreak,
       treeHeight,

@@ -1,6 +1,4 @@
 import React from 'react';
-
-// import _ from 'lodash';
 import './styles.css';
 
 function Item({ item }) {
@@ -24,15 +22,7 @@ function Step({ step }) {
   );
 }
 
-export default function TreeView({ steps, paths, treeHeight, treeWidth }) {
-  const rects = {};
-
-  steps.forEach(({ items }) => {
-    items.forEach((item) => {
-      rects[item.id] = item;
-    });
-  });
-
+export default function TreeView({ steps, paths, treeHeight, treeWidth, rects }) {
   return (
     <div className="m-tree" style={{
       height: treeHeight,
@@ -48,9 +38,9 @@ export default function TreeView({ steps, paths, treeHeight, treeWidth }) {
         {paths
           .filter((path) => rects[path.from] && rects[path.to])
           .map(({ from, to }, index) => <line
-            y1 ={rects[from].bottom}
+            y1 ={rects[from].bottom + 2}
             x1={rects[from].left + (rects[from].width / 2)}
-            y2={rects[to].top}
+            y2={rects[to].top - 2}
             x2={rects[to].left + (rects[to].width / 2)}
             from-id={from}
             to-id={to}
