@@ -24,7 +24,9 @@ function Step({ step }) {
 
 export default function TreeView({ tree: { steps, paths, size } }) {
   return (
-    <div className="m-tree" style={size}>
+    <div className="m-tree" style={{
+      ...size
+    }}>
       <svg className="m-tree__paths" version="1.1" {...size} viewBox={`0 0 ${size.width} ${size.height}`} >
         {paths.map((path, index) => <line {...path} className="m-tree__path" key={index} />)}
       </svg>

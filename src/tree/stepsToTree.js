@@ -1,24 +1,44 @@
 import _ from 'lodash';
 
-const { flattenDeep } = _;
+const { keyBy } = _;
 
-export default function stepsToTree(steps) {
-  const stepCount = steps.length;
+function getItemPaths(toItem, previousStep) {
+  const fromItems = toItem.solvedFrom.map((fromId) => previousStep.dict[fromId]);
 
-  const stepHeight = 21;
-  const stepPadding = 42;
-  const treeHeight = (stepCount * (stepHeight + stepPadding)) - stepPadding;
-  const treeWidth = window.innerWidth - 50;
+  return fromItems
 
+    /* TODO There might be items that are "solvedFrom" in previous steps. */
+    .filter((fromItem) => !!fromItem)
+    .map((fromItem) => ({
+      y1: fromItem.bottom + 2,
+      x1: fromItem.left + (fromItem.width / 2),
+      y2: toItem.top - 2,
+      x2: toItem.left + (toItem.width / 2)
+    }));
+}
+
+function getPaths(alignedSteps) {
+  const paths = [];
+
+  for (let i = 1; i < alignedSteps.length; i++) {
+    const previousStep = alignedSteps[i - 1];
+    const currentStep = alignedSteps[i];
+    const toItems = currentStep.items.filter((item) => item.solvedFrom);
+
+    toItems.forEach((toItem) => {
+      const itemPaths = getItemPaths(toItem, previousStep);
+
+      paths.push(...itemPaths);
+    });
+  }
+
+  return paths;
+}
+
+function getAlignedSteps(steps, treeWidth, stepHeight, stepPadding) {
+  const maxItemWidth = 30;
   const itemCount = steps[0].length;
-  const itemWidth = Math.floor(treeWidth / itemCount);
-
-  const paths = flattenDeep(flattenDeep(steps)
-    .filter((item) => item.solvedFrom)
-    .map((item) => item.solvedFrom.map((from) => ({
-      from,
-      to: item.id
-    }))));
+  const itemWidth = Math.min(maxItemWidth, Math.floor(treeWidth / itemCount));
 
   const alignedSteps = steps.map((step, stepIndex) => {
     const stepTop = stepIndex * (stepHeight + stepPadding);
@@ -34,30 +54,28 @@ export default function stepsToTree(steps) {
 
     return {
       top: stepTop,
-      items: step
+      items: step,
+      dict: keyBy(step, 'id')
     };
   });
 
-  const rects = {};
+  return alignedSteps;
+}
 
-  alignedSteps.forEach(({ items }) => {
-    items.forEach((item) => {
-      rects[item.id] = item;
-    });
-  });
+export default function stepsToTree(steps) {
+  const stepCount = steps.length;
+  const stepHeight = 21;
+  const stepPadding = 21;
 
-  const pathRects = paths
-    .filter((path) => rects[path.from] && rects[path.to])
-    .map(({ from, to }) => ({
-      y1: rects[from].bottom + 2,
-      x1: rects[from].left + (rects[from].width / 2),
-      y2: rects[to].top - 2,
-      x2: rects[to].left + (rects[to].width / 2)
-    }));
+  const treeWidth = window.innerWidth - 50;
+  const treeHeight = (stepCount * (stepHeight + stepPadding)) - stepPadding;
+
+  const alignedSteps = getAlignedSteps(steps, treeWidth, stepHeight, stepPadding);
+  const paths = getPaths(alignedSteps);
 
   return {
     steps: alignedSteps,
-    paths: pathRects,
+    paths,
     size: {
       width: treeWidth,
       height: treeHeight
