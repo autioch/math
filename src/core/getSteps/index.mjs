@@ -20,13 +20,5 @@ export default function getSteps(exp) {
     current = clone(simplified);
   }
 
-  return {
-    steps,
-    paths: flattenDeep(flattenDeep(steps)
-      .filter((item) => item.solvedFrom)
-      .map((item) => item.solvedFrom.map((from) => ({
-        from,
-        to: item.id
-      }))))
-  };
+  return steps;
 }

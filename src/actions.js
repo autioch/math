@@ -1,5 +1,5 @@
 import { parse, solve, generate, getSteps } from './core';
-
+import stepsToTree from './tree/stepsToTree';
 const HISTORY_COUNT = 15;
 
 export default {
@@ -57,73 +57,51 @@ export default {
     };
   },
 
-  solve({ state: { expressionText, historyList } }) {
+  setError({ data }) {
+    return {
+      message: data,
+      steps: [],
+      resultHeight: 30,
+      value: null
+    };
+  },
+
+  addHistory({ data, state: { historyList } }) {
+    const entry = {
+      expressionText: data,
+      timestamp: new Date().toLocaleTimeString()
+    };
+
+    const newHistoryList = [entry]
+      .concat(historyList.filter((item) => item.expressionText !== data))
+      .slice(0, HISTORY_COUNT);
+
+    return {
+      historyList: newHistoryList
+    };
+  },
+
+  setResults({ data: tokens }) {
+    const steps = getSteps(tokens);
+    const value = solve(tokens);
+    const tree = stepsToTree(steps);
+
+    return {
+      message: '',
+      value,
+      tree
+    };
+  },
+
+  solve({ store, state: { expressionText } }) {
     const { message, tokens } = parse(expressionText);
 
     if (message) {
-      return {
-        expressionText,
-        message,
-        steps: [],
-        resultHeight: 30,
-        value: null
-      };
+      store.setError(message);
+    } else {
+      store
+        .addHistory(expressionText)
+        .setResults(tokens);
     }
-
-    const historyEntry = {
-      expressionText,
-      timestamp: new Date().toLocaleTimeString()
-    };
-    const newHistoryList = [historyEntry]
-      .concat(historyList.filter((item) => item.expressionText !== expressionText))
-      .slice(0, HISTORY_COUNT);
-
-    const { steps, paths } = getSteps(tokens);
-    const itemCount = steps[0].length;
-    const stepHeight = 21;
-    const stepBreak = 42;
-    const treeWidth = window.innerWidth - 50;
-    const treeHeight = (steps.length * (stepHeight + stepBreak)) - stepBreak;
-    const itemWidth = Math.floor(treeWidth / itemCount);
-
-    const alignedSteps = steps.map((step, stepIndex) => {
-      const stepTop = stepIndex * (stepHeight + stepBreak);
-      const marginLeft = Math.floor((treeWidth - (step.length * itemWidth)) / 2);
-
-      step.forEach((item, itemIndex) => {
-        item.left = marginLeft + (itemIndex * itemWidth);
-        item.width = itemWidth;
-        item.right = item.left + item.width;
-        item.top = stepTop;
-        item.bottom = item.top + stepHeight;
-      });
-
-      return {
-        top: stepTop,
-        items: step
-      };
-    });
-
-    const rects = {};
-
-    alignedSteps.forEach(({ items }) => {
-      items.forEach((item) => {
-        rects[item.id] = item;
-      });
-    });
-
-    return {
-      expressionText,
-      message: '',
-      steps: alignedSteps,
-      paths,
-      rects,
-      stepHeight,
-      stepBreak,
-      treeHeight,
-      treeWidth,
-      value: solve(tokens),
-      historyList: newHistoryList
-    };
   }
 };

@@ -22,31 +22,11 @@ function Step({ step }) {
   );
 }
 
-export default function TreeView({ steps, paths, treeHeight, treeWidth, rects }) {
+export default function TreeView({ tree: { steps, paths, size } }) {
   return (
-    <div className="m-tree" style={{
-      height: treeHeight,
-      width: treeWidth
-    }}>
-      <svg
-        className="m-tree__paths"
-        version="1.1"
-        width={treeWidth}
-        height={treeHeight}
-        viewBox={`0 0 ${treeWidth} ${treeHeight}`}
-      >
-        {paths
-          .filter((path) => rects[path.from] && rects[path.to])
-          .map(({ from, to }, index) => <line
-            y1 ={rects[from].bottom + 2}
-            x1={rects[from].left + (rects[from].width / 2)}
-            y2={rects[to].top - 2}
-            x2={rects[to].left + (rects[to].width / 2)}
-            from-id={from}
-            to-id={to}
-            className="m-tree__path"
-            key={index}
-          />)}
+    <div className="m-tree" style={size}>
+      <svg className="m-tree__paths" version="1.1" {...size} viewBox={`0 0 ${size.width} ${size.height}`} >
+        {paths.map((path, index) => <line {...path} className="m-tree__path" key={index} />)}
       </svg>
       {steps.map((step, index) => <Step step={step} key={index} />)}
     </div>
