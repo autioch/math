@@ -9,5 +9,5 @@ export default function generate(stepCount) {
     expression = expand(expression);
   }
 
-  return fillValues(fixBrackets(expression));
+  return fillValues(fixBrackets(expression)).join(' ');
 }
