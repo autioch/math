@@ -1,7 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 // https://github.com/cemulate/nearley-generator
 import { randomWeightedChoice, squashLiterals, squashNames } from './util.js';
-import randexp from 'randexp';
+import RandExp from 'randexp';
 
 export default class NearleyGenerator {
   constructor(nearleyGrammar) {
@@ -9,7 +9,7 @@ export default class NearleyGenerator {
     this._cFactor = 0.5;
   }
 
-  optimize(rules) {
+  optimize(rules) { // eslint-disable-line class-methods-use-this
     let ret = rules.map((x) => ({
       name: x.name,
       production: Array.from(squashLiterals(x.symbols))
@@ -56,10 +56,10 @@ export default class NearleyGenerator {
   }
 
   _generate(rule) {
-    const weights = rule.productions.map((prod) => {
+    const weights = rule.productions.map((prodRule) => {
       let seen = 0;
 
-      for (const token of prod) {
+      for (const token of prodRule) {
         if (token.rule) {
           seen = token.rule._seen > seen ? token.rule._seen : seen;
         }
@@ -78,11 +78,17 @@ export default class NearleyGenerator {
         token.rule._seen -= 1;
 
         return gen;
-      } else if (token.literal) {
-        return token.literal;
-      } else if (token.regex) {
-        return new randexp(token.regex).gen();
       }
+
+      if (token.literal) {
+        return token.literal;
+      }
+
+      if (token.regex) {
+        return new RandExp(token.regex).gen();
+      }
+
+      return '';
     });
 
     return ret.join('');
